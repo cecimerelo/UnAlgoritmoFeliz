@@ -313,4 +313,6 @@ package-lock.json
 
 proyecto.*
 .idea/
+
 src/venv
+src/.DS_Store
