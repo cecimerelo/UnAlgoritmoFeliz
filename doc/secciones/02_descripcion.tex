@@ -1,11 +1,54 @@
 \chapter{Descripción del problema}
 
-    Actualmente las ramas de la Ciencia de la computación y la Ingeniería del Software se encuentran muy separadas, a la
+Actualmente las ramas de la Ciencia de la computación y la Ingeniería del Software se encuentran muy separadas, a la
 hora de desarrollar un algoritmo nunca nos ponemos a pensar en cosas como arquitectura limpia o si sigue estándares
 de código. Con este trabajo se quiere desarrollar un algoritmo que rompa con esta idea. Un algoritmo que no dependa
-de los datos de entrada, y al que le puedas pasar la información, por ejemplo, a través de llamadas a una API
+de los datos de entrada, y al que le puedas pasar la información, por ejemplo, a través de llamadas a una API.
 
-    Así que el objetivo es desarrollar una Metaheurística que cumple con el modelo de "Software as a service" o Software
-como servicio.
+El objetivo sería, por tanto, desarrollar una Metaheurística basada en el libro de "Un mundo feliz" de Aldous
+Huxley pero que además cumpla con el modelo de "Software as a Service" o Software como Servicio.
+
+\section{Naturaleza del algoritmo}
+
+Estamos hablando de un algoritmo basado en la evolución de una población, así que seguirá la estructura de los
+algoritmos genéticos. Siguiendo la definición dada por Goldberg, "los Algoritmos Genéticos son algoritmos de búsqueda
+basados en la mecánica de selección natural y de la selección natural. Combinan la supervivencia del más apto entre estructuras
+de secuencias con un intercambio de información estructurado, aunque aleatorizado, para construir así un algoritmo
+de búsqueda que tenga algo de las genialidades de las búsquedas humanas"\cite{goldberg89}.
+
+Para alcanzar la solución a un problema se parte de un conjunto inicial de individuos, llamado \textit{población},
+generado de manera aleatoria. Cada uno de estos individuos representa una posible solución al problema. Estos individuos
+evolucionarán siguiendo el proceso propuesto en el libro de Aldous Huxley, y se adaptarán en mayor o menor medida,
+tras el paso de cada generación, a la solución requerida.
+
+\section{Estructura}
+
+En el libro se describe cómo se alcanza esta raza humana perfecta mediante una "cadena de montaje", y eso es lo que se
+tratará de reflejar en la metaheurística a desarrollar.
+
+El proceso comienza en la \textbf{\textit{Sala de Fecundación}}, aquí se crea la provisión de óvulos y se fecundan. Una
+vez \textit{fecundados} los óvulos pasan a las incubadoras. Aquí es donde se decide la \textit{casta} a la que
+pertenecerá cada individuo:
+
+\begin{itemize}
+    \item \textbf{Alphas}: son los más inteligentes, a este grupo pertenece la élite. Tienen responsabilidades y son
+    los que tienen la capacidad de tomar decisiones.
+    \item \textbf{Betas}: son menos inteligentes que los anteriores y su función principal se reduce a tareas
+    administrativas.
+    \item \textbf{Gammas}: son los empleados subalternos, cuyas tareas requieren de habilidad.
+    \item \textbf{Deltas}:a este grupo pertenecen los empleados de los anteriores.
+    \item \textbf{Epsilones}: es la casta inferior, a ella pertenecen los empleados para trabajos arduos.
+\end{itemize}
+
+Con esta estructura en mente la meta heurística se divide en las siguientes fases:
+
+\begin{itemize}
+    \item \textbf{Sala de Fecundación}: los individuos son creados de manera totalmente aleatoria. Tantos individuos
+    como indique un parámetro \textit{I}.
+    \item \textbf{Sala de incubación}: en esta fase realizamos la división en castas. Se hará basándonos en el valor de
+    la función objetivo del individuo. Además cada casta tendrá un porcentaje diferente de la población.
+    \item \textbf{Evolución de las castas}: cada casta seguirá un proceso de evolución diferente que definiremos más
+    adelante.
+\end{itemize}
 
 
