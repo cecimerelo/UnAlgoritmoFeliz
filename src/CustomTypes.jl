@@ -7,7 +7,7 @@ ConfigEntity:
 
 module CustomTypes
 
-export ConfigurationParametersEntity, Point
+export ConfigurationParametersEntity, Point, Individual
 struct ConfigurationParametersEntity
     population_size::Int
     max_evaluations::Int
@@ -26,7 +26,7 @@ struct Point
 end
 
 struct Individual
-    list_of_points::Point[]
+    list_of_points::Array
     f_value::Float32
 end
 
