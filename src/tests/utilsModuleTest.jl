@@ -4,22 +4,22 @@ utilsModule:
 - Author: cecimerelo
 - Date: 2021-03-07
 =#
+using DataFrames
+using CSV
 
-include("../../common/utilsModule.jl")
+include("../../src/utilsModule.jl")
 using .utilsModule
+
+include("../individual/IndividualModule.jl")
+using .IndividualModule
 
 using Test
 
 @testset "Utils Module" begin
-    @testset "Test method when called then an entity is created" begin
-        config_parameters_entity = utilsModule.ConfigurationParametersEntity(70, 10000, 15, 20, 20, 20, 20, 20, 2)
-        @test utilsModule.read_parameters_file("./src/tests/data/config_file_1.json") == config_parameters_entity
-    end
-
     @testset "Test method when called then correct element in array returned" begin
         data = CSV.File("./src/tests/data/set_test.csv") |> DataFrame
-        extraxted_points = utilsModule.convert_data_to_points(data)
-        @test eltype(extraxted_points) == utilsModule.Point
+        individual = utilsModule.convert_data_to_individual(data, IndividualModule.FeaturesArray)
+        @test typeof(individual) == IndividualModule.Individual
     end
 
     @testset "Test read data file when called with a *.txt file then convert it to DataFrame" begin
@@ -33,4 +33,13 @@ using Test
         data = utilsModule.read_data_file(file_path, type=Int32, has_header=true)
         @test typeof(data) == DataFrame
     end
+
+    @testset "Test from_file_to_entity_individual when called then individual is returned" begin
+        file_path = "./src/data/iris_set.csv"
+        individual = utilsModule.from_file_to_entity_individual(file_path, IndividualModule.FeaturesArray, type=Float16, delimiter=',')
+
+        @test typeof(individual) == IndividualModule.Individual
+        @test typeof(individual.genes[1]) == IndividualModule.FeaturesArray
+    end
+
 end
