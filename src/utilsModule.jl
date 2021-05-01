@@ -7,11 +7,13 @@ utils:
 
 module utilsModule
 
+include("CustomTypes.jl")
+using .CustomTypes
+
+include("methods/build_genes.jl")
+
 using JSON
 using DataFrames
-
-using Pkg
-
 using CSV
 
 using ..IndividualModule
@@ -26,17 +28,25 @@ const delta_percentage = "DELTA_PERCENTAGE"
 const epsilon_percentage = "EPSILON_PERCENTAGE"
 const step_size = "STEP_SIZE"
 
-function from_file_to_entity_individual(file_path::String, individual::DataType;
-    type=String::DataType, has_header=false::Bool, delimiter=' '::Char)
+function from_file_to_genes(
+    data_file_path, gene_type, element_type;
+    delimiter=' ', has_header=false,
+)
 
-    df = read_data_file(file_path, type=type, has_header=has_header, delimiter=delimiter)
-    points = convert_data_to_individual(df, individual)
+    df = read_data_file(
+        data_file_path,
+        type=element_type, has_header=has_header, delimiter=delimiter
+    )
 
-    return points
+    genes = build_genes(df, gene_type)
+
+    return genes
 end
 
-function read_data_file(file_path::String; type=nothing::DataType,
-    has_header=false::Bool, delimiter=' '::Char)
+function read_data_file(
+    file_path::String;
+    type=nothing::DataType, has_header=false::Bool, delimiter=' '::Char
+)
 
     @info "Reading data file $(file_path)"
     raw_str = read(file_path, String)
@@ -51,34 +61,8 @@ function read_data_file(file_path::String; type=nothing::DataType,
     return df
 end
 
-function convert_data_to_individual(data::DataFrames.DataFrame, gene_type::Type{FeaturesArray})
-    genes = gene_type[]
-    number_of_rows = size(data, 1)
-
-    @info "Converting data to $(number_of_rows) individual"
-    for row in eachrow(data)
-        gene = gene_type(row, -1)
-        push!(genes, gene)
-    end
-
-    return Individual(genes, 0)
-end
-
-function convert_data_to_individual(data::DataFrames.DataFrame, gene_type::Type{Coordinates})
-    genes = Coordinates[]
-    number_of_rows = size(data, 1)
-
-    @info "Converting data to $(number_of_rows) individual"
-    for row in eachrow(data)
-        gene = Coordinates(row[2:end], row[1])
-        push!(genes, gene)
-    end
-
-    return Individual(genes, 0)
-end
-
-
 function read_parameters_file(file_path::String)
+    @info "Reading parameters file"
     config_parameters = JSON.parsefile(file_path)
 
     ConfigurationParametersEntity(config_parameters[population_size],
