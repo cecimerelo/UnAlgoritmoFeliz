@@ -9,7 +9,7 @@ end
 
 mutable struct Coordinates
     coordinates::Array
-    index::Int8
+    index::Int64
 end
 
 abstract type Individual end
@@ -23,8 +23,9 @@ mutable struct ClassificationProblem <: Individual
 end
 
 mutable struct DistancesProblem <: Individual
-    genes::Coordinates
+    genes::Array{Coordinates,1}
     f::Number
+    route::Array{Coordinates,1}
 end
 
 end  # module
