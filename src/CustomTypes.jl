@@ -19,15 +19,4 @@ struct ConfigurationParametersEntity
     epsilon::Int
     step_size::Int
 end
-
-struct Point
-    features::Array
-    label::Integer
-end
-
-struct Individual
-    list_of_points::Array
-    f_value::Float32
-end
-
 end
