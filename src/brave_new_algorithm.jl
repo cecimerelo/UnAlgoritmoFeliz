@@ -13,6 +13,8 @@ function run_algorithm(
 )
     config_parameters_entity = utilsModule.read_parameters_file(config_file_path)
     poblation = fecundation_room(individual, config_parameters_entity.population_size)
+    # TODO: get best element of poblation
+    best_element = best_element_of_poblation(poblation)
 end
 
 

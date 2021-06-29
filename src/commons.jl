@@ -50,3 +50,7 @@ end
 function delete_element_from_array(array, element)
     deleteat!(array, findall(x->x==element,array))
 end
+
+function best_element_of_poblation(poblation)
+    # TODO : implement it when f is defined
+end
