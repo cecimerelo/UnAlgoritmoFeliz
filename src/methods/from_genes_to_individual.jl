@@ -3,7 +3,7 @@ include("../commons.jl")
 using Shuffle
 
 function from_genes_to_individual(
-    genes, individual_type::Type{ClassificationProblem};
+    genes, fitness_function, individual_type::Type{ClassificationProblem};
     k=3
 )
     points_divided_in_clusters = build_dict_of_clusters(k)
@@ -18,7 +18,7 @@ function from_genes_to_individual(
     centroids = calculate_centroids(points_divided_in_clusters)
 
     # TODO: calculate f
-    f = -1
+    f = evaluate_individual(points_divided_in_clusters)
 
     return ClassificationProblem(
         points_divided_in_clusters, centroids, genes, f, k
