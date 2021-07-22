@@ -1,4 +1,5 @@
 include("../commons.jl")
+include("evaluate_individual.jl")
 
 using Shuffle
 
@@ -16,9 +17,8 @@ function from_genes_to_individual(
     end
 
     centroids = calculate_centroids(points_divided_in_clusters)
-
-    # TODO: calculate f
-    f = evaluate_individual(points_divided_in_clusters)
+    # TODO : add an f
+    f = evaluate_individual(genes)
 
     return ClassificationProblem(
         points_divided_in_clusters, centroids, genes, f, k
@@ -30,8 +30,8 @@ function from_genes_to_individual(genes, individual_type::Type{DistancesProblem}
     genes_copy = deepcopy(genes)
     genes_copy = shuffle!(genes_copy)
 
-    # TODO: calculate f
-    f = -1
+    # TODO : add an f
+    f =  evaluate_individual(genes)
 
     return DistancesProblem(genes, f, genes_copy)
 end
