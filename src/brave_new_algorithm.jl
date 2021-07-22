@@ -4,7 +4,6 @@ using .utilsModule
 include("commons.jl")
 include("methods/from_genes_to_individual.jl")
 include("methods/build_random_individual.jl")
-
 using ..IndividualModule
 
 
