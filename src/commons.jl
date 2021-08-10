@@ -52,5 +52,5 @@ function delete_element_from_array(array, element)
 end
 
 function best_element_of_poblation(poblation)
-    # TODO : implement it when f is defined
+    return partialsort(poblation, 1, by = t -> t.f_value, lt=isless)
 end

@@ -4,13 +4,18 @@ using .utilsModule
 using ..IndividualPackagesModule
 
 include("methods/from_genes_to_individual.jl")
+include("commons.jl")
 
 
 function run_algorithm(population_model::PopulationModel)
-    poblation = [fecundation_room(population_model)
-                    for _ in 1:population_model.config_parameters.population_size]
-    return poblation
+    poblation = [
+        fecundation_room(population_model)
+        for _ in 1:population_model.config_parameters.population_size
+    ]
 
+    best_element = best_element_of_poblation(poblation)
+
+    return poblation
 end
 
 function fecundation_room(population_model::PopulationModel)

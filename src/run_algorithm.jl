@@ -21,4 +21,4 @@ fitness_function = BlackBoxOptimizationBenchmarking.F1
 @info "Config file -> $(config_file_path), Fitness Funcion -> $(fitness_function)"
 population_model = PopulationModel(config_parameters_entity, fitness_function)
 
-run_algorithm(population_model)
+poblation = run_algorithm(population_model)

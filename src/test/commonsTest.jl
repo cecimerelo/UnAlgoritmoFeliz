@@ -68,4 +68,20 @@ using Test
 
         @test isempty(points_divided_in_clusters[2]) == false
     end
+
+    @testset "Test best_element_of_poblation when called then individual with smallest f value" begin
+        config_file_path = "./src/test/Config Files/config_file_1.json"
+        config_parameters_entity = utilsModule.read_parameters_file(config_file_path)
+        fitness_function = BlackBoxOptimizationBenchmarking.F1
+        population_model = PopulationModel(config_parameters_entity, fitness_function)
+        poblation = run_algorithm(population_model)
+
+        best_element = best_element_of_poblation(poblation)
+
+        all_f_values = [individual.f_value for individual in poblation]
+        expected = minimum(all_f_values)
+
+        @test expected == best_element.f_value
+    end
+
 end
