@@ -6,32 +6,19 @@ using Pkg
 # Pkg.add("Turf")
 # Pkg.add("Shuffle")
 
-include("individual/IndividualModule.jl")
-using .IndividualModule
+using BlackBoxOptimizationBenchmarking
 
-include("utilsModule.jl")
-include("SetUpData.jl")
+include("individual_packages_module.jl")
+using .IndividualPackagesModule
+
 include("brave_new_algorithm.jl")
+include("utilsModule.jl")
 
 config_file_path = "./src/data/Config Files/config_file_1.json"
-data_file_path = "./src/data/iris_set.csv"
+config_parameters_entity = utilsModule.read_parameters_file(config_file_path)
+fitness_function = BlackBoxOptimizationBenchmarking.F1
 
-initial_individual = prepare_individual(
-    ClassificationProblem, data_file_path, FeaturesArray, Float16;
-    k=3
-)
+@info "Config file -> $(config_file_path), Fitness Funcion -> $(fitness_function)"
+population_model = PopulationModel(config_parameters_entity, fitness_function)
 
-run_algorithm(config_file_path, data_file_path, initial_individual)
-
-###########
-# For TSP
-
-config_file_path = "./src/data/Config Files/config_file_1.json"
-data_file_path = "./src/data/a280.tsp"
-
-initial_individual = prepare_individual(
-    DistancesProblem, data_file_path, Coordinates, Int128;
-    delimiter=" ", has_header=true
-)
-
-run_algorithm(config_file_path, data_file_path, initial_individual)
+run_algorithm(population_model)
