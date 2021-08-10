@@ -2,7 +2,6 @@ include("evaluate_chromosome.jl")
 
 
 function from_genes_to_individual(chromosome, population_model::PopulationModel)
-    @info "Converting genes to an individual"
     f =  evaluate_chromosome(chromosome, population_model.fitness_function)
 
     return Individual(chromosome, f)

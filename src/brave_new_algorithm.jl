@@ -1,23 +1,20 @@
 include("utilsModule.jl")
 using .utilsModule
 
-include("commons.jl")
+using ..IndividualPackagesModule
+
 include("methods/from_genes_to_individual.jl")
-include("methods/build_random_individual.jl")
-using ..IndividualModule
 
 
-function run_algorithm(
-    config_file_path::String, data_file_path::String, individual::Individual
-)
-    config_parameters_entity = utilsModule.read_parameters_file(config_file_path)
-    poblation = fecundation_room(individual, config_parameters_entity.population_size)
-    # TODO: get best element of poblation
-    best_element = best_element_of_poblation(poblation)
+function run_algorithm(population_model::PopulationModel)
+    poblation = [fecundation_room(population_model)
+                    for _ in 1:population_model.config_parameters.population_size]
+    return poblation
+
 end
 
-
-function fecundation_room(individual::Individual, population_size::Int)
-    @info "Building random Individuals in the fecundation room"
-    poblation = Individual[build_random_individual(individual) for x in 1:population_size]
+function fecundation_room(population_model::PopulationModel)
+    chromosome = rand(population_model.config_parameters.chromosome_size,
+                        population_model.config_parameters.dimensions)
+    individual = from_genes_to_individual(chromosome, population_model)
 end
