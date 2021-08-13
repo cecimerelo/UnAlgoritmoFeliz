@@ -48,7 +48,7 @@ function fix_clusters(points_divided_in_clusters, empty_cluster, k)
 end
 
 function delete_element_from_array(array, elements)
-    for element in elements begin
+    for element in elements
         deleteat!(array, findall(x->x==element,array))
     end
 end
