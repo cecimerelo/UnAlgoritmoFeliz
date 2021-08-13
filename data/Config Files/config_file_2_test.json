@@ -1,0 +1,13 @@
+{
+    "CHROMOSOME_SIZE": 10,
+    "DIMENSIONS": 2,
+    "POPULATION_SIZE": 10,
+    "MAX_EVALUATIONS": 10000,
+    "MAX_GENERATIONS": 15,
+    "ALPHA": 40,
+    "BETA": 20,
+    "GAMMA": 20,
+    "DELTA": 20,
+    "EPSILON": 20,
+    "STEP_SIZE": 2
+}
