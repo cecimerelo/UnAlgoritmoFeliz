@@ -5,14 +5,10 @@ using Pkg
 # Pkg.add("Compat")
 # Pkg.add("Turf")
 # Pkg.add("Shuffle")
+# Pkg.add("StatsBase")
 
 using BlackBoxOptimizationBenchmarking
-
-include("individual_packages_module.jl")
 using .IndividualPackagesModule
-
-include("brave_new_algorithm.jl")
-include("utilsModule.jl")
 
 config_file_path = "./src/data/Config Files/config_file_1.json"
 config_parameters_entity = utilsModule.read_parameters_file(config_file_path)
