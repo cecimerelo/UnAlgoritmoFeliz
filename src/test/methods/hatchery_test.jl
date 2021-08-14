@@ -5,6 +5,7 @@ using .IndividualPackagesModule
 using StatsBase
 using Test
 
+POPULATION_SIZE_MISMATCHED = "The population divided in castes does not match the length of the initial population"
 
 function run_hatchery(config_file_path)
     config_parameters_entity = utilsModule.read_parameters_file(config_file_path)
@@ -41,7 +42,17 @@ end
         config_file_path = "./data/Config Files/config_file_2_test.json"
         @test_throws AssertionError("The percentages should have sum 100") run_hatchery(config_file_path)
     end
-end
 
-config_file_path = "./data/Config Files/config_file_1_test.json"
-castes = run_hatchery(config_file_path)
+    @testset "Test population size is asserted correctly" begin
+        config_file_path = "./data/Config Files/config_file_1_test.json"
+        config_parameters_entity = utilsModule.read_parameters_file(config_file_path)
+        fitness_function = BlackBoxOptimizationBenchmarking.F1
+        population_model = PopulationModel(config_parameters_entity, fitness_function)
+        population = [
+            fertilising_room(population_model)
+            for _ in 1:population_model.config_parameters.population_size
+        ]
+        castes = Dict("ALPHA" => [population[1], population[2]])
+        @test_throws AssertionError(POPULATION_SIZE_MISMATCHED) assert_population_divided_in_castes_match_initial_population_size(castes, 10)
+    end
+end

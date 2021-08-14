@@ -6,6 +6,7 @@ using Pkg
 # Pkg.add("Turf")
 # Pkg.add("Shuffle")
 # Pkg.add("StatsBase")
+# Pkg.add("Mocking")
 
 using BlackBoxOptimizationBenchmarking
 using .IndividualPackagesModule
