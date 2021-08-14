@@ -7,11 +7,12 @@ using Pkg
 # Pkg.add("Shuffle")
 # Pkg.add("StatsBase")
 # Pkg.add("Mocking")
+# Pkg.add("Parameters")
 
 using BlackBoxOptimizationBenchmarking
 using .IndividualPackagesModule
 
-config_file_path = "./src/data/Config Files/config_file_1.json"
+config_file_path = "./data/Config Files/config_file_1.json"
 config_parameters_entity = utilsModule.read_parameters_file(config_file_path)
 fitness_function = BlackBoxOptimizationBenchmarking.F1
 
