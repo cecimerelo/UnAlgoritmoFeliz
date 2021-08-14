@@ -20,9 +20,9 @@ function run_algorithm(population_model::PopulationModel)
     number_of_evaluations <= population_model.config_parameters.max_evaluations
     @info "Generation -> $(generation)"
     @info "Generations with the same best element -> $(generations_with_the_same_best_element)"
-    castes = hatchery(population_model, embryos)
+    population_in_castes = hatchery(population_model, embryos)
     #end
-    return population
+    return population_in_castes
 end
 
 function fertilising_room(population_model::PopulationModel)

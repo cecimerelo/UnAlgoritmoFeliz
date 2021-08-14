@@ -21,20 +21,15 @@ end
 @testset "Test hatchery when called then returns population divided in castes" begin
     @testset "Test when percentages sum 100" begin
         config_file_path = "./data/Config Files/config_file_1_test.json"
-        castes = run_hatchery(config_file_path)
-        castes_keys = keys(castes)
+        population_in_castes = run_hatchery(config_file_path)
+        castes = [individual.caste for individual in population_in_castes]
 
-        @test "ALPHA" in castes_keys
-        @test "BETA" in castes_keys
-        @test "GAMMA" in castes_keys
-        @test "DELTA" in castes_keys
-        @test "EPSILON" in castes_keys
-
-        population_in_castes = [length(caste_population) for (caste, caste_population) in castes]
-        population_in_castes_sum = sum(population_in_castes)
-        config_parameters_entity = utilsModule.read_parameters_file(config_file_path)
-
-        @test population_in_castes_sum == config_parameters_entity.population_size
+        @test ALPHA() in castes
+        @test BETA() in castes
+        @test GAMMA() in castes
+        @test DELTA() in castes
+        @test EPSILON() in castes
+        @test length(population_in_castes) == config_parameters_entity.population_size
     end
 
     @testset "Test when percentages sum 100" begin

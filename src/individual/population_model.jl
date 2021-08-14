@@ -20,8 +20,8 @@ struct Embryo
     f_value::Number
 end
 
-struct Individual{T<:Caste}
+@with_kw struct Individual
     chromosome :: Array
     f_value::Number
-    caste::T
+    caste::Caste
 end
