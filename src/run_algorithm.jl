@@ -7,6 +7,7 @@ using Pkg
 # Pkg.add("Shuffle")
 # Pkg.add("StatsBase")
 # Pkg.add("Mocking")
+# Pkg.add("Parameters")
 
 using BlackBoxOptimizationBenchmarking
 using .IndividualPackagesModule
