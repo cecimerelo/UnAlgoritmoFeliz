@@ -47,10 +47,12 @@ function fix_clusters(points_divided_in_clusters, empty_cluster, k)
     push!(points_divided_in_clusters[empty_cluster], random_point)
 end
 
-function delete_element_from_array(array, element)
-    deleteat!(array, findall(x->x==element,array))
+function delete_element_from_array(array, elements)
+    for element in elements
+        deleteat!(array, findall(x->x==element,array))
+    end
 end
 
-function best_element_of_poblation(poblation)
-    # TODO : implement it when f is defined
+function best_element_of_population(population)
+    return partialsort(population, 1, by = t -> t.f_value, lt=isless)
 end
