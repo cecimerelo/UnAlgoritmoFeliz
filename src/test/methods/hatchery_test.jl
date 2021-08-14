@@ -42,3 +42,6 @@ end
         @test_throws AssertionError("The percentages should have sum 100") run_hatchery(config_file_path)
     end
 end
+
+config_file_path = "./data/Config Files/config_file_1_test.json"
+castes = run_hatchery(config_file_path)
