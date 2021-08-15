@@ -38,7 +38,7 @@ function get_number_of_embryos_for_each_caste(population_model)
 end
 
 function divide_embryos_in_castes(embryos, embryos_for_each_caste)
-    population_in_castes = []
+    population_in_castes = Vector{Individual}()
 
     for (caste, number_of_elements) in embryos_for_each_caste
         caste_population = embryos_for_each_caste[caste]
