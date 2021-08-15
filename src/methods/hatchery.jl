@@ -16,6 +16,7 @@ function hatchery(population_model, embryos)
 
     embryos_length = length(embryos)
 
+    sort!(embryos, by=t -> t.f_value, rev=true)
     embryos_for_each_caste = get_number_of_embryos_for_each_caste(population_model)
     population_in_castes = divide_embryos_in_castes(embryos, embryos_for_each_caste)
 
@@ -24,7 +25,7 @@ function hatchery(population_model, embryos)
 end
 
 function get_number_of_embryos_for_each_caste(population_model)
-    embryos_for_each_caste = Dict()
+    embryos_for_each_caste = Dict{String, Int}()
     config_parameters = population_model.config_parameters
 
     for (caste, percentage) in config_parameters.castes_percentages
@@ -38,9 +39,10 @@ end
 
 function divide_embryos_in_castes(embryos, embryos_for_each_caste)
     population_in_castes = []
+
     for (caste, number_of_elements) in embryos_for_each_caste
-        individuals_in_caste = []
-        embryos_in_caste = sample(embryos, number_of_elements; replace=true)
+        caste_population = embryos_for_each_caste[caste]
+        embryos_in_caste = embryos[1:caste_population]
 
         if caste == "ALPHA"
             individuals_in_caste = build_individuals_for_caste(embryos_in_caste, ALPHA())
