@@ -72,3 +72,12 @@ function pairwise(iterable)
     end
     return tuples
 end
+
+function from_array_of_tuples_to_array(array_of_tuples)
+    new_array = Vector{Individual}()
+    for tuple in array_of_tuples
+        un_tupled = collect(tuple)
+        new_array = vcat(new_array,b)
+    end
+    return new_array
+end
