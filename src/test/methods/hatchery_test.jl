@@ -1,7 +1,8 @@
+using ..IndividualPackagesModule
+
 include("../../methods/hatchery.jl")
 include("../../brave_new_algorithm.jl")
 
-using .IndividualPackagesModule
 using Test
 
 POPULATION_SIZE_MISMATCHED = "The population divided in castes does not match the length of the initial population"
@@ -29,6 +30,8 @@ end
         @test GAMMA() in castes
         @test DELTA() in castes
         @test EPSILON() in castes
+
+        config_parameters_entity = utilsModule.read_parameters_file(config_file_path)
         @test length(population_in_castes) == config_parameters_entity.population_size
     end
 
@@ -49,4 +52,4 @@ end
         castes = Dict("ALPHA" => [embryos[1], embryos[2]])
         @test_throws AssertionError(POPULATION_SIZE_MISMATCHED) assert_population_divided_in_castes_match_initial_population_size(castes, 10)
     end
-end
+endS

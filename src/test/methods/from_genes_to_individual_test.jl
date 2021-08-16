@@ -1,19 +1,19 @@
-include("../../methods/from_genes_to_individual.jl")
-using ..IndividualPackagesModule
+include("../../methods/from_genes_to_embryo.jl")
 
+using ..IndividualPackagesModule
 using BlackBoxOptimizationBenchmarking
 using Test
 
 
 @testset "Test from_genes_to_individual method when called the individual created" begin
-    config_file_path = "./src/data/Config Files/config_file_1.json"
+    config_file_path = "./data/Config Files/config_file_1_test.json"
     chromosome = rand(10,2)
     config_parameters_entity = utilsModule.read_parameters_file(config_file_path)
     fitness_function = BlackBoxOptimizationBenchmarking.F1
     population_model = PopulationModel(config_parameters_entity, fitness_function)
 
-    individual = from_genes_to_individual(chromosome, population_model)
+    individual = from_genes_to_embryo(chromosome, population_model)
 
-    @test typeof(individual) == Individual
+    @test typeof(individual) == Embryo
     @test individual.f_value != 0
 end
