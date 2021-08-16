@@ -8,6 +8,11 @@ using Pkg
 # Pkg.add("StatsBase")
 # Pkg.add("Mocking")
 # Pkg.add("Parameters")
+# Pkg.add("Distributions")
+# Pkg.add("StaticLint")
+
+using StaticLint
+include("packages.jl")
 
 using BlackBoxOptimizationBenchmarking
 using .IndividualPackagesModule

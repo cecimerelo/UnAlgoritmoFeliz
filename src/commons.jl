@@ -1,4 +1,5 @@
 using Turf
+import StatsBase: sample
 
 function build_dict_of_clusters(k)
     dict_of_clusters = Dict()
@@ -49,10 +50,25 @@ end
 
 function delete_element_from_array(array, elements)
     for element in elements
-        deleteat!(array, findall(x->x==element,array))
+        deleteat!(array, findfirst(x->x==element,array))
     end
 end
 
 function best_element_of_population(population)
     return partialsort(population, 1, by = t -> t.f_value, lt=isless)
+end
+
+function pairwise(iterable)
+    tuples = Vector{Tuple}()
+    while !isempty(iterable)
+        pair = []
+        for _ in 1:2
+            random_individual = rand(iterable)
+            delete_element_from_array(iterable, [random_individual])
+            push!(pair, random_individual)
+        end
+        tuple = (pair...,)
+        push!(tuples, tuple)
+    end
+    return tuples
 end
