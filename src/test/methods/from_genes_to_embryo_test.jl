@@ -1,4 +1,4 @@
-include("../../methods/from_genes_to_individual.jl")
+include("../../methods/from_genes_to_embryo.jl")
 using ..IndividualPackagesModule
 
 using BlackBoxOptimizationBenchmarking
@@ -12,7 +12,7 @@ using Test
     fitness_function = BlackBoxOptimizationBenchmarking.F1
     population_model = PopulationModel(config_parameters_entity, fitness_function)
 
-    individual = from_genes_to_individual(chromosome, population_model)
+    individual = from_genes_to_embryo(chromosome, population_model)
 
     @test typeof(individual) == Individual
     @test individual.f_value != 0
