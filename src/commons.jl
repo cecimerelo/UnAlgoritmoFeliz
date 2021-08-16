@@ -77,7 +77,8 @@ function from_array_of_tuples_to_array(array_of_tuples)
     new_array = Vector{Individual}()
     for tuple in array_of_tuples
         un_tupled = collect(tuple)
-        new_array = vcat(new_array,b)
+        new_array = vcat(new_array,un_tupled
+        )
     end
     return new_array
 end
