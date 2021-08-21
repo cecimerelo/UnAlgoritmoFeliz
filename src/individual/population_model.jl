@@ -10,7 +10,7 @@ struct ConfigurationParametersEntity
     step_size::Int
 end
 
-mutable struct PopulationModel
+struct PopulationModel
     config_parameters::ConfigurationParametersEntity
     fitness_function::BBOBFunction
 end
