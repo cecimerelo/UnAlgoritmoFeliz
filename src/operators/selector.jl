@@ -30,6 +30,10 @@ function selector_operator(caste::BETA, caste_population, alpha_reproduction_poo
     return selected
 end
 
+function selector_operator(caste, caste_population)
+    @info "Lower caste, selection not applied"
+end
+
 function build_reproduction_pool(caste_population)
     caste_population = shuffle(caste_population)
     winners =

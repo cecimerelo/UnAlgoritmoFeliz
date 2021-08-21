@@ -1,5 +1,4 @@
 include("evaluate_chromosome.jl")
-include("../individual_packages_module.jl")
 
 
 function from_genes_to_embryo(chromosome, population_model::PopulationModel)

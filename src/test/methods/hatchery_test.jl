@@ -35,6 +35,7 @@ end
 
         castes_length = [length(population) for (caste, population) in population_in_castes]
         total_length = sum(castes_length)
+        config_parameters_entity = read_parameters_file(config_file_path)
         @test total_length == config_parameters_entity.population_size
     end
 

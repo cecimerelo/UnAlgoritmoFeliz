@@ -10,6 +10,7 @@ using Pkg
 # Pkg.add("Parameters")
 # Pkg.add("Distributions")
 # Pkg.add("StaticLint")
+# Pkg.add("SimpleMock")
 
 using StaticLint
 include("packages.jl")
