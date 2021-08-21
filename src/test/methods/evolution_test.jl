@@ -2,7 +2,7 @@ using SimpleMock
 using .BraveNewAlgorithm
 include("../../methods/evolution.jl")
 include("../../operators/selector.jl")
-
+include("../../operators/crossover.jl")
 
 config_file_path = "./data/Config Files/config_file_1_test.json"
 config_parameters_entity = read_parameters_file(config_file_path)
@@ -19,4 +19,11 @@ mock(selector_operator) do operator
     @assert operator isa Mock
     evolution(population_in_castes, population_model)
     @assert ncalls(operator) == 2
+end
+
+
+mock(crossover_operator) do operator
+    @assert operator isa Mock
+    evolution(population_in_castes, population_model)
+    @assert called(operator)
 end
