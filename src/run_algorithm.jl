@@ -13,10 +13,8 @@ using Pkg
 # Pkg.add("SimpleMock")
 
 using StaticLint
-include("packages.jl")
 
 using BlackBoxOptimizationBenchmarking
-using .IndividualPackagesModule
 
 config_file_path = "./data/Config Files/config_file_1.json"
 config_parameters_entity = utilsModule.read_parameters_file(config_file_path)
