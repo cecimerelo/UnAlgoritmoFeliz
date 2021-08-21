@@ -12,16 +12,16 @@ end
 
 mutable struct PopulationModel
     config_parameters::ConfigurationParametersEntity
-    fitness_function :: BBOBFunction
+    fitness_function::BBOBFunction
 end
 
 struct Embryo
-    chromosome :: Array
+    chromosome::Array
     f_value::Number
 end
 
-@with_kw struct Individual
-    chromosome :: Array
+struct Individual
+    chromosome::Array
     f_value::Number
     caste::Caste
 end
