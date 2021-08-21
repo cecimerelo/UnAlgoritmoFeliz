@@ -19,4 +19,9 @@ parents = (
     Individual(embryos[2].chromosome, embryos[2].f_value, ALPHA())
 )
 
-offspring = crossover_operator(parents, population_model.config_parameters)
+@testset "Test crossover_operator when called the new chromosome returned" begin
+    offspring = crossover_operator(parents, population_model.config_parameters)
+
+    @test typeof(offspring) == Array{Float64,2}
+    @test eltype(offspring) == Float64
+end
