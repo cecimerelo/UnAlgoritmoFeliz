@@ -1,6 +1,3 @@
-using .utilsModule
-using ..IndividualPackagesModule
-
 include("methods/from_genes_to_embryo.jl")
 include("methods/hatchery.jl")
 

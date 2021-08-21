@@ -1,18 +1,20 @@
-using ..IndividualPackagesModule
+using .BraveNewAlgorithm
 
 include("../../methods/hatchery.jl")
 include("../../brave_new_algorithm.jl")
+include("../../commons.jl")
+include("../../utils.jl")
 
 using Test
 
 POPULATION_SIZE_MISMATCHED = "The population divided in castes does not match the length of the initial population"
 
 function run_hatchery(config_file_path)
-    config_parameters_entity = utilsModule.read_parameters_file(config_file_path)
+    config_parameters_entity = read_parameters_file(config_file_path)
     fitness_function = BlackBoxOptimizationBenchmarking.F1
     population_model = PopulationModel(config_parameters_entity, fitness_function)
     embryos = [
-        fertilising_room(population_model)
+        BraveNewAlgorithm.fertilising_room(population_model)
         for _ in 1:population_model.config_parameters.population_size
     ]
     castes = hatchery(population_model, embryos)
@@ -43,11 +45,11 @@ end
 
     @testset "Test population size is asserted correctly" begin
         config_file_path = "./data/Config Files/config_file_1_test.json"
-        config_parameters_entity = utilsModule.read_parameters_file(config_file_path)
+        config_parameters_entity = read_parameters_file(config_file_path)
         fitness_function = BlackBoxOptimizationBenchmarking.F1
         population_model = PopulationModel(config_parameters_entity, fitness_function)
         embryos = [
-            fertilising_room(population_model)
+            BraveNewAlgorithm.fertilising_room(population_model)
             for _ in 1:population_model.config_parameters.population_size
         ]
         castes = Dict("ALPHA" => [embryos[1], embryos[2]])

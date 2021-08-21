@@ -5,10 +5,7 @@ utils:
 - Date: 2021-03-06
 =#
 
-module utilsModule
-
 using JSON
-using ..IndividualPackagesModule
 
 const chromosome_size = "CHROMOSOME_SIZE"
 const dimensions = "DIMENSIONS"
@@ -40,6 +37,4 @@ function read_parameters_file(file_path::String)
         config_parameters[dimensions], config_parameters[population_size],
         config_parameters[max_evaluations], config_parameters[max_generations],
         castes_percentages, config_parameters[step_size])
-end
-
 end
