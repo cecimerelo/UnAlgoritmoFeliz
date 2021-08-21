@@ -1,4 +1,3 @@
-using .IndividualPackagesModule
 include("evaluate_chromosome.jl")
 
 

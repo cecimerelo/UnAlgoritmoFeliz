@@ -1,6 +1,8 @@
-include("../../methods/from_genes_to_embryo.jl")
+using .BraveNewAlgorithm
 
-using ..IndividualPackagesModule
+include("../../methods/from_genes_to_embryo.jl")
+include("../../utils.jl")
+
 using BlackBoxOptimizationBenchmarking
 using Test
 
@@ -8,7 +10,7 @@ using Test
 @testset "Test from_genes_to_individual method when called the individual created" begin
     config_file_path = "./data/Config Files/config_file_1_test.json"
     chromosome = rand(10,2)
-    config_parameters_entity = utilsModule.read_parameters_file(config_file_path)
+    config_parameters_entity = read_parameters_file(config_file_path)
     fitness_function = BlackBoxOptimizationBenchmarking.F1
     population_model = PopulationModel(config_parameters_entity, fitness_function)
 
