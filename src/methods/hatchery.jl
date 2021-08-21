@@ -37,7 +37,7 @@ function get_number_of_embryos_for_each_caste(population_model)
 end
 
 function divide_embryos_in_castes(embryos, embryos_for_each_caste)
-    population_in_castes = []
+    population_in_castes = Dict{Caste, Vector{Individual}}()
 
     for (caste, number_of_elements) in embryos_for_each_caste
         caste_population = embryos_for_each_caste[caste]
@@ -45,16 +45,20 @@ function divide_embryos_in_castes(embryos, embryos_for_each_caste)
 
         if caste == "ALPHA"
             individuals_in_caste = build_individuals_for_caste(embryos_in_caste, ALPHA())
+            population_in_castes[ALPHA()] = individuals_in_caste
         elseif caste == "BETA"
             individuals_in_caste = build_individuals_for_caste(embryos_in_caste, BETA())
+            population_in_castes[BETA()] = individuals_in_caste
         elseif caste == "GAMMA"
             individuals_in_caste = build_individuals_for_caste(embryos_in_caste, GAMMA())
+            population_in_castes[GAMMA()] = individuals_in_caste
         elseif caste == "DELTA"
             individuals_in_caste = build_individuals_for_caste(embryos_in_caste, DELTA())
+            population_in_castes[DELTA()] = individuals_in_caste
         elseif caste == "EPSILON"
             individuals_in_caste = build_individuals_for_caste(embryos_in_caste, EPSILON())
+            population_in_castes[EPSILON()] = individuals_in_caste
         end
-        population_in_castes = vcat(population_in_castes, individuals_in_caste)
     end
 
     return population_in_castes
@@ -68,6 +72,8 @@ function build_individuals_for_caste(embryos_in_caste, caste)
 end
 
 function assert_population_divided_in_castes_match_initial_population_size(population_in_castes, embryos_length)
-    @assert(length(population_in_castes) == embryos_length,
+    castes_length = [length(population) for (caste, population) in population_in_castes]
+    total_length = sum(castes_length)
+    @assert(total_length == embryos_length,
             "The population divided in castes does not match the length of the initial population")
 end

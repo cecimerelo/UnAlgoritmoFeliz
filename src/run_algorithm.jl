@@ -8,9 +8,13 @@ using Pkg
 # Pkg.add("StatsBase")
 # Pkg.add("Mocking")
 # Pkg.add("Parameters")
+# Pkg.add("Distributions")
+# Pkg.add("StaticLint")
+# Pkg.add("SimpleMock")
+
+using StaticLint
 
 using BlackBoxOptimizationBenchmarking
-using .IndividualPackagesModule
 
 config_file_path = "./data/Config Files/config_file_1.json"
 config_parameters_entity = utilsModule.read_parameters_file(config_file_path)

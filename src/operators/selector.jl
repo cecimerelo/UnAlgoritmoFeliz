@@ -30,7 +30,7 @@ function selector_operator(caste::BETA, caste_population, alpha_reproduction_poo
     return selected
 end
 
-function selector_operator(caste, caste_population, alpha_reproduction_pool)
+function selector_operator(caste, caste_population)
     @info "Lower caste, selection not applied"
 end
 
