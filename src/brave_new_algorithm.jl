@@ -1,5 +1,6 @@
 include("methods/from_genes_to_embryo.jl")
 include("methods/hatchery.jl")
+include("methods/evolution.jl")
 
 function run_algorithm(population_model::PopulationModel)
     embryos = [
@@ -17,6 +18,7 @@ function run_algorithm(population_model::PopulationModel)
     @info "Generation -> $(generation)"
     @info "Generations with the same best element -> $(generations_with_the_same_best_element)"
     population_in_castes = hatchery(population_model, embryos)
+    new_population = evolution(population_in_castes, population_model)
     #end
     return population_in_castes
 end

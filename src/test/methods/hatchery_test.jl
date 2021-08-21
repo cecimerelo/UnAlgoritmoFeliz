@@ -25,7 +25,7 @@ end
     @testset "Test when percentages sum 100" begin
         config_file_path = "./data/Config Files/config_file_1_test.json"
         population_in_castes = run_hatchery(config_file_path)
-        castes = [individual.caste for individual in population_in_castes]
+        castes = keys(population_in_castes)
 
         @test ALPHA() in castes
         @test BETA() in castes
@@ -33,8 +33,10 @@ end
         @test DELTA() in castes
         @test EPSILON() in castes
 
+        castes_length = [length(population) for (caste, population) in population_in_castes]
+        total_length = sum(castes_length)
         config_parameters_entity = read_parameters_file(config_file_path)
-        @test length(population_in_castes) == config_parameters_entity.population_size
+        @test total_length == config_parameters_entity.population_size
     end
 
     @testset "Test when percentages sum 100" begin
