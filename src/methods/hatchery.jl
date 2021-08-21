@@ -15,7 +15,7 @@ function hatchery(population_model, embryos)
 
     embryos_length = length(embryos)
 
-    sort!(embryos, by=t -> t.f_value, rev=true)
+    sort!(embryos, by=t -> t.f_value)
     embryos_for_each_caste = get_number_of_embryos_for_each_caste(population_model)
     population_in_castes = divide_embryos_in_castes(embryos, embryos_for_each_caste)
 
