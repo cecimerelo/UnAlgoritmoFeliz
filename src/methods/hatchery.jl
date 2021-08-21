@@ -38,27 +38,18 @@ end
 
 function divide_embryos_in_castes(embryos, embryos_for_each_caste)
     population_in_castes = Dict{Caste, Vector{Individual}}()
+    CASTES = [ALPHA(), BETA(), GAMMA(), DELTA(), EPSILON()]
 
-    for (caste, number_of_elements) in embryos_for_each_caste
-        caste_population = embryos_for_each_caste[caste]
-        embryos_in_caste = embryos[1:caste_population]
+    caste_counter = 1
+    for caste in CASTES
+        caste_population = embryos_for_each_caste[caste.name]
+        embryos_in_caste = embryos[caste_counter:caste_population + caste_counter - 1]
+        @info "Divide $(caste.name) -> $(caste_counter):$(caste_population + caste_counter - 1)" 
 
-        if caste == "ALPHA"
-            individuals_in_caste = build_individuals_for_caste(embryos_in_caste, ALPHA())
-            population_in_castes[ALPHA()] = individuals_in_caste
-        elseif caste == "BETA"
-            individuals_in_caste = build_individuals_for_caste(embryos_in_caste, BETA())
-            population_in_castes[BETA()] = individuals_in_caste
-        elseif caste == "GAMMA"
-            individuals_in_caste = build_individuals_for_caste(embryos_in_caste, GAMMA())
-            population_in_castes[GAMMA()] = individuals_in_caste
-        elseif caste == "DELTA"
-            individuals_in_caste = build_individuals_for_caste(embryos_in_caste, DELTA())
-            population_in_castes[DELTA()] = individuals_in_caste
-        elseif caste == "EPSILON"
-            individuals_in_caste = build_individuals_for_caste(embryos_in_caste, EPSILON())
-            population_in_castes[EPSILON()] = individuals_in_caste
-        end
+        individuals_in_caste = build_individuals_for_caste(embryos_in_caste, caste)
+        population_in_castes[caste] = individuals_in_caste
+
+        caste_counter = caste_counter + caste_population
     end
 
     return population_in_castes
