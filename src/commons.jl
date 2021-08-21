@@ -1,12 +1,8 @@
-function delete_element_from_array(array, elements)
-    for element in elements
-        deleteat!(array, findfirst(x->x==element,array))
+delete_element_from_array(array, elements) = for element in elements
+        deleteat!(array, findfirst(x->x == element,array))
     end
-end
 
-function best_element_of_population(population)
-    return partialsort(population, 1, by = t -> t.f_value, lt=isless)
-end
+best_element_of_population(population) = partialsort(population, 1, by = t -> t.f_value, lt = isless)
 
 function pairwise(iterable)
     tuples = Vector{Tuple}()
