@@ -6,7 +6,7 @@ utilsModule:
 =#
 
 using .utilsModule
-using .IndividualPackagesModule
+using ..IndividualPackagesModule
 
 using Test
 

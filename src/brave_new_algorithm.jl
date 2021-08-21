@@ -1,8 +1,7 @@
 using .utilsModule
-using .IndividualPackagesModule
+using ..IndividualPackagesModule
 
 include("methods/from_genes_to_embryo.jl")
-include("commons.jl")
 include("methods/hatchery.jl")
 
 function run_algorithm(population_model::PopulationModel)

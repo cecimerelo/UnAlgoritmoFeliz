@@ -1,7 +1,8 @@
+using ..IndividualPackagesModule
+
 include("../../methods/hatchery.jl")
 include("../../brave_new_algorithm.jl")
 
-using .IndividualPackagesModule
 using Test
 
 POPULATION_SIZE_MISMATCHED = "The population divided in castes does not match the length of the initial population"
@@ -29,9 +30,9 @@ end
         @test GAMMA() in castes
         @test DELTA() in castes
         @test EPSILON() in castes
+
         castes_length = [length(population) for (caste, population) in population_in_castes]
         total_length = sum(castes_length)
-
         @test total_length == config_parameters_entity.population_size
     end
 
