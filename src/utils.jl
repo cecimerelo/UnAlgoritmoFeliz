@@ -17,8 +17,11 @@ const beta_percentage = "BETA"
 const gamma_percentage = "GAMMA"
 const delta_percentage = "DELTA"
 const epsilon_percentage = "EPSILON"
-const step_size = "STEP_SIZE"
-
+const alpha_mr = "ALPHA_MR"
+const beta_mr = "BETA_MR"
+const gamma_mr = "GAMMA_MR"
+const delta_mr = "DELTA_MR"
+const epsilon_mr = "EPSILON_MR"
 
 function read_parameters_file(file_path::String)
     @info "Reading parameters file"
@@ -33,8 +36,17 @@ function read_parameters_file(file_path::String)
             epsilon_percentage => config_parameters[epsilon_percentage],
         )
 
+    casts_mr =
+        Dict(
+            alpha_mr => config_parameters[alpha_mr],
+            beta_mr => config_parameters[beta_mr],
+            gamma_mr => config_parameters[gamma_mr],
+            delta_mr => config_parameters[delta_mr],
+            epsilon_mr => config_parameters[epsilon_mr],
+        )
+
     return ConfigurationParametersEntity(config_parameters[chromosome_size],
         config_parameters[dimensions], config_parameters[population_size],
         config_parameters[max_evaluations], config_parameters[max_generations],
-        castes_percentages, config_parameters[step_size])
+        castes_percentages, casts_mr)
 end
