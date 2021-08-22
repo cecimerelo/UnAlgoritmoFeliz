@@ -1,5 +1,4 @@
 function mutation_operator(offspring, config_parameters, caste)
-    @info caste
     mutated_offspring = Array{Float64,1}()
     mutation_rate_for_caste = config_parameters.mutation_rate[caste.name]
     genes_to_mutate = floor(Int, mutation_rate_for_caste * length(offspring) / 100)
