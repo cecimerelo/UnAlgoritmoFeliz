@@ -1,10 +1,3 @@
-#=
-utilsModule:
-- Julia version:
-- Author: cecimerelo
-- Date: 2021-03-07
-=#
-
 using .BraveNewAlgorithm
 
 include("../utils.jl")

@@ -1,10 +1,11 @@
 using .BraveNewAlgorithm
-using BlackBoxOptimizationBenchmarking
 
-include("../../commons.jl")
+include("../../utils.jl")
 include("../../operators/crossover.jl")
+include("../../operators/mutation.jl")
 
 using Test
+using BlackBoxOptimizationBenchmarking
 
 config_file_path = "./data/Config Files/config_file_1_test.json"
 config_parameters_entity = read_parameters_file(config_file_path)
@@ -21,9 +22,11 @@ parents = (
     Individual(embryos[2].chromosome, embryos[2].f_value, ALPHA())
 )
 
-@testset "Test crossover_operator when called the new chromosome returned" begin
-    offspring = crossover_operator(parents, population_model.config_parameters)
+offspring = crossover_operator(parents, config_parameters_entity)
 
-    @test typeof(offspring) == Array{Float64,2}
-    @test eltype(offspring) == Float64
+@testset "Test mutation_operator when called then chromosome returned" begin
+    mutated_offspring = mutation_operator(offspring, config_parameters_entity, ALPHA())
+
+    @test typeof(mutated_offspring) == Array{Float64,2}
+    @test eltype(mutated_offspring) == Float64
 end

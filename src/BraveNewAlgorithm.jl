@@ -15,9 +15,5 @@ module BraveNewAlgorithm
 
     include("individual/castes.jl")
     include("individual/population_model.jl")
-
-    #include("commons.jl")
     include("brave_new_algorithm.jl")
-
-    #include("utils.jl")
 end

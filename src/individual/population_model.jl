@@ -6,8 +6,8 @@ struct ConfigurationParametersEntity
     population_size::Int
     max_evaluations::Int
     max_generations::Int
-    castes_percentages::Dict
-    step_size::Int
+    castes_percentages::Dict{String, Int}
+    mutation_rate::Dict{String, Int}
 end
 
 struct PopulationModel
