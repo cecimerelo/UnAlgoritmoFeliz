@@ -9,5 +9,9 @@
     "GAMMA": 20,
     "DELTA": 20,
     "EPSILON": 30,
-    "STEP_SIZE": 2
+    "ALPHA_MR": 0.1,
+    "BETA_MR": 0.1,
+    "GAMMA_MR": 0.1,
+    "DELTA_MR": 0.1,
+    "EPSILON_MR": 0.1
 }
