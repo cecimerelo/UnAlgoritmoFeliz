@@ -3,7 +3,7 @@ using StatsBase
 
 function selector_operator(caste::ALPHA, caste_population)
     @info "Building reproduction pool for $(caste.name) caste"
-    reproduction_pool =  build_reproduction_pool(caste_population)
+    reproduction_pool = build_reproduction_pool(caste_population)
     return pairwise(reproduction_pool)
 end
 
@@ -46,7 +46,9 @@ end
 function binary_tournament(caste_population)
     reproduction_pool = Vector{Individual}()
     copy_of = deepcopy(caste_population)
-    for (x,y) in pairwise(copy_of)
+    population_in_pairs = pairwise(copy_of)
+
+    for (x,y) in population_in_pairs
         if x.f_value > y.f_value
             push!(reproduction_pool, y)
         elseif x.f_value < y.f_value

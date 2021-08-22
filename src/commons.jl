@@ -6,7 +6,7 @@ best_element_of_population(population) = partialsort(population, 1, by = t -> t.
 
 function pairwise(iterable)
     tuples = Vector{Tuple}()
-    while !isempty(iterable)
+    while !isempty(iterable) && length(iterable) > 1
         pair = []
         for _ in 1:2
             random_individual = rand(iterable)

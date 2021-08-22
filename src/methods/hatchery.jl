@@ -11,26 +11,31 @@ function hatchery(population_model, embryos)
             population_model.config_parameters.castes_percentages
         ]
     @assert(sum(percentages) == 100, "The percentages should have sum 100")
-    @info "Dividing the embryios in castes"
+    @info "Dividing the embryos in castes"
 
     embryos_length = length(embryos)
 
     sort!(embryos, by=t -> t.f_value)
-    embryos_for_each_caste = get_number_of_embryos_for_each_caste(population_model)
+    embryos_for_each_caste = get_number_of_embryos_for_each_caste(embryos, population_model)
     population_in_castes = divide_embryos_in_castes(embryos, embryos_for_each_caste)
 
     assert_population_divided_in_castes_match_initial_population_size(population_in_castes, embryos_length)
     return population_in_castes
 end
 
-function get_number_of_embryos_for_each_caste(population_model)
+function get_number_of_embryos_for_each_caste(embryos, population_model)
     embryos_for_each_caste = Dict{String, Int}()
     config_parameters = population_model.config_parameters
 
     for (caste, percentage) in config_parameters.castes_percentages
-        elements_in_caste = floor(Int,(percentage * config_parameters.population_size) / 100)
+        elements_in_caste = round(Int, (percentage * length(embryos)) / 100)
         @info "$(caste) -> $(percentage)%, elements in caste -> $(elements_in_caste)"
         embryos_for_each_caste[caste] = elements_in_caste
+    end
+
+    castes_length = [elements_in_caste for (caste, elements_in_caste) in embryos_for_each_caste]
+    if(sum(castes_length) != length(embryos))
+        embryos_for_each_caste[EPSILON().name] = embryos_for_each_caste[EPSILON().name] + (length(embryos) - sum(castes_length))
     end
 
     return embryos_for_each_caste

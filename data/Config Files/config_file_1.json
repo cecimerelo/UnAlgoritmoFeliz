@@ -5,11 +5,11 @@
     "MAX_EVALUATIONS": 10000,
     "MAX_GENERATIONS": 15,
     "POPULATION_PERCENTAGE": {
-        "ALPHA": 40,
+        "ALPHA": 10,
         "BETA": 20,
         "GAMMA": 20,
         "DELTA": 20,
-        "EPSILON": 20
+        "EPSILON": 30
     },
     "MUTATION_RATE": {
         "ALPHA": 10,
