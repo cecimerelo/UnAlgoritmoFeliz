@@ -1,5 +1,7 @@
 using SimpleMock
 using .BraveNewAlgorithm
+
+include("../../methods/hatchery.jl")
 include("../../methods/evolution.jl")
 include("../../operators/selector.jl")
 include("../../operators/crossover.jl")
@@ -15,15 +17,8 @@ embryos = [
 
 population_in_castes = hatchery(population_model, embryos)
 
-mock(selector_operator) do operator
-    @assert operator isa Mock
-    evolution(population_in_castes, population_model)
-    @assert ncalls(operator) == 2
-end
-
-
-mock(crossover_operator) do operator
-    @assert operator isa Mock
-    evolution(population_in_castes, population_model)
-    @assert called(operator)
+@testset "Test evolution when called then new population returned" begin
+    new_generation = evolution(population_in_castes, population_model)
+    
+    @test length(new_generation) == population_model.config_parameters.population_size
 end

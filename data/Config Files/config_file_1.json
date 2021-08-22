@@ -12,10 +12,10 @@
         "EPSILON": 20
     },
     "MUTATION_RATE": {
-        "ALPHA": 0.1,
-        "BETA": 0.1,
-        "GAMMA": 0.1,
-        "DELTA": 0.1,
-        "EPSILON": 0.1
+        "ALPHA": 10,
+        "BETA": 10,
+        "GAMMA": 10,
+        "DELTA": 10,
+        "EPSILON": 10
     }
 }

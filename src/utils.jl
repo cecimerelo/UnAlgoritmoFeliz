@@ -18,7 +18,7 @@ function read_parameters_file(file_path::String)
     config_parameters = JSON.parsefile(file_path)
 
     castes_percentages =
-        Dict(
+        Dict{String,Int}(
             alpha   => config_parameters[population_percentage][alpha],
             beta    => config_parameters[population_percentage][beta],
             gamma   => config_parameters[population_percentage][gamma],
@@ -27,7 +27,7 @@ function read_parameters_file(file_path::String)
         )
 
     casts_mr =
-        Dict(
+        Dict{String,Int}(
             alpha   => config_parameters[mutation_rate][alpha],
             beta    => config_parameters[mutation_rate][beta],
             gamma   => config_parameters[mutation_rate][gamma],
