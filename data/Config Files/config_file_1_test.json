@@ -4,14 +4,18 @@
     "POPULATION_SIZE": 20,
     "MAX_EVALUATIONS": 10000,
     "MAX_GENERATIONS": 15,
-    "ALPHA": 10,
-    "BETA": 20,
-    "GAMMA": 20,
-    "DELTA": 20,
-    "EPSILON": 30,
-    "ALPHA_MR": 0.1,
-    "BETA_MR": 0.1,
-    "GAMMA_MR": 0.1,
-    "DELTA_MR": 0.1,
-    "EPSILON_MR": 0.1
+    "POPULATION_PERCENTAGE": {
+        "ALPHA": 40,
+        "BETA": 20,
+        "GAMMA": 20,
+        "DELTA": 20,
+        "EPSILON": 20
+    },
+    "MUTATION_RATE": {
+        "ALPHA": 0.1,
+        "BETA": 0.1,
+        "GAMMA": 0.1,
+        "DELTA": 0.1,
+        "EPSILON": 0.1
+    }
 }

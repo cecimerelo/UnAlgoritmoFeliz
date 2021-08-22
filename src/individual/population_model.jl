@@ -7,7 +7,7 @@ struct ConfigurationParametersEntity
     max_evaluations::Int
     max_generations::Int
     castes_percentages::Dict
-    step_size::Int
+    mutation_rate::Dict
 end
 
 struct PopulationModel

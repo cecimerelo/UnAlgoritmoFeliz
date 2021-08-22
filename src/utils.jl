@@ -1,10 +1,3 @@
-#=
-utils:
-- Julia version:
-- Author: cecimerelo
-- Date: 2021-03-06
-=#
-
 using JSON
 
 const chromosome_size = "CHROMOSOME_SIZE"
@@ -12,16 +5,13 @@ const dimensions = "DIMENSIONS"
 const population_size = "POPULATION_SIZE"
 const max_evaluations = "MAX_EVALUATIONS"
 const max_generations = "MAX_GENERATIONS"
-const alpha_percentage = "ALPHA"
-const beta_percentage = "BETA"
-const gamma_percentage = "GAMMA"
-const delta_percentage = "DELTA"
-const epsilon_percentage = "EPSILON"
-const alpha_mr = "ALPHA_MR"
-const beta_mr = "BETA_MR"
-const gamma_mr = "GAMMA_MR"
-const delta_mr = "DELTA_MR"
-const epsilon_mr = "EPSILON_MR"
+const population_percentage = "POPULATION_PERCENTAGE"
+const alpha = "ALPHA"
+const beta = "BETA"
+const gamma = "GAMMA"
+const delta = "DELTA"
+const epsilon = "EPSILON"
+const mutation_rate = "MUTATION_RATE"
 
 function read_parameters_file(file_path::String)
     @info "Reading parameters file"
@@ -29,20 +19,20 @@ function read_parameters_file(file_path::String)
 
     castes_percentages =
         Dict(
-            alpha_percentage => config_parameters[alpha_percentage],
-            beta_percentage => config_parameters[beta_percentage],
-            gamma_percentage => config_parameters[gamma_percentage],
-            delta_percentage => config_parameters[delta_percentage],
-            epsilon_percentage => config_parameters[epsilon_percentage],
+            alpha   => config_parameters[population_percentage][alpha],
+            beta    => config_parameters[population_percentage][beta],
+            gamma   => config_parameters[population_percentage][gamma],
+            delta   => config_parameters[population_percentage][delta],
+            epsilon => config_parameters[population_percentage][epsilon]
         )
 
     casts_mr =
         Dict(
-            alpha_mr => config_parameters[alpha_mr],
-            beta_mr => config_parameters[beta_mr],
-            gamma_mr => config_parameters[gamma_mr],
-            delta_mr => config_parameters[delta_mr],
-            epsilon_mr => config_parameters[epsilon_mr],
+            alpha   => config_parameters[mutation_rate][alpha],
+            beta    => config_parameters[mutation_rate][beta],
+            gamma   => config_parameters[mutation_rate][gamma],
+            delta   => config_parameters[mutation_rate][delta],
+            epsilon => config_parameters[mutation_rate][epsilon]
         )
 
     return ConfigurationParametersEntity(config_parameters[chromosome_size],
