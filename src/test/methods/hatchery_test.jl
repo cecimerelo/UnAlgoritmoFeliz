@@ -39,11 +39,6 @@ end
         @test total_length == config_parameters_entity.population_size
     end
 
-    @testset "Test when percentages sum 100" begin
-        config_file_path = "./data/Config Files/config_file_2_test.json"
-        @test_throws AssertionError("The percentages should have sum 100") run_hatchery(config_file_path)
-    end
-
     @testset "Test population size is asserted correctly" begin
         config_file_path = "./data/Config Files/config_file_1_test.json"
         config_parameters_entity = read_parameters_file(config_file_path)

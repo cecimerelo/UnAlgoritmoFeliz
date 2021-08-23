@@ -1,6 +1,7 @@
 using SimpleMock
 using .BraveNewAlgorithm
 
+include("../../utils.jl")
 include("../../methods/hatchery.jl")
 include("../../methods/evolution.jl")
 include("../../operators/selector.jl")
