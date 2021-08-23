@@ -8,13 +8,13 @@
 Para ejecutar un caso base del algoritmo:
 
 ```bash
-$ julia src/base.jl
+make base_example
 ```
 
 Para correr todos los tests:
 
 ```bash
-$ julia src/run_tests.jl
+make tests
 ```
 ___
 # DOCUMENTACIÓN 
