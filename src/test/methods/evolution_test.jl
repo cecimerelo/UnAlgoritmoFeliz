@@ -1,5 +1,5 @@
 using SimpleMock
-using .BraveNewAlgorithm
+using .BraveNewAlgorithmModule
 
 include("../../utils.jl")
 include("../../methods/hatchery.jl")
@@ -12,7 +12,7 @@ config_parameters_entity = read_parameters_file(config_file_path)
 fitness_function = BlackBoxOptimizationBenchmarking.F1
 population_model = PopulationModel(config_parameters_entity, fitness_function)
 embryos = [
-    BraveNewAlgorithm.fertilising_room(population_model)
+    BraveNewAlgorithmModule.fertilising_room(population_model)
     for _ in 1:population_model.config_parameters.population_size
 ]
 

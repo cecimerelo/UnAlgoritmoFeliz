@@ -1,4 +1,4 @@
-using .BraveNewAlgorithm
+using .BraveNewAlgorithmModule
 
 include("../../methods/from_genes_to_embryo.jl")
 include("../../utils.jl")

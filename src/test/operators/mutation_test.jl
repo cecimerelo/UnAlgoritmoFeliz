@@ -1,4 +1,4 @@
-using .BraveNewAlgorithm
+using .BraveNewAlgorithmModule
 
 include("../../utils.jl")
 include("../../operators/crossover.jl")
@@ -13,7 +13,7 @@ fitness_function = BlackBoxOptimizationBenchmarking.F1
 population_model = PopulationModel(config_parameters_entity, fitness_function)
 
 embryos = [
-    BraveNewAlgorithm.fertilising_room(population_model)
+    BraveNewAlgorithmModule.fertilising_room(population_model)
     for _ in 1:population_model.config_parameters.population_size
 ]
 

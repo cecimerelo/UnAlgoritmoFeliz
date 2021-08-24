@@ -1,4 +1,4 @@
-using .BraveNewAlgorithm
+using .BraveNewAlgorithmModule
 
 include("../utils.jl")
 

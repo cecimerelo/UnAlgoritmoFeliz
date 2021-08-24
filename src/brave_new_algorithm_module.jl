@@ -1,4 +1,4 @@
-module BraveNewAlgorithm
+module BraveNewAlgorithmModule
     export 
         Caste, 
         ALPHA, 

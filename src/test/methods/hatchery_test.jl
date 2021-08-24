@@ -1,4 +1,4 @@
-using .BraveNewAlgorithm
+using .BraveNewAlgorithmModule
 
 include("../../methods/hatchery.jl")
 include("../../brave_new_algorithm.jl")
@@ -14,7 +14,7 @@ function run_hatchery(config_file_path)
     fitness_function = BlackBoxOptimizationBenchmarking.F1
     population_model = PopulationModel(config_parameters_entity, fitness_function)
     embryos = [
-        BraveNewAlgorithm.fertilising_room(population_model)
+        BraveNewAlgorithmModule.fertilising_room(population_model)
         for _ in 1:population_model.config_parameters.population_size
     ]
     castes = hatchery(population_model, embryos)
@@ -45,7 +45,7 @@ end
         fitness_function = BlackBoxOptimizationBenchmarking.F1
         population_model = PopulationModel(config_parameters_entity, fitness_function)
         embryos = [
-            BraveNewAlgorithm.fertilising_room(population_model)
+            BraveNewAlgorithmModule.fertilising_room(population_model)
             for _ in 1:population_model.config_parameters.population_size
         ]
         castes = Dict("ALPHA" => [embryos[1], embryos[2]])

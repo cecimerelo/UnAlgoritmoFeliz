@@ -1,5 +1,5 @@
-include("../src/BraveNewAlgorithm.jl")
-using .BraveNewAlgorithm
+include("../src/brave_new_algorithm_module.jl")
+using .BraveNewAlgorithmModule
 
 using StaticLint
 using BlackBoxOptimizationBenchmarking
