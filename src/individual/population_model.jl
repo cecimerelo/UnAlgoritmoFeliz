@@ -2,7 +2,6 @@ using BlackBoxOptimizationBenchmarking
 
 struct ConfigurationParametersEntity
     chromosome_size::Int
-    dimensions::Int
     population_size::Int
     max_evaluations::Int
     max_generations::Int

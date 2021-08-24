@@ -1,7 +1,6 @@
 using JSON
 
 const chromosome_size = "CHROMOSOME_SIZE"
-const dimensions = "DIMENSIONS"
 const population_size = "POPULATION_SIZE"
 const max_evaluations = "MAX_EVALUATIONS"
 const max_generations = "MAX_GENERATIONS"
@@ -35,8 +34,8 @@ function read_parameters_file(file_path::String)
             epsilon => config_parameters[mutation_rate][epsilon]
         )
 
-    return ConfigurationParametersEntity(config_parameters[chromosome_size],
-        config_parameters[dimensions], config_parameters[population_size],
-        config_parameters[max_evaluations], config_parameters[max_generations],
+    return ConfigurationParametersEntity(
+        config_parameters[chromosome_size], config_parameters[population_size], 
+        config_parameters[max_evaluations], config_parameters[max_generations], 
         castes_percentages, castes_mr)
 end

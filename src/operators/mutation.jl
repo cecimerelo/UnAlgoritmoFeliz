@@ -13,5 +13,5 @@ function mutation_operator(offspring, config_parameters, caste)
         end
     end
 
-    return reshape(mutated_offspring, (config_parameters.chromosome_size, config_parameters.dimensions))
+    return mutated_offspring
 end

@@ -1,4 +1,4 @@
-include("../src/brave_new_algorithm_module.jl")
+#include("../src/brave_new_algorithm_module.jl")
 
 include("test/methods/evaluate_chromosome_test.jl")
 include("test/methods/evolution_test.jl")

@@ -1,7 +1,7 @@
 using .BraveNewAlgorithmModule
 using BlackBoxOptimizationBenchmarking
 
-include("../../commons.jl")
+include("../../utils.jl")
 include("../../operators/crossover.jl")
 
 using Test
@@ -24,6 +24,6 @@ parents = (
 @testset "Test crossover_operator when called the new chromosome returned" begin
     offspring = crossover_operator(parents, population_model.config_parameters)
 
-    @test typeof(offspring) == Array{Float64,2}
+    @test typeof(offspring) == Array{Float64,1}
     @test eltype(offspring) == Float64
 end

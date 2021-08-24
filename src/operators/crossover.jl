@@ -17,5 +17,5 @@ function crossover_operator(parents, config_parameters_entity)
         end
     end
     
-    return reshape(offspring, (config_parameters_entity.chromosome_size, config_parameters_entity.dimensions))
+    return offspring
 end

@@ -27,6 +27,6 @@ offspring = crossover_operator(parents, config_parameters_entity)
 @testset "Test mutation_operator when called then chromosome returned" begin
     mutated_offspring = mutation_operator(offspring, config_parameters_entity, ALPHA())
 
-    @test typeof(mutated_offspring) == Array{Float64,2}
+    @test typeof(mutated_offspring) == Array{Float64,1}
     @test eltype(mutated_offspring) == Float64
 end
