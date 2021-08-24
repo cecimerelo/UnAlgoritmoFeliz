@@ -8,7 +8,7 @@ using Test
 
 
 @testset "Test from_genes_to_individual method when called the individual created" begin
-    config_file_path = "./data/Config Files/config_file_1_test.json"
+    config_file_path = "./src/test/Config Files/config_file_1_test.json"
     chromosome = rand(10,2)
     config_parameters_entity = read_parameters_file(config_file_path)
     fitness_function = BlackBoxOptimizationBenchmarking.F1

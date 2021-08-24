@@ -1,6 +1,8 @@
 using Random
 using StatsBase
 
+include("../commons.jl")
+
 function selector_operator(caste::ALPHA, caste_population)
     @info "Building reproduction pool for $(caste.name) caste"
     reproduction_pool = build_reproduction_pool(caste_population)

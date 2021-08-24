@@ -1,12 +1,33 @@
 # Trabajo de Fin de Grado: *Un Algoritmo feliz*
 
-**Este sería el README de tu proyecto. Consulta las [instrucciones de
-instalación](INSTALL.md)
-
 ### Autor(a): Cecilia Merelo Molina
 ### Tutor(a)(es): Juan Julián Merelo Guervós
-___
 
+# EJECUCIÓN
+
+Para ejecutar un caso base del algoritmo:
+
+```bash
+make base_example
+```
+
+Para correr todos los tests:
+
+```bash
+make tests
+```
+
+# ESTRUCTURA
+
+Estructura del repositorio:
+
+ - `data` : se encuentran los ficheros de configuración
+ - `doc` : memoria del Trabajo
+ - `examples` : ficheros de ejemplo que ejecutan el algoritmo
+ - `src` : base de código
+
+
+# DOCUMENTACIÓN 
 La documentación de este proyecto está realizada con `LaTeX`, por lo
 tanto para generar el archivo PDF necesitaremos instalar `TeXLive` en
 nuestra distribución.
