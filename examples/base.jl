@@ -1,13 +1,13 @@
-include("BraveNewAlgorithm.jl")
+include("../src/BraveNewAlgorithm.jl")
 using .BraveNewAlgorithm
 
 using StaticLint
 using BlackBoxOptimizationBenchmarking
 
-include("utils.jl")
-include("brave_new_algorithm.jl")
+include("../src/utils.jl")
+include("../src/brave_new_algorithm.jl")
 
-config_file_path = "./data/Config Files/config_file_1.json"
+config_file_path = "./data/config_file_1.json"
 config_parameters_entity = read_parameters_file(config_file_path)
 fitness_function = BlackBoxOptimizationBenchmarking.F1
 

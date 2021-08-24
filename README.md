@@ -19,7 +19,12 @@ make tests
 
 # ESTRUCTURA
 
- - data : se encuentran los ficheros de configuración
+Estructura del repositorio:
+
+ - `data` : se encuentran los ficheros de configuración
+ - `doc` : memoria del Trabajo
+ - `examples` : ficheros de ejemplo que ejecutan el algoritmo
+ - `src` : base de código
 
 
 # DOCUMENTACIÓN 
