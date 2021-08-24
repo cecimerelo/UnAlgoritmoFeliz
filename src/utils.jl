@@ -26,7 +26,7 @@ function read_parameters_file(file_path::String)
             epsilon => config_parameters[population_percentage][epsilon]
         )
 
-    casts_mr =
+    castes_mr =
         Dict{String,Int}(
             alpha   => config_parameters[mutation_rate][alpha],
             beta    => config_parameters[mutation_rate][beta],
@@ -38,5 +38,5 @@ function read_parameters_file(file_path::String)
     return ConfigurationParametersEntity(config_parameters[chromosome_size],
         config_parameters[dimensions], config_parameters[population_size],
         config_parameters[max_evaluations], config_parameters[max_generations],
-        castes_percentages, casts_mr)
+        castes_percentages, castes_mr)
 end
