@@ -12,6 +12,7 @@ end
 struct PopulationModel
     config_parameters::ConfigurationParametersEntity
     fitness_function::BBOBFunction
+    range::Tuple{Float64,Float64}
 end
 
 struct Embryo
