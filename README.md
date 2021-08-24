@@ -16,7 +16,12 @@ Para correr todos los tests:
 ```bash
 make tests
 ```
-___
+
+# ESTRUCTURA
+
+ - data : se encuentran los ficheros de configuración
+
+
 # DOCUMENTACIÓN 
 La documentación de este proyecto está realizada con `LaTeX`, por lo
 tanto para generar el archivo PDF necesitaremos instalar `TeXLive` en
