@@ -4,6 +4,11 @@ include("methods/evolution.jl")
 include("commons.jl")
 
 function brave_new_algorithm(population_model::PopulationModel)
+    @info """
+    Creating embryos, 
+                Chromosome Size -> $(population_model.config_parameters.chromosome_size)
+                Dimensions -> $(population_model.config_parameters.dimensions)
+    """
     embryos = [
         fertilising_room(population_model)
         for _ in 1:population_model.config_parameters.population_size
@@ -25,12 +30,12 @@ function brave_new_algorithm(population_model::PopulationModel)
 
         if new_best_element.f_value > best_element.f_value
             generations_with_the_same_best_element = generations_with_the_same_best_element + 1
-            @warn "Generations with the same best element -> $(generations_with_the_same_best_element)"
+            @warn "Best element has not changed"
         else
             generations_with_the_same_best_element = 0
             best_element = new_best_element
         end
-
+        @info "Best f_value -> $(new_best_element.f_value)"
         embryos = new_embryos_population
         generation = generation + 1
     end

@@ -49,8 +49,6 @@ function divide_embryos_in_castes(embryos, embryos_for_each_caste)
     for caste in CASTES
         caste_population = embryos_for_each_caste[caste.name]
         embryos_in_caste = embryos[caste_counter:caste_population + caste_counter - 1]
-        @info "Divide $(caste.name) -> $(caste_counter):$(caste_population + caste_counter - 1)" 
-
         individuals_in_caste = build_individuals_for_caste(embryos_in_caste, caste)
         population_in_castes[caste] = individuals_in_caste
 

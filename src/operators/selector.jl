@@ -4,14 +4,12 @@ using StatsBase
 include("../commons.jl")
 
 function selector_operator(caste::ALPHA, caste_population)
-    @info "Building reproduction pool for $(caste.name) caste"
     reproduction_pool = build_reproduction_pool(caste_population)
     return pairwise(reproduction_pool)
 end
 
 
 function selector_operator(caste::BETA, caste_population, alpha_reproduction_pool)
-    @info "Building reproduction pool for $(caste.name) caste"
     beta_reproduction_pool =  build_reproduction_pool(caste_population)
     alpha_reproduction_pool = from_array_of_tuples_to_array(alpha_reproduction_pool)
 
