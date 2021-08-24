@@ -1,6 +1,7 @@
 include("methods/from_genes_to_embryo.jl")
 include("methods/hatchery.jl")
 include("methods/evolution.jl")
+include("methods/fertilising_room.jl")
 include("commons.jl")
 
 function brave_new_algorithm(population_model::PopulationModel)
@@ -40,10 +41,4 @@ function brave_new_algorithm(population_model::PopulationModel)
     end
     
     return embryos
-end
-
-function fertilising_room(population_model::PopulationModel)
-    chromosome = rand(population_model.config_parameters.chromosome_size)
-    embryo = from_genes_to_embryo(chromosome, population_model)
-    return embryo
 end
