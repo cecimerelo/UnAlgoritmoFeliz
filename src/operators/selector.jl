@@ -1,5 +1,6 @@
 using Random
 using StatsBase
+using Shuffle
 
 include("../commons.jl")
 
@@ -35,7 +36,7 @@ function selector_operator(caste, caste_population)
 end
 
 function build_reproduction_pool(caste_population)
-    caste_population = shuffle(caste_population)
+    caste_population = Shuffle.shuffle(caste_population)
     winners =
         [
             binary_tournament(caste_population) for _ in 1:2

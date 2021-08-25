@@ -1,9 +1,10 @@
-tests:
-	julia src/run_tests.jl
+check_dependencies: Project.toml
+	julia --project=Project.toml requirements.jl  --target=Project.toml
 
-install_dependencies:
-	julia requirements.jl
+tests: 
+	make check_dependencies
+	julia --project=. src/run_tests.jl
 
 base_example:
-	make install_dependencies
-	julia examples/base.jl
+	make check_dependencies
+	julia --project=. examples/base.jl

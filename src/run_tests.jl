@@ -1,3 +1,6 @@
+using Pkg
+Pkg.activate(".")
+
 include("../src/brave_new_algorithm_module.jl")
 
 include("test/methods/evaluate_chromosome_test.jl")
