@@ -1,4 +1,5 @@
 [deps]
+BlackBoxOptimizationBenchmarking = "4552ee2b-11da-5aef-8e78-0d48532001f1"
 Parameters = "d96e819e-fc66-5662-9728-84c9c7592b0a"
 Shuffle = "bf21e494-c40e-4daa-abfb-de5ec0aad010"
 SimpleMock = "a896ed2c-15a5-4479-b61d-a0e88e2a1d25"
