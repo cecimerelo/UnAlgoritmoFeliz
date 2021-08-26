@@ -1,3 +1,5 @@
+all: check_dependencies tests
+
 check_dependencies: Project.toml
 	julia --project=Project.toml requirements.jl  --target=Project.toml
 
