@@ -21,6 +21,7 @@ embryos = [
 ]
 
 population_in_castes = hatchery(population_model, embryos)
+new_generation = evolution(population_in_castes, population_model)
 
 @testset "Test evolution when called then new population returned" begin
     new_generation = evolution(population_in_castes, population_model)

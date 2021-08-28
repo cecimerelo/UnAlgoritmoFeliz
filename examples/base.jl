@@ -1,3 +1,6 @@
+using Pkg
+Pkg.activate(".")
+
 include("../src/brave_new_algorithm_module.jl")
 using .BraveNewAlgorithmModule
 
