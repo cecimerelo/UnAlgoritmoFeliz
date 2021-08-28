@@ -1,5 +1,7 @@
-using SimpleMock
 using .BraveNewAlgorithmModule
+using BlackBoxOptimizationBenchmarking
+
+using Test
 
 include("../../utils.jl")
 include("../../methods/hatchery.jl")

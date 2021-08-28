@@ -1,8 +1,9 @@
 using Pkg
 
 Pkg.activate(".")
+Pkg.add("BlackBoxOptimizationBenchmarking")
+Pkg.add("Distributions")
+Pkg.add("Parameters")
 Pkg.add("Shuffle")
 Pkg.add("StatsBase")
-Pkg.add("Parameters")
-Pkg.add("SimpleMock")
 Pkg.add("BlackBoxOptimizationBenchmarking")
