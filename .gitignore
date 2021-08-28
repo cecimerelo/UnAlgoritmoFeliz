@@ -317,3 +317,5 @@ proyecto.*
 src/venv
 src/.DS_Store
 .DS_Store
+
+Manifest.toml
