@@ -20,7 +20,7 @@ function brave_new_algorithm(population_model::PopulationModel)
     generations_with_the_same_best_element = 0
     
     while generations_with_the_same_best_element <= population_model.config_parameters.max_generations
-        @info "Generation -> $(generation)"
+        @info "Generation -> $(generation), Best f_value -> $(best_element.f_value)"
         @info "Generations with the same best element -> $(generations_with_the_same_best_element)"
         
         population_in_castes = hatchery(population_model, embryos)
@@ -35,7 +35,6 @@ function brave_new_algorithm(population_model::PopulationModel)
             generations_with_the_same_best_element = 0
             best_element = new_best_element
         end
-        @info "Best f_value -> $(new_best_element.f_value)"
         embryos = new_embryos_population
         generation = generation + 1
     end

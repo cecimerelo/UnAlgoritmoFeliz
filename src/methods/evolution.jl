@@ -1,6 +1,7 @@
 include("../operators/selector.jl")
 include("../operators/crossover.jl")
 include("../operators/mutation.jl")
+include("../methods/local_search.jl")
 
 
 function evolution(population_in_castes, population_model)
@@ -32,6 +33,8 @@ end
 
 function create_new_individual(parents, config_parameters, caste)
     offspring = crossover_operator(parents, config_parameters)
-    new_individual = mutation_operator(offspring, config_parameters, caste)
+    offspring_mutated = mutation_operator(offspring, config_parameters, caste)
+    new_individual = local_search(offspring_mutated, population_model, caste)
+    
     return new_individual
 end
