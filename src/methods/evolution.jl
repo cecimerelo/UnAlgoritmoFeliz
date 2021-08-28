@@ -23,7 +23,7 @@ function evolution(population_in_castes, population_model)
     ]
 
     lower_castes_mutated = [
-        mutation_operator(individual.chromosome, population_model.config_parameters, caste) 
+        mutate_individual(individual.chromosome, population_model.config_parameters, caste) 
         for caste in [GAMMA(), DELTA(), EPSILON()]
         for individual in population_in_castes[caste]
     ]
@@ -31,10 +31,17 @@ function evolution(population_in_castes, population_model)
     return vcat(new_alpha_individuals, new_beta_individuals, lower_castes_mutated)
 end
 
+function mutate_individual(chromosome, config_parameters, caste::GAMMA)
+    mutated_chromosome = mutation_operator(chromosome, config_parameters, caste) 
+    return local_search(mutated_chromosome, population_model, caste)
+end
+
+function mutate_individual(chromosome, config_parameters, caste)
+    return mutation_operator(chromosome, config_parameters, caste) 
+end
+
 function create_new_individual(parents, config_parameters, caste)
     offspring = crossover_operator(parents, config_parameters)
-    offspring_mutated = mutation_operator(offspring, config_parameters, caste)
-    new_individual = local_search(offspring_mutated, population_model, caste)
-    
-    return new_individual
+    offspring_mutated = mutation_operator(offspring, config_parameters, caste)    
+    return offspring_mutated
 end
