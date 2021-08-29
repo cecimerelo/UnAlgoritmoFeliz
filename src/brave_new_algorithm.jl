@@ -4,7 +4,12 @@ include("methods/evolution.jl")
 include("methods/fertilising_room.jl")
 include("commons.jl")
 
+using DataFrames
+
 function brave_new_algorithm(population_model::PopulationModel)
+    generations_array = Array{Int,1}()
+    best_f_values = Array{Float64,1}()
+
     @info """
     Creating embryos, 
                 Chromosome Size -> $(population_model.config_parameters.chromosome_size)
@@ -13,7 +18,6 @@ function brave_new_algorithm(population_model::PopulationModel)
         fertilising_room(population_model)
         for _ in 1:population_model.config_parameters.population_size
     ]
-
     best_element = best_element_of_population(embryos)
 
     generation = 0
@@ -36,9 +40,13 @@ function brave_new_algorithm(population_model::PopulationModel)
             generations_with_the_same_best_element = 0
             best_element = new_best_element
         end
+        push!(generations_array, generation)
+        push!(best_f_values, best_element.f_value)
+
         embryos = new_embryos_population
         generation = generation + 1
     end
     
-    return embryos
+    dict_population = Dict("Generations" => generations_array, :"F_Values" => best_f_values)
+    return generation, DataFrame(dict_population)
 end

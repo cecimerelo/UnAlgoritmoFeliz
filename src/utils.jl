@@ -39,3 +39,26 @@ function read_parameters_file(file_path::String)
         config_parameters[max_evaluations], config_parameters[max_generations], 
         castes_percentages, castes_mr)
 end
+
+function write_entry_to_summary(
+        fitness_function,
+        config_file, 
+        outcome_file_name, 
+        last_generation, 
+        best_element, 
+    )
+    
+    summary_path = "./data/Outcomes/summary.csv"
+    summary_df = CSV.File(summary_path) |> DataFrame
+    df_line = DataFrame(
+        FUNCTION = "$(fitness_function)", 
+        CONFIG_FILE_PATH = config_file,
+        OUTCOME_FILE = outcome_file_name,
+        GENERATION = last_generation,
+        BEST_ELEMENT = best_element,
+        F_OPT = fitness_function.f_opt
+    )
+
+    append!(summary_df, df_line)
+    CSV.write(summary_path, summary_df)
+end
