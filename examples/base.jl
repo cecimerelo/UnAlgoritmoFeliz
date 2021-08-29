@@ -31,7 +31,7 @@ outcome_path = "./data/Outcomes/$(outcome_file_name)"
 CSV.write("$(outcome_path).csv", population)
 
 p = Gadfly.plot(population, x=:Generations, y=:F_Values, Geom.line);
-img = PNG("$(outcome_file_name).png", 6inch, 4inch)
+img = PNG("./data/Plots/$(outcome_file_name).png", 6inch, 4inch)
 draw(img, p)
 
 write_entry_to_summary(
