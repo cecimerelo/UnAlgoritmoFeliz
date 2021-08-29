@@ -18,8 +18,9 @@ function brave_new_algorithm(population_model::PopulationModel)
 
     generation = 0
     generations_with_the_same_best_element = 0
-    
-    while generations_with_the_same_best_element <= population_model.config_parameters.max_generations
+    while population_model.comparator(best_element.f_value, population_model.fitness_function) && 
+        generations_with_the_same_best_element <= population_model.config_parameters.max_generations
+        
         @info "Generation -> $(generation), Best f_value -> $(best_element.f_value)"
         @info "Generations with the same best element -> $(generations_with_the_same_best_element)"
         

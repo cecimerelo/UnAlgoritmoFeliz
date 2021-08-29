@@ -13,7 +13,8 @@ using Test
     config_parameters_entity = read_parameters_file(config_file_path)
     fitness_function = BlackBoxOptimizationBenchmarking.F1
     range = (-5.12, 5.12)
-    population_model = PopulationModel(config_parameters_entity, fitness_function, range)
+    minimum_comparator = comparator(element, fitness_function) = element >= fitness_function.f_opt
+population_model = PopulationModel(config_parameters_entity, fitness_function, range, minimum_comparator)
     individual = from_genes_to_embryo(chromosome, population_model)
 
     @test typeof(individual) == Embryo

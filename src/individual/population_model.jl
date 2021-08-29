@@ -13,6 +13,7 @@ struct PopulationModel
     config_parameters::ConfigurationParametersEntity
     fitness_function::BBOBFunction
     range::Tuple{Float64,Float64}
+    comparator::Function
 end
 
 struct Embryo
