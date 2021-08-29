@@ -6,5 +6,9 @@ check_dependencies: Project.toml requirements.jl
 tests: check_dependencies
 	julia --project=. src/run_tests.jl
 
-base_example: check_dependencies
-	julia --project=. examples/base.jl
+all_examples: check_dependencies
+	julia --project=. examples/sphere.jl $(CONFIG_FILE)
+	julia --project=. examples/ellipsoidal.jl $(CONFIG_FILE)
+	julia --project=. examples/rastrigin.jl $(CONFIG_FILE)
+	julia --project=. examples/buche_rastrigin.jl $(CONFIG_FILE)
+	julia --project=. examples/linear_slope.jl $(CONFIG_FILE)
