@@ -1,4 +1,10 @@
 using JSON
+using Gadfly
+using CSV
+using StatsPlots
+using Cairo
+using Fontconfig
+using Gadfly
 
 const chromosome_size = "CHROMOSOME_SIZE"
 const population_size = "POPULATION_SIZE"
@@ -43,11 +49,10 @@ end
 function write_entry_to_summary(
         fitness_function,
         config_file, 
-        outcome_file_name, 
         last_generation, 
         best_element, 
     )
-    
+    outcome_file_name = "$(config_file)_$(fitness_function)"
     summary_path = "./data/Outcomes/summary.csv"
     summary_df = CSV.File(summary_path) |> DataFrame
     df_line = DataFrame(
@@ -61,4 +66,26 @@ function write_entry_to_summary(
 
     append!(summary_df, df_line)
     CSV.write(summary_path, summary_df)
+end
+
+function build_population_model(config_file, fitness_function)
+    range = (-5.12, 5.12)
+    config_file_path = "./data/Config Files/$(config_file).json"
+    config_parameters_entity = read_parameters_file(config_file_path)
+    minimum_comparator = comparator(element, fitness_function) = element >= fitness_function.f_opt
+    @info "Config file -> $(config_file_path), Fitness Funcion -> $(fitness_function), Range -> $(range), f_opt -> $(fitness_function.f_opt)"
+    return PopulationModel(config_parameters_entity, fitness_function, range, minimum_comparator)
+end
+
+function write_results_to_file(config_file, fitness_function, population)
+    outcome_file_name = "$(config_file)_$(fitness_function)"
+    outcome_path = "./data/Outcomes/$(outcome_file_name)"
+    CSV.write("$(outcome_path).csv", population)
+end
+
+function build_results_plot(population, config_file, fitness_function)
+    outcome_file_name = "$(config_file)_$(fitness_function)"
+    p = Gadfly.plot(population, x=:Generations, y=:F_Values, Geom.line);
+    img = PNG("./data/Plots/$(outcome_file_name).png", 6inch, 4inch)
+    draw(img, p);
 end

@@ -10,7 +10,6 @@ function local_search(offspring, population_model, caste::GAMMA)
     improved = true
 
     while improved
-        @info "Local search, iteration -> $(local_search_iterations), f_value -> $(f_value) "
         mutated_offspring = mutation_operator(final_chromosome, population_model.config_parameters, caste)
         new_embryo = from_genes_to_embryo(mutated_offspring, population_model)
         
