@@ -9,6 +9,10 @@ include("../src/brave_new_algorithm.jl")
 
 using BlackBoxOptimizationBenchmarking
 using CSV
+using StatsPlots
+using Cairo
+using Fontconfig
+using Gadfly
 
 
 config_file = "config_file_1"
@@ -22,20 +26,16 @@ minimum_comparator = comparator(element, fitness_function) = element >= fitness_
 population_model = PopulationModel(config_parameters_entity, fitness_function, range, minimum_comparator)
 last_generation, population = brave_new_algorithm(population_model)
 
-outcome_file_name = "$(config_file)_$(fitness_function).csv"
+outcome_file_name = "$(config_file)_$(fitness_function)"
 outcome_path = "./data/Outcomes/$(outcome_file_name)"
-CSV.write(outcome_path, population)
+CSV.write("$(outcome_path).csv", population)
 
-summary_path = "./data/Outcomes/summary.csv"
-summary_df = CSV.File(summary_path) |> DataFrame
-df_line = DataFrame(
-    FUNCTION = "$(fitness_function)", 
-    CONFIG_FILE_PATH = config_file,
-    OUTCOME_FILE = outcome_file_name,
-    GENERATION = last_generation,
-    BEST_ELEMENT = population[1][last_generation],
-    F_OPT = fitness_function.f_opt
+p = Gadfly.plot(population, x=:Generations, y=:F_Values, Geom.line);
+img = PNG("$(outcome_file_name).png", 6inch, 4inch)
+draw(img, p)
+
+write_entry_to_summary(
+    fitness_function, config_file,
+    outcome_file_name, last_generation, population[1][last_generation]
 )
 
-append!(summary_df, df_line)
-CSV.write(summary_path, summary_df)

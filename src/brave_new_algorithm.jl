@@ -47,6 +47,6 @@ function brave_new_algorithm(population_model::PopulationModel)
         generation = generation + 1
     end
     
-    dict_population = Dict("Generations" => generations_array, :"F Values" => best_f_values)
+    dict_population = Dict("Generations" => generations_array, :"F_Values" => best_f_values)
     return generation, DataFrame(dict_population)
 end
