@@ -4,6 +4,7 @@ using CSV
 using StatsPlots
 using Cairo
 using Fontconfig
+using Dates
 
 const chromosome_size = "CHROMOSOME_SIZE"
 const population_size = "POPULATION_SIZE"
@@ -79,7 +80,8 @@ end
 function write_results_to_file(config_file, fitness_function, population)
     outcome_file_name = "$(config_file)_$(fitness_function)"
     outcome_path = "./data/Outcomes/$(outcome_file_name)"
-    CSV.write("$(outcome_path).csv", population)
+    time = Dates.format(now(), "HH:MM")
+    CSV.write("$(outcome_path)_$(time).csv", population)
 end
 
 function build_results_plot(population, config_file, fitness_function)
@@ -90,6 +92,6 @@ function build_results_plot(population, config_file, fitness_function)
         Geom.line, Guide.title(outcome_file_name), 
         Guide.manual_color_key("Legend", ["Fitness values"])
     );
-    img = PNG("./data/Plots/$(outcome_file_name).png", 6inch, 4inch)
+    img = PNG("./data/Plots/$(outcome_file_name)_$(time).png", 6inch, 4inch)
     draw(img, p);
 end
