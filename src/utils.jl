@@ -68,7 +68,7 @@ function write_entry_to_summary(
 end
 
 function build_population_model(config_file, fitness_function)
-    range = (-5.12, 5.12)
+    range = (-5, 5)
     config_file_path = "./data/Config Files/$(config_file).json"
     config_parameters_entity = read_parameters_file(config_file_path)
     minimum_comparator = comparator(element, fitness_function) = element >= fitness_function.f_opt
