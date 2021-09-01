@@ -79,7 +79,7 @@ end
 function write_results_to_file(config_file, fitness_function, population)
     outcome_file_name = "$(config_file)_$(fitness_function)"
     outcome_path = "./data/Outcomes/$(outcome_file_name)"
-    time = Dates.format(now(), "HH:MM::SS")
+    time = Dates.format(now(), "HH:MM:SS")
     CSV.write("$(outcome_path)_$(time).csv", population)
 end
 
