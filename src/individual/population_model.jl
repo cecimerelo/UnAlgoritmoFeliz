@@ -3,7 +3,6 @@ using BlackBoxOptimizationBenchmarking
 struct ConfigurationParametersEntity
     chromosome_size::Int
     population_size::Int
-    max_evaluations::Int
     max_generations::Int
     castes_percentages::Dict{String, Int}
     mutation_rate::Dict{String, Int}

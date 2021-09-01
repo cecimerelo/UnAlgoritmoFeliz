@@ -5,10 +5,10 @@ using StatsPlots
 using Cairo
 using Fontconfig
 using Dates
+using Distances
 
 const chromosome_size = "CHROMOSOME_SIZE"
 const population_size = "POPULATION_SIZE"
-const max_evaluations = "MAX_EVALUATIONS"
 const max_generations = "MAX_GENERATIONS"
 const population_percentage = "POPULATION_PERCENTAGE"
 const alpha = "ALPHA"
@@ -42,20 +42,21 @@ function read_parameters_file(file_path::String)
 
     return ConfigurationParametersEntity(
         config_parameters[chromosome_size], config_parameters[population_size], 
-        config_parameters[max_evaluations], config_parameters[max_generations], 
-        castes_percentages, castes_mr)
+        config_parameters[max_generations], castes_percentages, castes_mr)
 end
 
 function write_entry_to_summary(
+        time,
+        outcome_file_name,
         fitness_function,
         config_file, 
         last_generation, 
         best_element, 
     )
-    outcome_file_name = "$(config_file)_$(fitness_function)"
     summary_path = "./data/Outcomes/summary.csv"
     summary_df = CSV.File(summary_path) |> DataFrame
     df_line = DataFrame(
+        TIME = time,
         FUNCTION = "$(fitness_function)", 
         CONFIG_FILE_PATH = config_file,
         OUTCOME_FILE = outcome_file_name,
@@ -80,11 +81,15 @@ end
 function write_results_to_file(config_file, fitness_function, population)
     outcome_file_name = "$(config_file)_$(fitness_function)"
     outcome_path = "./data/Outcomes/$(outcome_file_name)"
-    time = Dates.format(now(), "HH:MM")
-    CSV.write("$(outcome_path)_$(time).csv", population)
+    time = Dates.format(now(), "HH:MM:SS")
+    name = "$(outcome_path)_$(time).csv"
+    CSV.write(name, population)
+
+    return name
 end
 
 function build_results_plot(population, config_file, fitness_function)
+    time = Dates.format(now(), "HH:MM:SS")
     outcome_file_name = "$(config_file)_$(fitness_function)"
     p = Gadfly.plot(
         population, 
@@ -94,4 +99,15 @@ function build_results_plot(population, config_file, fitness_function)
     );
     img = PNG("./data/Plots/$(outcome_file_name)_$(time).png", 6inch, 4inch)
     draw(img, p);
+end
+
+function calculate_edit_distance(all_chromosomes, best_chromosome, population_size)
+    distances = Array{Float64, 1}()
+
+    for chromosome in all_chromosomes
+        distance = euclidean(chromosome, best_chromosome)
+        push!(distances, distance)
+    end
+
+    return sum(distances) / population_size
 end
