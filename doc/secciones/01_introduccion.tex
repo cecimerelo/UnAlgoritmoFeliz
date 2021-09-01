@@ -1,5 +1,7 @@
 \chapter{Introducción}
 
+\section{Motivación}
+
 A principios de este año leí el conocido libro de Aldous Huxley: Un mundo feliz. La novela es una
 distopía que describe el desarrollo en tecnología reproductiva, cultivos humanos e hipnopedia y el manejo de las
 emociones por medio de drogas. La población se ordena en \textbf{castas}, asignadas desde el nacimiento, donde cada uno
@@ -10,5 +12,60 @@ Cuando hablamos de algoritmos genéticos nuestro objetivo es alcanzar la soluci�
 proceso mediante el cual han alcanzado la raza humana perfecta. Por tanto el objetivo final de este trabajo es desarrollar
 un algoritmo genético basándonos en el proceso de fecundación del libro y comparar su comportamiento con otros algoritmos. Además
 investiga cómo la división en castas afecta la diversidad en la población.
+
+\section{Objetivos del trabajo}
+
+\begin{enumerate}
+    \item Adaptar la división en castas y el concepto de raza humana perfecta descrita en el libro a un algoritmo genético.
+    \item Investigar cómo afecta la división en castas a la diversidad.
+    \item Desarrollar el algoritmo siguiendo metodologías ágiles
+    \item Demostrar que el lenguaje de programación Julia es buena opción para el desarrollo de algoritmos
+\end{enumerate}
+
+\section{Conceptos generales}
+
+En el libro se describe cómo se alcanza esta raza humana perfecta mediante una \"cadena de montaje\", con
+varias fases. Esto lo reflejaremos mediante un algoritmo evolutivo generacional con los operadores de selección, cruce, mutación
+y reemplazamiento. El proceso comienza en la \textbf{\textit{Sala de Fecundación}}, aquí se crean los óvulos y se fecundan. Una
+vez \textit{fecundados} los óvulos pasan a las incubadoras, donde se decide la \textit{casta} a la que pertenecerá cada individuo:
+
+\begin{itemize}
+    \item \textbf{Alphas}:
+        \begin{itemize}
+            \item Libro: son los más inteligentes, a este grupo pertenece la élite. Tienen responsabilidades y son
+            los que tienen la capacidad de tomar decisiones.
+            \item Implementación: se reproducirán sólo entre ellos, pasarán por todos los operadores del algoritmo.
+        \end{itemize}
+    \item \textbf{Betas}: 
+        \begin{itemize}
+            \item Libro: son menos inteligentes que los anteriores y su función principal se reduce a tareas
+            administrativas.
+            \item  Implementación: el cruce sólo se realiza con individuos Alpha
+        \end{itemize}
+    \item \textbf{Gammas}: 
+        \begin{itemize}
+            \item Libro: son los empleados subalternos, cuyas tareas requieren de habilidad. Son expertos en tareas repetitivas
+            \item Implementación: los individuos de esta casta solo tendrán mutación, por búsqueda local.
+        \end{itemize}
+    \item \textbf{Castas Bajas}: sólo tendrán el operador de mutación por segmento fijo, sin búsqueda local. A este sector pertenecen:
+        \begin{itemize}
+            \item \textbf{Deltas}:a este grupo pertenecen los empleados de los anteriores.
+            \item \textbf{Epsilones}: es la casta inferior, a ella pertenecen los empleados para trabajos arduos.
+        \end{itemize}
+\end{itemize}
+
+Con esta estructura en mente la metaheurística se divide en las siguientes fases:
+
+\begin{itemize}
+    \item \textbf{Sala de Fecundación}: los individuos son creados de manera totalmente aleatoria. Tantos individuos
+    como indique un parámetro \textit{I}.
+    \item \textbf{Sala de incubación}: en esta fase realizamos la división en castas. Se hará basándonos en el valor de
+    la función objetivo del individuo. Además cada casta tendrá un porcentaje diferente de la población.
+    \item \textbf{Evolución de las castas}: cada casta seguirá un proceso de evolución diferente como ya se 
+    ha mencionado.
+\end{itemize}
+
+El tamaño de la población descenderá cuanto más alta sea la casta.
+
 
 Este proyecto es software libre, y está liberado con la licencia \cite{gplv3}.
