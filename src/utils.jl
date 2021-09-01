@@ -5,6 +5,7 @@ using StatsPlots
 using Cairo
 using Fontconfig
 using Dates
+using Distances
 
 const chromosome_size = "CHROMOSOME_SIZE"
 const population_size = "POPULATION_SIZE"
@@ -78,11 +79,12 @@ end
 function write_results_to_file(config_file, fitness_function, population)
     outcome_file_name = "$(config_file)_$(fitness_function)"
     outcome_path = "./data/Outcomes/$(outcome_file_name)"
-    time = Dates.format(now(), "HH:MM")
+    time = Dates.format(now(), "HH:MM::SS")
     CSV.write("$(outcome_path)_$(time).csv", population)
 end
 
 function build_results_plot(population, config_file, fitness_function)
+    time = Dates.format(now(), "HH:MM:SS")
     outcome_file_name = "$(config_file)_$(fitness_function)"
     p = Gadfly.plot(
         population, 
@@ -94,6 +96,13 @@ function build_results_plot(population, config_file, fitness_function)
     draw(img, p);
 end
 
-function calculate_entropy(points)
-    
+function calculate_edit_distance(all_chromosomes, best_chromosome, population_size)
+    distances = Array{Float64, 1}()
+
+    for chromosome in all_chromosomes
+        distance = euclidean(chromosome, best_chromosome)
+        push!(distances, distance)
+    end
+
+    return sum(distances) / population_size
 end
