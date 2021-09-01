@@ -8,7 +8,6 @@ using Dates
 
 const chromosome_size = "CHROMOSOME_SIZE"
 const population_size = "POPULATION_SIZE"
-const max_evaluations = "MAX_EVALUATIONS"
 const max_generations = "MAX_GENERATIONS"
 const population_percentage = "POPULATION_PERCENTAGE"
 const alpha = "ALPHA"
@@ -42,8 +41,7 @@ function read_parameters_file(file_path::String)
 
     return ConfigurationParametersEntity(
         config_parameters[chromosome_size], config_parameters[population_size], 
-        config_parameters[max_evaluations], config_parameters[max_generations], 
-        castes_percentages, castes_mr)
+        config_parameters[max_generations], castes_percentages, castes_mr)
 end
 
 function write_entry_to_summary(
@@ -94,4 +92,8 @@ function build_results_plot(population, config_file, fitness_function)
     );
     img = PNG("./data/Plots/$(outcome_file_name)_$(time).png", 6inch, 4inch)
     draw(img, p);
+end
+
+function calculate_entropy(points)
+    
 end

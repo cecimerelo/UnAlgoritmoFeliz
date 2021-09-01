@@ -28,6 +28,16 @@ function brave_new_algorithm(population_model::PopulationModel)
         @info "Generation -> $(generation), Best f_value -> $(best_element.f_value)"
         @info "Generations with the same best element -> $(generations_with_the_same_best_element)"
         
+        all_f_values = [embryo.f_value for embryo in embryos]
+        phenotypic_entropy = calculate_entropy(all_f_values)
+        genotypic_entropy = calculate_entropy(embryos)
+
+        dict_population = Dict(
+            "Generations" => generations_array, 
+            "F_Values" => best_f_values,
+            "Phenotypic_Entropy" => phenotypic_entropy,
+            "Genotypic_Entropy" => genotypic_entropy
+        )
         population_in_castes = hatchery(population_model, embryos)
         new_chromosomes = evolution(population_in_castes, population_model)
         new_embryos_population = [from_genes_to_embryo(chromosome, population_model) for chromosome in new_chromosomes]
@@ -47,6 +57,5 @@ function brave_new_algorithm(population_model::PopulationModel)
         generation = generation + 1
     end
     
-    dict_population = Dict("Generations" => generations_array, :"F_Values" => best_f_values)
     return generation, DataFrame(dict_population)
 end
