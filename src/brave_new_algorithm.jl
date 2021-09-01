@@ -67,5 +67,5 @@ function brave_new_algorithm(population_model::PopulationModel)
             "Edit_distance" => edit_distances
     )
 
-    return generation, DataFrame(dict_population)
+    return (generation, DataFrame(dict_population))
 end

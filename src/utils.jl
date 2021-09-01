@@ -46,15 +46,17 @@ function read_parameters_file(file_path::String)
 end
 
 function write_entry_to_summary(
+        time,
+        outcome_file_name,
         fitness_function,
         config_file, 
         last_generation, 
         best_element, 
     )
-    outcome_file_name = "$(config_file)_$(fitness_function)"
     summary_path = "./data/Outcomes/summary.csv"
     summary_df = CSV.File(summary_path) |> DataFrame
     df_line = DataFrame(
+        TIME = time,
         FUNCTION = "$(fitness_function)", 
         CONFIG_FILE_PATH = config_file,
         OUTCOME_FILE = outcome_file_name,
@@ -80,7 +82,10 @@ function write_results_to_file(config_file, fitness_function, population)
     outcome_file_name = "$(config_file)_$(fitness_function)"
     outcome_path = "./data/Outcomes/$(outcome_file_name)"
     time = Dates.format(now(), "HH:MM:SS")
-    CSV.write("$(outcome_path)_$(time).csv", population)
+    name = "$(outcome_path)_$(time).csv"
+    CSV.write(name, population)
+
+    return name
 end
 
 function build_results_plot(population, config_file, fitness_function)
