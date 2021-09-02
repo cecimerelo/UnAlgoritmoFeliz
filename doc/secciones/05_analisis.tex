@@ -69,6 +69,24 @@ en valores parecidos, resultando en una diversidad más pobre.
     \label{fig:worst_f_value}
 \end{figure}
 
+\section{Exploración inicial}
+
+El objetivo de exta exploración escoger los parámetros : tamaño del cromosoma (\textit{DIM}) y tamaño de población. 
+Se ejecutará el algoritmo 15 veces por cada tamaño del cromosoma, y se cogerá el que tenga mejor resultado para la comparación.
+
+\begin{tabular}{|c|c|c|c|c|}
+    \hline
+    \textbf{Fichero Configuración} & \textbf{Generaciones} & \textbf{DIM} & \textbf{Tiempo de ejecución} & \textbf{Mejor elemento} \\ \hline
+    Config File 1   & 30    & 2   & 5.1160  & 2039.487   \\ \hline
+    Config File 2   & 41    & 3   & 5.4659  & 1989.754     \\ \hline
+                                                &                  & 5             &                              &                         \\ \hline
+                                                &                  & 10             &                              &                         \\ \hline
+                                                &                  & 20             &                              &                         \\ \hline
+                                                &                  & 40             &                              &                         \\ \hline
+
+\end{tabular}
+
+
 \section{Análisis de las soluciones}
 
 - en que casos da mejor resultado y por qué, comparar con hipótesis inicial
@@ -78,7 +96,7 @@ en valores parecidos, resultando en una diversidad más pobre.
 \subsection{Con Búsqueda Local}
 
 % TODO: hacer la misma tabla para diferentes tamaños de población
-\begin{tabular}{|c|c|c|c|c|}
+\begin{tabular}{||c|c|c|c|c||}
     \hline
     \textbf{Fichero Configuración} & \textbf{Función} & \textbf{DIM} & \textbf{Tiempo de ejecución} & \textbf{Mejor elemento} \\ \hline
     example                                     & example          & 2      & example                      & example                 \\ \hline
