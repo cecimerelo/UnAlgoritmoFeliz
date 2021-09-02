@@ -14,12 +14,11 @@ all_examples: check_dependencies
 	julia --project=. examples/linear_slope.jl $(CONFIG_FILE)
 
 diversity: check_dependencies
-	@for n in $$(seq 1 15); do make rastrigin CONFIG_FILE=$(CONFIG_FILE) ; done
+	@for n in $$(seq 1 15); do make rastrigin CONFIG_FILE=config_file_5 ; done
 
 size:
 	@for n in $$(seq 1 15); do make rastrigin CONFIG_FILE=config_file_5 ; done
 	@for n in $$(seq 1 15); do make rastrigin CONFIG_FILE=config_file_6 ; done
-
 rastrigin:
 	julia --project=. examples/rastrigin.jl $(CONFIG_FILE)
 
