@@ -71,20 +71,41 @@ en valores parecidos, resultando en una diversidad más pobre.
 
 \section{Exploración inicial}
 
-El objetivo de exta exploración escoger los parámetros : tamaño del cromosoma (\textit{DIM}) y tamaño de población. 
-Se ejecutará el algoritmo 15 veces por cada tamaño del cromosoma, y se cogerá el que tenga mejor resultado para la comparación.
+El objetivo de exta exploración escoger los parámetros : dimensión del cromosoma (\textit{DIM}) y tamaño de población. Primero se varia la dimensión
+del cromosoma y la población se mantiene fija a 100. Se ejecutará el algoritmo 15 veces por cada dimensión del cromosoma, y se cogerá el que 
+tenga mejor resultado para la comparación. Los resultados de esta primera exploración se encuentran en la Tabla \ref{tab:fitness_variation}. 
 
-\begin{tabular}{|c|c|c|c|c|}
-    \hline
-    \textbf{Fichero Configuración} & \textbf{Generaciones} & \textbf{DIM} & \textbf{Tiempo de ejecución} & \textbf{Mejor elemento} \\ \hline
-    Config File 1   & 30    & 2   & 5.1160  & 2039.487   \\ \hline
-    Config File 2   & 41    & 3   & 5.4659  & 1989.754     \\ \hline
-                                                &                  & 5             &                              &                         \\ \hline
-                                                &                  & 10             &                              &                         \\ \hline
-                                                &                  & 20             &                              &                         \\ \hline
-                                                &                  & 40             &                              &                         \\ \hline
 
-\end{tabular}
+\begin{table}[]
+    \centering
+    \begin{tabular}{||c|c|c|c|c||}
+        \hline
+        \textbf{Fichero Configuración} & \textbf{Generaciones} & \textbf{DIM} & \textbf{Tiempo de ejecución} & \textbf{Mejor fitness} \\ \hline
+        Config File 1   & 30    & 2   & 5.1160  & 2039.487   \\ \hline
+        Config File 2   & 41    & 3   & 5.4659  & 1989.754   \\ \hline
+        Config File 3   & 32    & 5   & 5.1378  & 2068.954   \\ \hline
+        Config File 4   & 42    & 10  & 4.9277  & 1971.862   \\ \hline
+        Config File 5   & 46    & 20  & 4.7593  & 2059.756   \\ \hline
+        Config File 6   & 50    & 40  & 5.9441  & 2123.195   \\ \hline
+    \end{tabular}
+    \caption{Resultados exploración inicial}
+    \label{tab:fitness_variation}
+\end{table}
+
+
+Para un tamaño de población 100 la mejor dimensión es la 4. Sin embargo obsevando la Figura \ref{fig:box_plots} se puede ver que se trata de
+un caso atípico, por lo que no podemos concluir con precisión de que sea la mejor configuración. De la figura también se puede extraer que 
+los valores de la función objetivo apenas varían si variamos la dimensión del cromosoma, en todos los casos tienen una mediana parecida.
+
+\begin{figure}[]
+	\centering	
+	\includegraphics[scale=0.4]{figuras/config_file_1-6_Rastrigin_box_plots.png}
+	\caption{ Variación del valor del fitness }
+    \label{fig:box_plots}
+\end{figure}
+
+Esta exploración no ha dado mucha información. En las siguientes secciones se le dará un enfoque diferente. Primero se buscará un valor de
+tamaño de población base, que luego variará proporcionalmente con la dimensión.
 
 
 \section{Análisis de las soluciones}
