@@ -6,19 +6,22 @@ A principios de este año leí el conocido libro de Aldous Huxley: Un mundo feli
 distopía que describe el desarrollo en tecnología reproductiva, cultivos humanos e hipnopedia y el manejo de las
 emociones por medio de drogas. La población se ordena en \textbf{castas}, asignadas desde el nacimiento, donde cada uno
 sabe y acepta su lugar en la sociedad. La guerra y la pobreza han sido erradicadas, y todos son permanentemente
-felices.
+felices. Se trata de un \"mundo óptimo\", cuya optimización está basada en la población y en el equilibrio que crea
+la división en castas, no en un único individuo 
 
 Cuando hablamos de algoritmos evolutivos nuestro objetivo es alcanzar la solución óptima de un problema, y este libro describe el 
-proceso mediante el cual han alcanzado la raza humana perfecta. Por tanto el objetivo final de este trabajo es desarrollar
-un algoritmo evolutivo basándonos en el proceso de fecundación del libro y comparar su comportamiento con otros algoritmos. Además
-investiga cómo la división en castas afecta la diversidad en la población.
+proceso mediante el cual han alcanzado la raza humana perfecta. Por tanto se quiere desarrollar un algoritmo evolutivo basado en 
+el proceso de fecundación del libro y comparar su comportamiento con otros algoritmos. Además investigar cómo la división en castas afecta 
+la diversidad en la población.
 
 \section{Conceptos generales}
 
-En el libro se describe cómo se alcanza esta raza humana perfecta mediante una \"cadena de montaje\", con
-varias fases. Esto lo reflejaremos mediante un algoritmo evolutivo generacional con los operadores de selección, cruce, mutación
-y reemplazamiento. El proceso comienza en la \textbf{\textit{Sala de Fecundación}}, aquí se crean los óvulos y se fecundan. Una
-vez \textit{fecundados} los óvulos pasan a las incubadoras, donde se decide la \textit{casta} a la que pertenecerá cada individuo:
+El libro describe cómo se alcanza esta raza humana perfecta mediante una \"cadena de montaje\", con varias fases. Esto lo reflejaremos mediante 
+un algoritmo evolutivo generacional con los operadores de selección, cruce, mutación y reemplazamiento. El proceso comienza en la \textbf{\textit{Sala de Fecundación}}, 
+aquí se crean los óvulos y se fecundan. Una vez \textit{fecundados} los óvulos pasan a las incubadoras, donde se decide la \textit{casta} a la que pertenecerá cada individuo. Huxley
+describe como a los Alfas y los Betas se les suministra una gran cantidad de nutrientes y hormonas durante la incubación. Mientras que a las castas bajas, Gamma, Delta y
+Epsilon son privados de estos elementos necesarios para el desarrollo. Para imitar esta \"dalta de nutrientes\", en el algoritmo a desarrollar privaremos a las castas bajas de
+operadores, sólo mutarán. Las castas, se implementarán de la siguiente manera: 
 
 \begin{itemize}
     \item \textbf{Alphas}:
@@ -31,7 +34,7 @@ vez \textit{fecundados} los óvulos pasan a las incubadoras, donde se decide la 
         \begin{itemize}
             \item Libro: son menos inteligentes que los anteriores y su función principal se reduce a tareas
             administrativas.
-            \item  Implementación: el cruce sólo se realiza con individuos Alpha
+            \item  Implementación: el cruce sólo se realiza con individuos Alpha.
         \end{itemize}
     \item \textbf{Gammas}: 
         \begin{itemize}
@@ -56,7 +59,8 @@ Con esta estructura en mente la metaheurística se divide en las siguientes fase
     ha mencionado.
 \end{itemize}
 
-El tamaño de la población descenderá cuanto más alta sea la casta.
+Por último, el libro describe que las castas bajas se reproducen mediante el proceso de \textit{Bokanovsky}, donde un embrión, que normalmente se desarrolla hasta convertirse
+en un adulto, se convierte en 96 gemelos idénticos. Esto en el algoritmo se reflejará en el tamaño de la población, que descenderá cuanto más alta sea la casta.
 
 
 Este proyecto es software libre, y está liberado con la licencia \cite{gplv3}.
