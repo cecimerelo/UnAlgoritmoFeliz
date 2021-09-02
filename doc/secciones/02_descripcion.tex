@@ -1,12 +1,23 @@
-\chapter{Descripción Del problema}
+\chapter{Descripción Del Problema}
 
-Actualmente las ramas de la Ciencia de la computación y la Ingeniería del Software se encuentran muy separadas. A la
-hora de desarrollar un algoritmo no se priorizan conceptos como arquitectura limpia \cite{cleanArquitecture2017} o si 
-sigue estándares de código \cite{cleanCode2008}. Con este trabajo se quiere desarrollar un algoritmo que rompa con esta idea. 
-Un algoritmo que no dependa de los datos de entrada.
+En 2019, para la asignatura de metaheurísticas de la Universidad de Granada se me propuso inventarme una metaheuristica. En
+ese momento me acababa de leer el libro "Un Munfo feliz" de Aldous Huxley, así que decidí adaptar el proceso de creación 
+de humanos que decribía el libro a un algoritmo genético. A lo largo del desarrollo se me presentaron varios problemas. El \textit{primero} fue
+la planificación y el desarrollo del algoritmo. Cuando consideré que había terminado el desarrollo no lo había ejecutado ni una vez. El
+\textit{segundo problema} fue el lenguage escogido, lo desarrollé en Python, un lenguage caracterizado por su fácil sintaxis pero su deficiencia de
+velocidad. Cada ejecución del problema llevaba horas, por lo que la experimentación que realice fue bastante pobre. Con esto llegamos
+al \textit{tercer problema}: la optimización de los parámetros. En este trabajo se quieren abordar estos 3 problemas. 
 
-El objetivo sería, por tanto, desarrollar una Metaheurística basada en el libro de Un mundo feliz de Aldous
-Huxley pero que además cumpla con el modelo de "Software as a Service" o Software como Servicio \cite{SaS}.
+A la hora del desarrollo se priorizarán conceptos como arquitectura limpia \cite{cleanArquitecture2017} y la limpieza del
+código, así como el desarrollo basado en tests. Para asegurar que una vez tengamos el algoritmo completo está cubierto de tests y, por tanto, sabemos que funciona. Además
+se seguirá el método Kanban, es decir, el proceso de desarollo se realizará en iteraciones pequeás, que permitirán tener un algoritmo que se pueda probar
+al final de cada una. 
+
+Esta vez el código está escrito en Julia, un lenguage de programación multiparadigma de tipado dinámico. Orientado a la computación técnica y 
+científica. La rapidez fue uno de los principales objetivos a la de la creación del lenaguage. Julia es es miembro de el \"Petaflop Club\", que incluye 
+aquellos lenguages que superan 1 petaflop/segundo como rendimiento pico. 
+
+El análisis de el algoritmo y su comportamiento será clave en el trabajo, se quiere ver cómo la división en castas afecta a la diversidad.
 
 \section{Naturaleza del algoritmo}
 
@@ -20,6 +31,3 @@ Para alcanzar la solución a un problema se parte de un conjunto inicial de indi
 generado de manera aleatoria. Cada uno de estos individuos representa una posible solución al problema. Estos individuos
 evolucionarán siguiendo el proceso propuesto en el libro de Aldous Huxley, y se adaptarán en mayor o menor medida,
 tras el paso de cada generación, a la solución requerida.
-
-
-
