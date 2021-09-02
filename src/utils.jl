@@ -81,7 +81,7 @@ function build_population_model(config_file, fitness_function)
 end
 
 function write_results_to_file(config_file, fitness_function, population)
-    outcome_file_name = "$(config_file)_$(fitness_function)"
+    outcome_file_name = "$(config_file)_$(fitness_function.fitness_function)"
     outcome_path = "./data/Outcomes/$(outcome_file_name)"
     time = Dates.format(now(), "HH:MM:SS")
     name = "$(outcome_path)_$(time).csv"
@@ -92,7 +92,7 @@ end
 
 function build_results_plot(population, config_file, fitness_function)
     time = Dates.format(now(), "HH:MM:SS")
-    outcome_file_name = "$(config_file)_$(fitness_function)"
+    outcome_file_name = "$(config_file)_$(fitness_function.fitness_function)"
     p = Gadfly.plot(
         population, 
         x=:Generations, y=:F_Values, 
