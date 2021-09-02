@@ -108,6 +108,31 @@ Esta exploración no ha dado mucha información. En las siguientes secciones se 
 tamaño de población base, que luego variará proporcionalmente con la dimensión.
 
 
+\section{Exploración población inicial base}
+
+El objetivo de esta sección es obtener una población inicial base para las próximas exploraciones. Dejaremos fija la dimensión del cromosoma,
+será tamaño 2. Se ha escogido esta dimensión porque en la Figura \ref{fig:box_plots} es la que tiene menor mediana.
+
+
+
+
+\begin{table}[]
+    \centering
+    \begin{tabular}{||c|c|c|c|c||}
+        \hline
+        \textbf{Fichero Configuración} & \textbf{Generaciones} & \textbf{Tamaño de la población} & \textbf{Mejor fitness} \\ \hline
+        Config File 1   & 30    & 5.1160  & 2039.487   \\ \hline
+        Config File 7   & 41    & 5.4659  & 1989.754   \\ \hline
+        Config File 8   & 32    & 5.1378  & 2068.954   \\ \hline
+        Config File 9   & 42    & 4.9277  & 1971.862   \\ \hline
+        Config File 10   & 46    & 4.7593  & 2059.756   \\ \hline
+    \end{tabular}
+    \caption{Resultados exploración inicial}
+    \label{tab:base_population}
+\end{table}
+
+
+
 \section{Análisis de las soluciones}
 
 - en que casos da mejor resultado y por qué, comparar con hipótesis inicial

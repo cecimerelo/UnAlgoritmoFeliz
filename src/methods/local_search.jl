@@ -13,7 +13,7 @@ function local_search(offspring, population_model, caste::GAMMA)
         mutated_offspring = mutation_operator(final_chromosome, population_model.config_parameters, caste)
         new_embryo = from_genes_to_embryo(mutated_offspring, population_model)
         
-        if new_embryo.f_value > f_value
+        if new_embryo.f_value >= f_value || new_embryo.f_value <= population_model.fitness_function.f_opt
             improved = false
         end
 

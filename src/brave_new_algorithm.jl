@@ -36,7 +36,7 @@ function brave_new_algorithm(population_model::PopulationModel)
         new_embryos_population = [from_genes_to_embryo(chromosome, population_model) for chromosome in new_chromosomes]
         new_best_element = best_element_of_population(new_embryos_population)
 
-        if new_best_element.f_value > best_element.f_value
+        if new_best_element.f_value >= best_element.f_value
             generations_with_the_same_best_element = generations_with_the_same_best_element + 1
             @warn "Best element has not changed"
         else
