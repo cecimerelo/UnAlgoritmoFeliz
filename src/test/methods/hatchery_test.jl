@@ -16,6 +16,7 @@ function run_hatchery(config_file_path)
     fitness_function = BlackBoxOptimizationBenchmarking.F1
     range = (-5.12, 5.12)
     minimum_comparator = comparator(element, fitness_function) = element >= fitness_function.f_opt
+    fitness_function = FitnessFunction(BlackBoxOptimizationBenchmarking.F1, 0)
     population_model = PopulationModel(config_parameters_entity, fitness_function, range, minimum_comparator)
     embryos = [
         fertilising_room(population_model)
@@ -49,6 +50,7 @@ end
         fitness_function = BlackBoxOptimizationBenchmarking.F1
         range = (-5.12, 5.12)
         minimum_comparator = comparator(element, fitness_function) = element >= fitness_function.f_opt
+        fitness_function = FitnessFunction(BlackBoxOptimizationBenchmarking.F1, 0)
         population_model = PopulationModel(config_parameters_entity, fitness_function, range, minimum_comparator)
         embryos = [
             fertilising_room(population_model)

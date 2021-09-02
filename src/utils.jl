@@ -46,6 +46,7 @@ function read_parameters_file(file_path::String)
 end
 
 function write_entry_to_summary(
+        evaluations,
         time,
         outcome_file_name,
         fitness_function,
@@ -57,6 +58,7 @@ function write_entry_to_summary(
     summary_df = CSV.File(summary_path) |> DataFrame
     df_line = DataFrame(
         TIME = time,
+        F_EVALUATIONS = evaluations,
         FUNCTION = "$(fitness_function)", 
         CONFIG_FILE_PATH = config_file,
         OUTCOME_FILE = outcome_file_name,
@@ -74,7 +76,7 @@ function build_population_model(config_file, fitness_function)
     config_file_path = "./data/Config Files/$(config_file).json"
     config_parameters_entity = read_parameters_file(config_file_path)
     minimum_comparator = comparator(element, fitness_function) = element >= fitness_function.f_opt
-    @info "Config file -> $(config_file_path), Fitness Funcion -> $(fitness_function), Range -> $(range), f_opt -> $(fitness_function.f_opt)"
+    @info "Config file -> $(config_file_path), Fitness Funcion -> $(fitness_function), Range -> $(range), f_opt -> $(fitness_function.fitness_function.f_opt)"
     return PopulationModel(config_parameters_entity, fitness_function, range, minimum_comparator)
 end
 

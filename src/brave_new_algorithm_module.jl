@@ -6,7 +6,8 @@ module BraveNewAlgorithmModule
         GAMMA, 
         DELTA, 
         EPSILON, 
-        ConfigurationParametersEntity, 
+        ConfigurationParametersEntity,
+        FitnessFunction, 
         PopulationModel, 
         Embryo, 
         Individual

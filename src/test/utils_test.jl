@@ -22,6 +22,7 @@ range = (-5, 5)
 config_file_path = "./data/Config Files/$(config_file).json"
 config_parameters_entity = read_parameters_file(config_file)
 minimum_comparator = comparator(element, fitness_function) = element >= fitness_function.f_opt
+fitness_function = FitnessFunction(BlackBoxOptimizationBenchmarking.F1, 0)
 population_model = PopulationModel(config_parameters_entity, fitness_function, range, minimum_comparator)
 
 embryos = [

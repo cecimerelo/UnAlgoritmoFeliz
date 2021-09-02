@@ -8,9 +8,14 @@ struct ConfigurationParametersEntity
     mutation_rate::Dict{String, Int}
 end
 
+mutable struct FitnessFunction
+    fitness_function::BBOBFunction
+    calls_counter::Int64
+end
+
 struct PopulationModel
     config_parameters::ConfigurationParametersEntity
-    fitness_function::BBOBFunction
+    fitness_function::FitnessFunction
     range::Tuple{Float64,Float64}
     comparator::Function
 end
