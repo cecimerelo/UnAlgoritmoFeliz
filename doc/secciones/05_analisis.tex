@@ -1,22 +1,22 @@
 \chapter{Análisis del problema}
 
-Con esta investigación también se espera obtemer
+Con esta investigación también se espera obtener
 un conocimiento más profundo de las dinámicas subyacentes de nuestro algoritmo. 
 
 \section{Diversidad}
 
-Mantener la diversidad es crucial para evitar una convergencia prematura hacía un optimo local. Rosca \cite{Rosca} concluyó que las poblaciones parecían quedar estancadas
-en un óptimo local cuando la entropía no cambiaba o decrecía monótonamente en las genereaciones sucesivas. Uno de los objectivos de este trabajo es investigar como la 
+Mantener la diversidad es crucial para evitar una convergencia prematura hacía un óptimo local. Rosca \cite{Rosca} concluyó que las poblaciones parecían quedar estancadas
+en un óptimo local cuando la entropía no cambiaba o decrecía monótonamente en las generaciones sucesivas. Uno de los objetivos de este trabajo es investigar como la 
 división en castas afecta a la diversidad. En programación genética, la diversidad se refiere a diferencias estructurales, como por ejemplo la cantidad de genotipos 
 distintos en la población o la singularidad de valores del fitness \cite{genetic}. Hay diferentes medidas para calcularla, entre ellas: diversidad genotípica, 
-diversidad fenotípica, entropía, pseudo isomorfismo, distancias de edición, etc. De entre ellas calularemos la \textbf{entropía}, que describe como se distribuye la
-población entorno a los diferentes valores del fitness, y la \textbf{distancia de edición}, en la que cada individuo se mide contra el mejor individuo encontrado hasta el 
-momento. Se han elegido porque según Burke \cite{diversity} la entropía y la distancia de edición muestran una gran correlación con el aumento y decremento de el valor 
+diversidad fenotípica, entropía, pseudo isomorfismo, distancias de edición, etc. De entre ellas calcularemos la \textbf{entropía}, que describe como se distribuye la
+población en torno a los diferentes valores del fitness, y la \textbf{distancia de edición}, en la que cada individuo se mide contra el mejor individuo encontrado hasta el 
+momento. Se han elegido porque según Burke \cite{diversity} la entropía y la distancia de edición muestran una gran correlación con el aumento y decremento del valor 
 del fitness. Una vez calculadas, se investigará la relación entre el fitness y la  diversidad \cite{diversity}. 
 
 \subsection{Experimentos}
 
-Para realizar estas pruebas usaremos la configuración de la Tabla \ref{tab:diversity_config}, como función a minimizar la función Rastrigin\cite{BBOB}, y la distancia Euclidea.
+Para realizar estas pruebas usaremos la configuración de la Tabla \ref{tab:diversity_config}, como función a minimizar la función Rastrigin\cite{BBOB}, y la distancia Euclídea.
 
 \begin{table}[]
     \centering
@@ -52,7 +52,7 @@ diversidad. Para apoyar esta idea tenemos las Figuras \ref{fig:best_f_value} y \
 La Figura \ref{fig:best_f_value} muestra la diversidad de la ejecución que resulta en un mejor fitness, de la generación 20 a la 30 es donde hay una 
 disminución mayor de la entropía lo que provocará el estancamiento en un óptimo local. En la segunda imagen se ve como la entropía va disminuyendo, sin 
 embargo tiene picos, lo que provoca que el algoritmo aguante 30 generaciones más que la anterior, aún sin llegar a superar el fitness de la población anterior. En
-ambas imágenes se ve como la distancia de edición refleja completamente la tendencia del fitness. Además, entorno a la generación 20 dicha distancia se mantiene
+ambas imágenes se ve como la distancia de edición refleja completamente la tendencia del fitness. Además, en torno a la generación 20, dicha distancia se mantiene
 en valores parecidos, resultando en una diversidad más pobre.
 
 \begin{figure}[]
@@ -71,7 +71,7 @@ en valores parecidos, resultando en una diversidad más pobre.
 
 \section{Exploración inicial}
 
-El objetivo de exta exploración escoger los parámetros : dimensión del cromosoma (\textit{DIM}) y tamaño de población. Primero se varia la dimensión
+El objetivo de extra exploración escoger los parámetros: dimensión del cromosoma (\textit{DIM}) y tamaño de población. Primero se varía la dimensión
 del cromosoma y la población se mantiene fija a 100. Se ejecutará el algoritmo 15 veces por cada dimensión del cromosoma, y se cogerá el que 
 tenga mejor resultado para la comparación. Los resultados de esta primera exploración se encuentran en la Tabla \ref{tab:fitness_variation}. 
 
@@ -93,7 +93,7 @@ tenga mejor resultado para la comparación. Los resultados de esta primera explo
 \end{table}
 
 
-Para un tamaño de población 100 la mejor dimensión es la 4. Sin embargo obsevando la Figura \ref{fig:box_plots} se puede ver que se trata de
+Para un tamaño de población 100 la mejor dimensión es la 4. Sin embargo observando la Figura \ref{fig:box_plots} se puede ver que se trata de
 un caso atípico, por lo que no podemos concluir con precisión de que sea la mejor configuración. De la figura también se puede extraer que 
 los valores de la función objetivo apenas varían si variamos la dimensión del cromosoma, en todos los casos tienen una mediana parecida.
 
@@ -136,8 +136,7 @@ será tamaño 2. Se ha escogido esta dimensión porque en la Figura \ref{fig:box
 \section{Análisis de las soluciones}
 
 - en que casos da mejor resultado y por qué, comparar con hipótesis inicial
-- Por qué da mejores resultados con una funcion o con otra o con respecto al algoritmo genetico
-
+- Por qué da mejores resultados con una función o con otra o con respecto al algoritmo genético
 
 \subsection{Con Búsqueda Local}
 
