@@ -18,7 +18,7 @@ result = @timed brave_new_algorithm(population_model)
 last_generation, population = result[1][1], result[1][2]
 
 outcome_file_name = write_results_to_file(config_file, fitness_function, population)
-build_results_plot(population, config_file, fitness_function)
+# build_results_plot(population, config_file, fitness_function)
 write_entry_to_summary(
     fitness_function.calls_counter,
     result[2],

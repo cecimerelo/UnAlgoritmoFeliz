@@ -14,8 +14,8 @@ p = Gadfly.plot(
     Geom.boxplot,
     Guide.xlabel("Fichero de Configuración"),
     Guide.ylabel("Valor del Fitness"),
-    Guide.title("Variación del valor del fitness según la configuración")
+    Guide.title("Variación del fitness, tamaño de población")
 )
 
-img = PNG("./data/Plots/config_file_1-6_Rastrigin_box_plots.png", 7inch, 7inch)
+img = PNG("./data/Plots/Rastrigin_box_plots_p_size.png", 7inch, 7inch)
 draw(img, p);
