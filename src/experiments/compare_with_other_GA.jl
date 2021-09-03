@@ -1,31 +1,17 @@
-# using Pkg
-# Pkg.activate(".")
+using Pkg
+Pkg.activate(".")
 
+include("../brave_new_algorithm_module.jl")
+using .BraveNewAlgorithmModule
 using GeneticAlgorithms
+using BlackBoxOptimizationBenchmarking
 
-struct EqualityMonster <: GeneticAlgorithms.Entity
-    abcde::Array
-    fitness
+include("equalityga.jl")
+include("../utils.jl")
 
-    EqualityMonster() = new(Array(Int, 5), nothing)
-    EqualityMonster(abcde) = new(abcde, nothing)
-end
+config_file = "config_file_5"
+fitness_function = FitnessFunction(BlackBoxOptimizationBenchmarking.F3, 0)
+population_model = build_population_model(config_file, fitness_function)
 
-function create_entity(num)
-    # for simplicity sake, let's limit the values for abcde to be integers in [-42, 42]
-    EqualityMonster(rand(Int, 5) % 43)
-end
-
-function fitness(ent)
-    # we want the expression `a + 2b + 3c + 4d + 5e - 42`
-    # to be as close to 0 as possible
-    score = ent.abcde[1] +
-            2 * ent.abcde[2] +
-            3 * ent.abcde[3] +
-            4 * ent.abcde[4] +
-            5 * ent.abcde[5]
-
-    abs(score - 42)
-end
-
-
+model = runga(equalityga; initial_pop_size = population_model.config_parameters.population_size)
+population(model)
