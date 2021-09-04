@@ -1,31 +1,25 @@
 \chapter{Estado del arte}
 
-«estado del arte» es una clasificación y evaluación de lo que los académicos acreditados y de los investigadores han escrito sobre un tema.
+En los últimos años ha sido escrita mucha literatura acerca de algoritmos bio-inspirados. Estos algoritmos imitan procesos biológicos o estructuras presentes
+en la naturaleza, y se aplican para resolver problemas de optimización. Por ejemplo, la \textbf{Optimización por Nube de Partículas} o PSO (\textit{Particle Swarm Optimization})
+que imita el comportamiento de las partículas en la naturaleza, o el \textbf{Algoritmo colonia de abejas} basado en el comportamiento de los enjambres de abejas
+para encontrar la miel. Esta gran cantidad de metaheurísticas basadas en metáforas ha sido criticada por algunos autores como K. Sörensen\cite{https://doi.org/10.1111/itor.12001},
+que considera que esta línea de investigación amenazada con separar el ámbito de las metaheurísticas del rigor científico. Además estos algoritmos suelen usar terminología inspirada por el dominio,
+lo que conduce a nuevos términos que describen conceptos que ya estaban establecidos \cite{mitigating_metaphors}. Lo que hace que sea difícil entender como funcionan estos algoritmos
+y la relación que tienen con otras metaheurísticas. Autores como Swan \cite{metaheuristics} establecen para que la investigación en el campo de las metaheurísticas evite la fragmentación y 
+la falta de reproductibilidad, se necesita una infraestructura científica y computacional fuerte, donde diferentes enfoques puedan ser desarrollados, analizados y comparados. El algoritmo de este 
+evita caer en el uso de metáforas para explicar su comportamiento. Se inspira en ellas para crear una estructura de datos que ayude a mantener la diversidad a lo largo de toda la ejecución.
 
-Frases que me han molado
-\cite{arXiv:2011.09821} :
+Otro de los problemas presentes en el campo de las metaheurísticas es la falta de reutilización \cite{metaheuristics}. Se trata de una falta a nivel de implementación, ya que hay una
+tendencia a reimplementar los algoritmos desde 0, impidiendo la reproducibilidad. El progreso científico en cualquier disciplina requiere de la habilidad de construir sobre lo que
+otros ya han hecho para poder más lejos. Por ello el algoritmo desarrollado ha sido publicado, además se ha hecho de manera que se pueda usar para cualquier de problema de optimización.
+Para ayudar a la reutilización es muy importante que el código sea limpio, mantenible y haya sido testeado, por eso se ha decidido seguir los estándares de arquitectura y código marcados 
+por Robert C. Martin [\cite{cleanArquitecture2017}, \cite{cleanCode2008}].
 
-- Las metaheuristicas son uno de los grandes triunfos en la investigacion sobre optimizacion. Sin embargo, para que la investigacion
-en el campo de las metaheuristicas evite la fragmentacion y la falta de reproductibilidad, hay una necesidad apremiante para
-una infraestructura científica y computacional fuerte, donde diferentes enfoques puedan ser desarrollados, analizados y
-comparados.
-
-- A metaheuristic is an iterative master process that guides and modifies the operations if subordinate heuristics to
-efficiently produce high-quality solutions. At each iteration, it manipulates either a complete(or partial) single solution
-or else a collection of such soutions.
-
-- One of the major advantages of metaheuristics is that they are abstract search methods [97]: the underlying search logic can be
-applied to any problem which can be decomposed into a few elementary aspects, namely solution representation,
-solution quality evaluation and some notion of locality.
-
-- Despite the significant progress in metaheuristic optimization research, it is increasingly acknowledged within
-the scientific community that the field suffers from a duplication of effort and siloing of research between papers,
-groups, and software frameworks. This lack of re-use is evident at both conceptual and implementation levels:
- - Implementation: despite past efforts in developing software frameworks, there is a tendency to re-implement
-metaheuristics from scratch, hindering reproducibility and replicability.
-
--  in particular, it is extremely difficult to combine heuristics from different libraries or incorporate domain-specific
-knowledge in a general manner, which has hindered the creation of easily testable and deployable meta- heuristic pipelines.
-
-- Scientific progress in any discipline requires ready determination of the nature and merits of previous contributions,
-and the ability to build on the work of others to make further progress.
+Los lenguajes que se suelen usar para programación genética son: Matlab, C++, Python o Java \cite{languages}. Siendo Python el más utilizado debido a la cantidad de librerías disponibles, 
+con algoritmos genéticos listos para usar, o la facilidad para extraer gráficas de los resultados. En general, a la hora de lanzarte a programar un proyecto relacionado
+con Aprendizaje Automático o Inteligencia Artificial, es el primer lenguaje que se viene a la cabeza. Sin embargo, en la primera
+implementación de este algoritmo se usó Python \cite{merelo_molina_2021} y las prestaciones no fueron muy altas. En el caso de
+Julia, no hay tantos paquetes desarrollados, sin embargo su popularidad está aumentando en el mundo de la programación
+científica. Una de las principales razones es su unión en 2017 al ``Club Petaflop``, que confirma el buen rendimiento
+que puede llegar a ofrecer.  
