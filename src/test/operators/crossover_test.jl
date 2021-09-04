@@ -1,4 +1,4 @@
-using .BraveNewAlgorithmModule
+using .BraveNewAlgorithm
 using BlackBoxOptimizationBenchmarking
 
 include("../../utils.jl")

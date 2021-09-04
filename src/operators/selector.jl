@@ -1,4 +1,4 @@
-using .BraveNewAlgorithmModule
+using .BraveNewAlgorithm
 using Random
 using StatsBase
 using Shuffle

@@ -1,4 +1,4 @@
-using .BraveNewAlgorithmModule
+using .BraveNewAlgorithm
 
 include("../../utils.jl")
 include("../../operators/crossover.jl")

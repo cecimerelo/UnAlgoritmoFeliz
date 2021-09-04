@@ -1,4 +1,4 @@
-using .BraveNewAlgorithmModule
+using .BraveNewAlgorithm
 
 include("../../methods/hatchery.jl")
 include("../../brave_new_algorithm.jl")

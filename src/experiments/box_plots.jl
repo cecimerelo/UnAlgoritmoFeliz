@@ -17,5 +17,5 @@ p = Gadfly.plot(
     Guide.title("Variación del fitness, tamaño de población")
 )
 
-img = PNG("./data/Plots/Rastrigin_box_plots_p_size.png", 7inch, 7inch)
+img = PNG("./data/Plots/Rastrigin_box_plots_chrom_dim.png", 7inch, 7inch)
 draw(img, p);

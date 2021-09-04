@@ -1,5 +1,5 @@
-module BraveNewAlgorithmModule
-    export 
+module BraveNewAlgorithm
+export 
         Caste, 
         ALPHA, 
         BETA, 
@@ -17,4 +17,4 @@ module BraveNewAlgorithmModule
     include("individual/castes.jl")
     include("individual/population_model.jl")
     include("brave_new_algorithm.jl")
-end
+end # module

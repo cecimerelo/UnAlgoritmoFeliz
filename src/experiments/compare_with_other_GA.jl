@@ -1,8 +1,8 @@
 using Pkg
 Pkg.activate(".")
 
-include("../BraveNewAlgorithmModule.jl")
-using .BraveNewAlgorithmModule
+include("../BraveNewAlgorithm.jl")
+using .BraveNewAlgorithm
 using GeneticAlgorithms
 using BlackBoxOptimizationBenchmarking
 

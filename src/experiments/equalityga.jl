@@ -5,8 +5,8 @@ import Base.isless
 using GeneticAlgorithms, BlackBoxOptimizationBenchmarking
 
 using Distributions
-include("../BraveNewAlgorithmModule.jl")
-using .BraveNewAlgorithmModule
+include("../BraveNewAlgorithm.jl")
+using .BraveNewAlgorithm
 include("../utils.jl")
 
 config_file = "config_file_5"

@@ -1,4 +1,4 @@
-using .BraveNewAlgorithmModule
+using .BraveNewAlgorithm
 
 include("../../commons.jl")
 include("../../operators/selector.jl")
