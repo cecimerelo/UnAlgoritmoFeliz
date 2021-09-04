@@ -1,7 +1,7 @@
 using Pkg
 Pkg.activate(".")
 
-include("../src/brave_new_algorithm_module.jl")
+include("../src/BraveNewAlgorithmModule.jl")
 
 include("test/methods/evolution_test.jl")
 include("test/methods/from_genes_to_embryo_test.jl")

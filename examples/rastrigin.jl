@@ -1,7 +1,7 @@
 using Pkg
 Pkg.activate(".")
 
-include("../src/brave_new_algorithm_module.jl")
+include("../src/BraveNewAlgorithmModule.jl")
 using .BraveNewAlgorithmModule
 
 include("../src/utils.jl")

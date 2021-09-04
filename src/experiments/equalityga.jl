@@ -5,7 +5,7 @@ import Base.isless
 using GeneticAlgorithms, BlackBoxOptimizationBenchmarking
 
 using Distributions
-include("../brave_new_algorithm_module.jl")
+include("../BraveNewAlgorithmModule.jl")
 using .BraveNewAlgorithmModule
 include("../utils.jl")
 
