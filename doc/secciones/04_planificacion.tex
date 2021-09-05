@@ -1,10 +1,95 @@
-\chapter{Planificación}
+\chapter{Planificación y metodología utilizada}
+
+En este capítulo se comentará la planificación del proyecto y la metodología usada
 
 \section{Metodología utilizada}
 
 Un requisito fundamental a la hora de implementar es usar una metodología que garantice la evolución del código. Por eso se ha
-elegido usar la metodología ágil Kanban. En cada iteración tendremos parte de la funcionalidad que puede ser ejecutada.
+elegido usar el desarrollo ágil, en específico la metodología Kanban. Este método tiene 4 principios básicos \cite{kanban}:
 
-\section{Temporización}
+\begin{itemize}
+    \item Empezar con lo que se hace ahora: no es necesario realizar cambios drásticos para empezar a utilizarlo
+    \item Comprometerse a buscar e implementar cambios incrementales y evolutivos: se trata de definir las tareas
+    pensando en cuál sería el mínimo esfuerzo que se puede realizar en la tarea, pero que aun así aporte valor al producto final.
+    Por lo que trata de pequeños y continuos cambios incrementales y evolutivos del proceso actual.
+    \item Lo siguiente a realizar se decide del backlog (tareas pendientes acumuladas), pudiéndose priorizar aquellas 
+    tareas entrantes según las necesidades del momento.
+    \item  En el Kanban no se premia la rapidez, sino la calidad del producto final.
+\end{itemize}
 
-\section{Seguimiento del desarrollo}
+
+Se ha decidido usar esta metodología, ya que es muy flexible a los cambios que se produzcan en la definición del proyecto. Además
+asegura la calidad final del código, al ir haciendo pequeños incrementos aportan funcionalidad, te aseguras de que el
+producto final tiene todas las piezas funcionando.
+
+En cuanto al desarrollo del código se ha elegido la metodología de desarrollo guiado por pruebas o \emph{TDD}. Este método
+de desarrollo encaja muy bien con Kanban, porque para cada tarea que se finalice tienes una funcionalidad completa y testeada. Por
+lo que la mantenibilidad del código aumenta. Además los tests ayudan mucho a las personas que usen la librería por
+primera vez, ya que se puede ir probando la funcionalidad fácilmente. Además a veces puede servir como documentación
+que en los tests se ve claramente los parámetros de entrada y de salida de la función. El TDD tiene consiste en:
+
+\begin{itemize}
+    \item \textit{Escritura del test} - escribir el test que cubra la funcionalidad que se va a desarrollar
+    \item \textit{Fallo del test} - dado que aún no hemos codificado esa funcionalidad, el test debe de fallar.
+    \item \textit{Escribir código para pasar el test} - escribir el mínimo código posible para que el test pase.
+    \item \textit{Refactorizar el código} - añadir lo necesario para seguir completando la funcionalidad.
+    \item \textit{Repetir} - los pasos anteriores hasta completar la funcionalidad.
+\end{itemize}
+
+- codigo abierto
+- CI 
+- MVPS operadores 
+
+
+\section{Herramientas de comunicación}
+
+Para llevar el desarrollo del proyecto se ha utilizado la plataforma GitHub, donde se encuentra todo lo 
+relacionado con el trabajo \cite{project_repository}. Esta plataforma posibilita un desarrollo cómodo gracias a la cantidad
+de herramientas que provee. Para las historias de usuario se han usado los \textit{issues}. Para tener una
+visión general del estado del proyecto se ha usado \textit{Projects}, que permite añadir columnas. Siguiendo el método Kanban, el
+tablero tiene 3 columnas, las tarea más prioritaria sería la que está más arriba a la derecha:
+
+\begin{itemize}
+    \item \emph{Product Backlog}: contiene todas las tareas que se quieren desarrollar, priorizadas de manera que la más urgente
+    se encuentre la primera en la columna.
+    \item \emph{In progress}: contiene todas las tareas que están abiertas en el momento. Siguiendo Kanban esta columna
+    debe tener siempre el mínimo de tareas posibles. La prioridad es siempre cerrar tareas antes de empezar una nueva.
+    \item \emph{Done}: contienen las tareas que ya se han finalizado
+\end{itemize}
+
+Cada tarea del \emph{backlog} tiene un \emph{pull request} enlazado, ya que cada tarea es un requisito del producto final. Todo
+esto se encuentra en un repositorio público. Cualquiera puede añadir nuevas tareas al proyecto y puede ver el progreso realizado en ellas.
+Facilita mucho la corrección al tutor, ya que puede comentar cualquier línea de código y crear una tarea pidiendo alguna
+modificación. Además Github se integra con Telegram a través de un bot, y por cada cambio que hace al proyecto se envía un mensaje
+a un grupo en el que estamos el tutor del trabajo y yo. Este mensaje contiene un enlace al cambio que se ha hecho. Así
+que es sencillo llevar un seguimiento exhaustivo de todo lo que pasa en el repositorio.
+
+\section{Casos de uso}
+
+En línea con el tercer objetivo de aplicar desarrollo ágil en la ciencia. El proyecto se ha desarrollado definiendo
+historias de usuario, definidas usando \emph{Desarrollo basado en el comportamiento} o BDD \cite{BDD}. Lo que 
+plantea BDD es definir un lenguaje común para todas las partes implicadas en un proyecto, y utilizar esto como parte inicial 
+del desarrollo y el testeo. Todas las historias están en el repositorio de Github del proyecto \cite{project_repository}.
+Las historias se pueden dividir en 2 grandes grupos o épicas: definir la funcionalidad básica y análisis de los resultados.
+
+En el caso de la funcionalidad básica se encuentran las siguientes historias de usuario, con el enlace al
+\emph{issue} y su correspondiente \emph{pull request}:
+
+\begin{enumerate}
+    \item \textbf{Sistema de entrada de la biblioteca}: Como desarrolladora quiero tener una forma de leer ficheros de configuración de forma que pueda
+    establecer los datos leídos como los parámetros iniciales del algoritmo. Los parámetros a definir por el usuario son: la dimensión del cromosoma, el tamaño de la población, 
+    condición de parada basado en el número máximo de generaciones que puede estar el algoritmo sin producir mejores soluciones, el porcentaje de la población que va a cada casta y 
+    el ratio de mutación que tendrán los individuos de cada casta.
+    \item \textbf{Función de fitness \cite{project_repository_8}}: Como desarrolladora quiero tener distintas funciones fitness disponibles de manera que pueda aplicarlas según 
+    el problema.
+    \item \textbf{Sala de fecundación \cite{project_repository_17}}: como desarrolladora quiero tener una sala de fecundación de manera que la población sea dividida en castas siguiendo los parámetros establecidos
+    en el fichero de configuración.
+    \item \textbf{Definir las castas como tipos \cite{project_repository_21}}: como desarrolladora quiero tener las castas definidas como tipos para poder explotar el \emph{dispatch} múltiple en los operadores de evolución.
+    \item \textbf{Operador de selección \cite{project_repository_18}}: como desarrolladora quiero tener un operador de selección de manera que los mejores individuos sean seleccionados para la reproducción.
+    \item \textbf{Operador de cruce \cite{project_repository_19}}: como desarrolladora quiero tener un operador de cruce de manera que pueda obtener un nuevo individuo dados dos padres.
+    \item \textbf{Operador de mutación \cite{project_repository_20}}: como desarrolladora quiero tener un operador de mutación, de manera que pueda mutar los genes de un cromosoma atendiendo al parámetro
+    \emph{``ratio de mutación``} dado por el fichero de configuración. 
+\end{enumerate}
+
+Para el análisis de los resultados, una vez definidos los datos que se quieren recoger en cada generación \cite{pull_17}, 
+se guardarán en ficheros que se leerán para imprimir las gráficas.

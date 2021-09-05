@@ -1,7 +1,8 @@
 \chapter{Estado del arte}
 
-En esta sección se analiza el estado de la investigación en los algoritmos de optimización bio-inspirados. Con respecto a librerías o \emph{frameworks} disponibles,
-además de la investigación y el estado actual de las metaheurísticas.
+En esta sección se analiza el estado de la investigación en los algoritmos de optimización bio-inspirados. Con respecto a 
+librerías o \emph{frameworks} disponibles, además de la investigación y el estado actual de las metaheurísticas. Se van a analizar
+estos conceptos, ya que se pretende establecer el punto de partida sobre el que se base este trabajo.
 
 \section{Algoritmos bio-inspirados}
 
@@ -9,14 +10,19 @@ Hay una evidencia clara en la creciente popularidad ganada por los algoritmos bi
 debe a la capacidad que tienen este tipo de algoritmos para aprender, adaptarse y dar buenas soluciones a problemas complejos que de otra manera se hubieran quedado sin
 resolver. Estos algoritmos imitan procesos biológicos o estructuras presentes en la naturaleza, y se aplican para resolver problemas de optimización. Por ejemplo, 
 la \textbf{Optimización por Nube de Partículas} o PSO (\textit{Particle Swarm Optimization}) que imita el comportamiento de las partículas en la naturaleza, o 
-el \textbf{Algoritmo colonia de abejas} basado en el comportamiento de los enjambres de abejas para encontrar la miel. Esta gran cantidad de metaheurísticas basadas en 
-metáforas ha sido criticada por algunos autores como K. Sörensen\cite{metaphor_exposed}, que considera que esta línea de investigación amenaza con separar el ámbito de 
-las metaheurísticas del rigor científico. En su paper \emph{Metaheuristics - the metaphor exposed} concluye que las metaheurísticas basadas en nuevas metáforas deberían 
-evitarse si no pueden demostrar una nueva aportación al campo. Además este tipo de algoritmos suelen usar terminología inspirada por el dominio, lo que conduce a nuevos 
-términos que describen conceptos que ya estaban establecidos  \cite{mitigating_metaphors}. Lo que hace que sea difícil entender como funcionan estos algoritmos y la relación 
-que tienen con otras metaheurísticas. Esta falta de universalidad que sobrepasa las metaheurísticas para cualquier tipo de problema de optimización proviene
-del conocido teorema de optimización \emph{``No Free Lunch''}, que demuestra que si un algoritmo se comporta bien en cierto tipo de problemas entonces pagará por eso
-con un peor rendimiento en el resto de problemas \cite{585893}. Autores como Swan \cite{metaheuristics} establecen  para que la investigación en el campo de las metaheurísticas evite la fragmentación y la falta de reproductibilidad, se 
+el \textbf{Algoritmo colonia de abejas} basado en el comportamiento de los enjambres de abejas para encontrar la miel. 
+
+Esta gran cantidad de metaheurísticas basadas en metáforas ha sido criticada por algunos autores como K. Sörensen\cite{metaphor_exposed}, 
+que considera que esta línea de investigación amenaza con separar el ámbito de las metaheurísticas del rigor científico. 
+En su paper \emph{Metaheuristics - the metaphor exposed} concluye que las metaheurísticas basadas en nuevas metáforas deberían 
+evitarse si no pueden demostrar una nueva aportación al campo. Además este tipo de algoritmos suelen usar terminología inspirada por el dominio, 
+lo que conduce a nuevos términos que describen conceptos que ya estaban establecidos \cite{mitigating_metaphors}. Lo que hace que sea difícil 
+entender como funcionan estos algoritmos y la relación que tienen con otras metaheurísticas. 
+
+La falta de universalidad que sobrepasa las metaheurísticas para cualquier tipo de problema de optimización proviene
+del conocido teorema de optimización \emph{``No Free Lunch''}, que demuestra que si un algoritmo se comporta bien en cierto tipo de 
+problemas entonces pagará por eso con un peor rendimiento en el resto de problemas \cite{585893}. Autores como 
+Swan \cite{metaheuristics} establecen que para que la investigación en el campo de las metaheurísticas evite la fragmentación y la falta de reproductibilidad, se 
 necesita una infraestructura científica y computacional fuerte, donde diferentes enfoques puedan ser desarrollados, analizados y comparados. 
 
 El algoritmo presentado en este trabajo evita caer en el uso de metáforas para explicar su comportamiento. Se inspira en ellas para crear una estructura de datos que ayude 
@@ -29,8 +35,11 @@ tendencia a re-implementar los algoritmos desde 0, impidiendo la reproducibilida
 otros ya han hecho para poder llegar más lejos. Por ello el algoritmo desarrollado ha sido publicado en un registro de paquetes, además se ha hecho de manera que se pueda usar para 
 cualquier de problema de optimización. 
 
-Para ayudar a la reutilización es muy importante que el código sea limpio, mantenible y haya sido testeado, por eso se ha decidido seguir los estándares de arquitectura y código marcados 
-por Robert C. Martin \cite{cleanArquitecture2017, cleanCode2008}.
+Normalmente en este campo, el código usado para realizar los experimentos descritos en la literatura no se suele describir el código usado. En los
+pocos casos en los que se adjunta código suele ser código sucio, o usa lenguajes privativos y los resultados se hacen en repositorios cerrados. 
+Mientras que la forma de implementar el código no es una prioridad en la programación científica, 
+en campos como el desarrollo web, seguir ciertos estándares como arquitectura limpia \cite{cleanArquitecture2017} y la 
+limpieza del código \cite{cleanCode2008}, así como el desarrollo basado en tests, es algo básico.
 
 \section{Lenguajes de programación en el ámbito científico}
 
@@ -54,8 +63,19 @@ A pesar de esto su popularidad está aumentando, una de las principales razones 
 
 \section{\textit{Frameworks} para algoritmos genéticos}
 
-Actualmente hay varios \emph{frameworks} disponibles en \emph{Julia} para programación de algoritmos evolutivos. Se va a mencionar brevemente su uso, además de por qué no
-se adaptan a las necesidades del trabajo. Lo que ha hecho necesario que se programe uno desde cero.
+Hay gran cantidad de \emph{framworks} disponibles para el desarrollo de algoritmos genéticos. En el caso de Python los más populares son:
+
+\begin{enumerate}
+    \item \emph{DEAP} \cite{deap}: permite desarrollar algoritmos genéticos (entre muchas utilidades más) en Python. Se define como un \emph{framework}
+    de computación evolutica para el prototipado y prueba rápida de ideas.
+    \item \emph{PyGAD} \cite{pygad}: es una librería de código abierto para la construcción de algoritmos genéticos y para la optimización de algoritmos
+    de aprendizaje automático. Contiene operadores de evolución ya definidos entre los que hay que elegir, no se puede definir uno propio.
+\end{enumerate}
+
+Las librerías mencionadas se adaptan muy bien al problema a afrontar, pero como ya se ha mencionado, no se va a usar Python para el desarrollo por su baja
+velocidad. Para el lenguaje \emph{Chapel} no se ha encontrado ninguna biblioteca popular que sea importante mencionar. Actualmente hay varios
+\emph{frameworks} disponibles en \emph{Julia} para programación de algoritmos evolutivos. Se va a mencionar brevemente su uso, además de por qué no
+se adaptan a las necesidades de este TFG.
 
 \begin{enumerate}
     \item \emph{Metaheuristics.jl} \cite{metaheuristics_jl}: Este paquete implementa metaheurísticas para la optimización global. Su objetivo es proporcionar metaheurísticas
@@ -73,25 +93,32 @@ se adaptan a las necesidades del trabajo. Lo que ha hecho necesario que se progr
     además de muchos tipos de modelos para diferentes tipos de problemas. A pesar de lo completo que es este \emph{framework}, no incluye soporte para algoritmos genéticos.
 \end{enumerate}
 
-\subsubsection{Comparación con \emph{GeneticAlgorithms.jl}}
+\subsection{Comparación con \emph{GeneticAlgorithms.jl}}
 
-Para comprobar que la metaheurística desarrollada tiene buenas prestaciones se va a usar el \emph{framework} \emph{GeneticAlgorithms.jl}. Aparentemente es el más sencillo de usar, 
-además puedes personalizar los operadores. El repositorio del proyecto lleva desde 2017 sin actualizarse, esto no debería ser un problema, pero como menciona Gmys \cite{comparative_study}
+Para establecer el estado del arte en velocidad y prestaciones del algoritmo y el lenguaje, vamos a probar
+el \emph{framework} \emph{GeneticAlgorithms.jl}. Se ha elegido esta librería porque te permite definir los operadores que se van a usar, además es la más sencilla de aprender,
+ya que está orientada únicamente al desarrollo de algoritmos genéticos. Se va a usar con los operadores implementados en el ejemplo definido por el autor. Los individuos 
+irán definidos por el cromosoma y el valor de la función del fitness. Pero previamente hay que instalarlo.
+
+El repositorio del proyecto lleva desde 2017 sin actualizarse, esto no debería ser un problema, pero como menciona Gmys \cite{comparative_study}
 en su trabajo, Julia es un lenguaje joven que ha tenido cambios grandes. En este repositorio encontramos uno de esos casos. Al intentar compilarlo la primera vez dio error, porque contiene
 palabras propias del lenguaje antiguas. Por ejemplo, antes para definir estructuras de datos se usaba la pabla \emph{type} y ahora se usa \emph{struct}. Como se trata de una de las pocas 
-bibliotecas que hay para comparar la nuestra, y además solo tiene un par de ficheros se ha actualizado como parte de este proyecto. Los operadores que se han definido son los que se
-encuentran en los ejemplos del proyecto. Se va a probar para un tamaño de población 100, y como función de Fitness: Rastrigin, que es la que se usará para los experimentos de nuestro algoritmo.
+bibliotecas que hay para comparar la nuestra, y además solo tiene un par de ficheros se ha actualizado como parte de este TFG. Se ha creado un \emph{pull request} al repositorio del proyecto. 
+Los operadores que se han definido son los que se encuentran en los ejemplos del proyecto. Se va a probar para un tamaño de población 100, y como función de Fitness: Rastrigin, 
+que es la que se usará para los experimentos de nuestro algoritmo en secciones futuras. Se trata de una función multimodal, con $10^{D}$ óptimos locales, por lo que el algoritmo 
+tiene muchas posibilidades de converger rápido. Se ha elegido para las exploraciones iniciales porque se encuentra en el punto medio de no ser tan fácil como la función de Esfera 
+que está definida en un espacio continuo, pero tiene que mantener la diversidad para
+no estancarse.
 
-La librería devuelve la última población del algoritmo antes de parar, los valores de Fitness resultantes en la última generación se pueden ver en la figura \ref{fig:genetic_algorithms_jl},
-y el mejor valor de fitness es 602.1053. En las secciones siguientes se verá como se comporta el algoritmo desarrollado con respecto a este.
+La librería devuelve la última población del algoritmo antes de parar, los valores de Fitness resultantes en la última generación se pueden ver en la Figura \ref{fig:genetic_algorithms_jl},
+el resumen de la ejecución. "Estos valores nos servirán como línea base de comparación con nuestro algoritmo". No se puede evaluar bien el comportamiento de este \emph{framework} ya que 
+la única información disponible para el análisis es el estado de la población en la última generación. Salvo por el problema de la sintaxis antigua y la falta de datos,
+ha sido bastante fácil de usar, además permite mucha flexibilidad. Como elementos a destacar Se pueden personalizar casi por completo todos los operadores. Otra
 
 \begin{figure}[H]
 	\centering	
 	\includegraphics[scale=0.6]{../data/Plots/comparation.png}
-	\caption{Ejecución para probar la librería \emph{GeneticAlgorithms.jl}, para un tamaño de población de 100 y la función de fitness Rastrigin.}
+	\caption{Ejecución para probar la librería \emph{GeneticAlgorithms.jl}. Se ha ejecutado para un tamaño de población de 100. Como función de fitness Rastrigin.}
     \label{fig:genetic_algorithms_jl}
 \end{figure}
 
-Salvo por el problema de la sintaxis antigua ha sido bastante fácil de usar, además permite mucha flexibilidad. Se pueden personalizar casi por 
-completo todos los operadores. Se echa en falta más información acerca de la ejecución. El algoritmo solo devuelve el estado de la última población
-evaluada. Por lo que no se puede sacar información de cómo ha ido evolucionando el algoritmo.
