@@ -1,10 +1,12 @@
 \chapter{Planificación y metodología utilizada}
 
-En este capítulo se comentará la planificación del proyecto y la metodología usada
+En este capítulo se comentará la planificación del proyecto y la metodología usada. La metodología
+es muy importante para este TFG, ya uno de los objetivos es desarrollar siguiendo una metodología
+ágil.
 
 \section{Metodología utilizada}
 
-Un requisito fundamental a la hora de implementar es usar una metodología que garantice la evolución del código. Por eso se ha
+Un requisito fundamental a la hora de la implementación es usar una metodología que garantice la evolución del código. Por eso se ha
 elegido usar el desarrollo ágil, en específico la metodología Kanban. Este método tiene 4 principios básicos \cite{kanban}:
 
 \begin{itemize}
@@ -18,15 +20,14 @@ elegido usar el desarrollo ágil, en específico la metodología Kanban. Este m�
 \end{itemize}
 
 
-Se ha decidido usar esta metodología, ya que es muy flexible a los cambios que se produzcan en la definición del proyecto. Además
-asegura la calidad final del código, al ir haciendo pequeños incrementos aportan funcionalidad, te aseguras de que el
-producto final tiene todas las piezas funcionando.
+Se ha decidido usar esta metodología, ya que es muy flexible a los cambios que se puedan producir a lo largo del proyecto.
 
 En cuanto al desarrollo del código se ha elegido la metodología de desarrollo guiado por pruebas o \emph{TDD}. Este método
 de desarrollo encaja muy bien con Kanban, porque para cada tarea que se finalice tienes una funcionalidad completa y testeada. Por
-lo que la mantenibilidad del código aumenta. Además los tests ayudan mucho a las personas que usen la librería por
-primera vez, ya que se puede ir probando la funcionalidad fácilmente. Además a veces puede servir como documentación
-que en los tests se ve claramente los parámetros de entrada y de salida de la función. El TDD tiene consiste en:
+lo que la mantenibilidad del código aumenta, y al final del desarrollo te aseguras de que todas las piezas funcionan. Otra cualidad de
+este tipo de desarrollo es que los tests ayudan mucho a las personas que usen la librería por primera vez, ya que se puede 
+ir probando la funcionalidad fácilmente. Además estas pruebas pueden servir como documentación, ya que en los tests se ve claramente 
+los parámetros de entrada y de salida de la función. El TDD tiene consiste en:
 
 \begin{itemize}
     \item \textit{Escritura del test} - escribir el test que cubra la funcionalidad que se va a desarrollar
@@ -36,9 +37,11 @@ que en los tests se ve claramente los parámetros de entrada y de salida de la f
     \item \textit{Repetir} - los pasos anteriores hasta completar la funcionalidad.
 \end{itemize}
 
-- codigo abierto
-- CI 
-- MVPS operadores 
+Los tests que se vayan realizando se usarán para la integración continua del proyecto o \emph{CI}.
+La integración continua se refiere en su mayoría a la fase de creación o integración del proceso de publicación de
+software y conlleva un componente de automatización \cite{CI}. Tener integración continua en el proyecto hace que sea
+mantenible, ya que se proteje ante cambios. Siempre que hagas cambios, si los tests pasan te da seguridad de que tu cambio se 
+acopla bien lo la funcionalidad antigua. 
 
 
 \section{Herramientas de comunicación}
@@ -78,7 +81,7 @@ En el caso de la funcionalidad básica se encuentran las siguientes historias de
 \begin{enumerate}
     \item \textbf{Sistema de entrada de la biblioteca}: Como desarrolladora quiero tener una forma de leer ficheros de configuración de forma que pueda
     establecer los datos leídos como los parámetros iniciales del algoritmo. Los parámetros a definir por el usuario son: la dimensión del cromosoma, el tamaño de la población, 
-    condición de parada basado en el número máximo de generaciones que puede estar el algoritmo sin producir mejores soluciones, el porcentaje de la población que va a cada casta y 
+    condición de parada basado en el número máximo de generaciones que puede estar el algoritmo sin producir mejores solupciones, el porcentaje de la población que va a cada casta y 
     el ratio de mutación que tendrán los individuos de cada casta.
     \item \textbf{Función de fitness \cite{project_repository_8}}: Como desarrolladora quiero tener distintas funciones fitness disponibles de manera que pueda aplicarlas según 
     el problema.
@@ -93,3 +96,8 @@ En el caso de la funcionalidad básica se encuentran las siguientes historias de
 
 Para el análisis de los resultados, una vez definidos los datos que se quieren recoger en cada generación \cite{pull_17}, 
 se guardarán en ficheros que se leerán para imprimir las gráficas.
+
+Todos estos componentes conforman lo que sería el producto mínimamente viable o \emph{MVP} del TFG. El MVP es un producto
+con suficientes características para satisfacer a los clientes iniciales, y proporcionar retroalimentación para el desarrollo futuro \cite{mvp}. 
+Este concepto se alinea con la metodología ágil, ya que se trata de presentar lo mínimo que pueda ser usable. A partir de ahí se puede mejorar 
+añadiéndole, por ejemplo, paralelismo. De estos se hablará en secciones posteriores.
