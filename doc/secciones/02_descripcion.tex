@@ -1,5 +1,11 @@
 \chapter{Descripción del problema}
 
+En este capítulo se describe el problema que se quiere abordar en este trabajo. Primero se analiza la naturaleza del algoritmo
+luego se describe la metaheurística desarrollada para acabar con los casos de uso que se han ido implementando hasta conseguir la funcionalidad
+completa.
+
+\section{Descripción}
+
 En 2019, para la asignatura de metaheurísticas de la Universidad de Granada \cite{merelo_molina_2021} se propuso inventar una metaheurística. En
 ese momento acababa de leer el libro ``Un Mundo feliz`` de Aldous Huxley, así que decidí adaptar el proceso de creación 
 de humanos que describe el libro a un algoritmo evolutivo. A lo largo del desarrollo se me presentaron varios problemas. El
@@ -113,21 +119,30 @@ Con esta estructura en mente la metaheurística se divide en las siguientes fase
 Por último, el libro describe que las castas bajas se reproducen mediante el proceso de \textit{Bokanovsky}, donde un embrión, que normalmente se desarrolla hasta convertirse
 en un adulto, se convierte en 96 gemelos idénticos. Esto en el algoritmo se reflejará en el tamaño de la población, que descenderá cuanto más alta sea la casta.
 
-
-Este proyecto es software libre, y está liberado con la licencia \cite{gplv3}.
-
 \section{Casos de uso}
 
-Los casos de uso son:
+Las historias de usuario se han desarrollado usando \emph{Desarrollo basado en el comportamiento} o BDD. Lo que plantea es definir un lenguaje común para todas las
+partes implicadas en un proyecto, y utilizar esto como parte inicial del desarrollo y el testeo. Todas las historias están en el repositorio de Github del proyecto \cite{project_repository}.
+Las historias se pueden dividir en 2 grandes grupos o épicas: definir la funcionalidad básica y análisis de los resultados.
+
+En el caso de la funcionalidad básica se encuentran las siguientes historias de usuario, con el enlace al \emph{issue} y su correspondiente \emph{pull request} :
 
 \begin{enumerate}
-    \item Definir el sistema de entrada de la biblioteca: cómo se le van a introducir los parámetros al algoritmo. Los parámetros a definir por el usuario son:
-    \item la dimensión del cromosoma, el tamaño de la población, condición de parada basado en el número máximo de generaciones que puede estar el algoritmo
-    sin producir mejores soluciones, el porcentaje de la población que va a cada casta y el ratio de mutación que tendrán los individuos de cada casta.
-    \item Definir la función de fitness
-    \item Definir la sala de fecundación: creación de los individuos de manera aleatoria y agnóstica de la casta a la que pertenecerán. 
-    \item Definir la Sala de incubación: asignar a cada casta el porcentaje de población correspondiente.
-    \item Definir cada uno de los operadores del algoritmo(selección, cruce y mutación), teniendo en cuenta que se aplicarán según la casta a la que pertenezca el individuo.
-    \item Definir los datos que se quieren recoger en cada generación. Estos datos servirán para el posterior análisis del comportamiento del algoritmo.
-    \item Definir el sistema de salida, cómo se quieren ver los datos que ha producido la ejecución.
+    \item Sistema de entrada de la biblioteca: Como desarrolladora quiero tener una forma de leer ficheros de configuración de forma que pueda
+    establecer los datos leídos como los parámetros iniciales del algoritmo. Los parámetros a definir por el usuario son: la dimensión del cromosoma, el tamaño de la población, 
+    condición de parada basado en el número máximo de generaciones que puede estar el algoritmo sin producir mejores soluciones, el porcentaje de la población que va a cada casta y 
+    el ratio de mutación que tendrán los individuos de cada casta.
+    \item Función de fitness \cite{project_repository_8}: Como desarrolladora quiero tener distintas funciones fitness disponibles de manera que pueda aplicarlas según 
+    el problema.
+    \item Sala de fecundación \cite{project_repository_17}: como desarrolladora quiero tener una sala de fecundación de manera que la población sea dividida en castas siguiendo los parámetros establecidos
+    en el fichero de configuración.
+    \item Definir las castas como tipos \cite{project_repository_21}: como desarrolladora quiero tener las castas definidas como tipos para poder explotar el \emph{dispatch} múltiple en los operadores de evolución.
+    \item Operador de selección \cite{project_repository_18}: como desarrolladora quiero tener un operador de selección de manera que los mejores individuos sean seleccionados para la reproducción.
+    \item Operador de cruce \cite{project_repository_19}: como desarrolladora quiero tener un operador de cruce de manera que pueda obtener un nuevo individuo dados dos padres.
+    \item Operador de mutación \cite{project_repository_20}: como desarrolladora quiero tener un operador de mutación, de manera que pueda mutar los genes de un cromosoma atendiendo al parámetro
+    \emph{``ratio de mutación``} dado por el fichero de configuración. 
 \end{enumerate}
+
+Para el análisis de los resultados, una vez definidos los datos que se quieren recoger en cada generación \cite{pull_17}, se guardarán en ficheros que se leerán para imprimir las gráficas.
+
+Este proyecto es software libre, y está liberado con la licencia \cite{gplv3}.
