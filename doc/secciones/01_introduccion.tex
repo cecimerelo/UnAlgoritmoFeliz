@@ -14,57 +14,6 @@ proceso mediante el cual han alcanzado la raza humana perfecta. Por tanto se qui
 el proceso de fecundación del libro y comparar su comportamiento con otros algoritmos. Además investigar cómo la división en castas afecta 
 la diversidad en la población.
 
-\section{Conceptos generales}
-
-El libro describe cómo se alcanza esta raza humana perfecta mediante una ``cadena de montaje``, con varias fases. Esto lo reflejaremos mediante 
-un algoritmo evolutivo generacional con los operadores de selección, cruce, mutación y reemplazamiento. El proceso comienza en la \textbf{\textit{Sala de Fecundación}}, 
-aquí se crean los óvulos y se fecundan. Una vez \textit{fecundados} los óvulos pasan a las incubadoras, donde se decide la \textit{casta} a la que pertenecerá cada individuo. Huxley
-describe como a los Alfas y los Betas se les suministra una gran cantidad de nutrientes y hormonas durante la incubación. Mientras que a las castas bajas, Gamma, Delta y
-Epsilon son privados de estos elementos necesarios para el desarrollo. Para imitar esta ``falta de nutrientes``', en el algoritmo a desarrollar privaremos a las castas bajas de
-operadores, solo mutarán. Las castas se implementarán de la siguiente manera: 
-
-\begin{itemize}
-    \item \textbf{Alfas}:
-        \begin{itemize}
-            \item Libro: son los más inteligentes, a este grupo pertenece la élite. Tienen responsabilidades y son
-            los que tienen la capacidad de tomar decisiones.
-            \item Implementación: se reproducirán solo entre ellos, pasarán por todos los operadores del algoritmo.
-        \end{itemize}
-    \item \textbf{Betas}: 
-        \begin{itemize}
-            \item Libro: son menos inteligentes que los anteriores y su función principal se reduce a tareas
-            administrativas.
-            \item  Implementación: el cruce sólo se realiza con individuos Alpha.
-        \end{itemize}
-    \item \textbf{Gammas}: 
-        \begin{itemize}
-            \item Libro: son los empleados subalternos, cuyas tareas requieren de habilidad. Son expertos en tareas repetitivas
-            \item Implementación: los individuos de esta casta solo tendrán mutación, por búsqueda local.
-        \end{itemize}
-    \item \textbf{Castas Bajas}: sólo tendrán el operador de mutación por segmento fijo, sin búsqueda local. A este sector pertenecen:
-        \begin{itemize}
-            \item \textbf{Deltas}:a este grupo pertenecen los empleados de los anteriores.
-            \item \textbf{Epsilones}: es la casta inferior, a ella pertenecen los empleados para trabajos arduos.
-        \end{itemize}
-\end{itemize}
-
-Con esta estructura en mente la metaheurística se divide en las siguientes fases:
-
-\begin{itemize}
-    \item \textbf{Sala de Fecundación}: los individuos son creados de manera totalmente aleatoria. Tantos individuos
-    como indique un parámetro \textit{I}.
-    \item \textbf{Sala de incubación}: en esta fase realizamos la división en castas. Se hará basándonos en el valor de
-    la función objetivo del individuo. Además cada casta tendrá un porcentaje diferente de la población.
-    \item \textbf{Evolución de las castas}: cada casta seguirá un proceso de evolución diferente como ya se 
-    ha mencionado.
-\end{itemize}
-
-Por último, el libro describe que las castas bajas se reproducen mediante el proceso de \textit{Bokanovsky}, donde un embrión, que normalmente se desarrolla hasta convertirse
-en un adulto, se convierte en 96 gemelos idénticos. Esto en el algoritmo se reflejará en el tamaño de la población, que descenderá cuanto más alta sea la casta.
-
-
-Este proyecto es software libre, y está liberado con la licencia \cite{gplv3}.
-
 \section{Objetivos del trabajo}
 
 \begin{enumerate}

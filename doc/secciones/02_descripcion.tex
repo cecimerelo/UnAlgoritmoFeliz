@@ -1,27 +1,133 @@
-\chapter{Descripción Del Problema}
+\chapter{Descripción del problema}
 
-En 2019, para la asignatura de metaheurísticas de la Universidad de Granada \cite{merelo_molina_2021} se propuso inventar una metaheuristica. En
-ese momento me acababa de leer el libro "Un Mundo feliz" de Aldous Huxley, así que decidí adaptar el proceso de creación 
+En 2019, para la asignatura de metaheurísticas de la Universidad de Granada \cite{merelo_molina_2021} se propuso inventar una metaheurística. En
+ese momento acababa de leer el libro ``Un Mundo feliz`` de Aldous Huxley, así que decidí adaptar el proceso de creación 
 de humanos que describe el libro a un algoritmo evolutivo. A lo largo del desarrollo se me presentaron varios problemas. El
 \textit{primer problema} fue el lenguaje escogido, lo desarrollé en Python, un lenguaje caracterizado por su fácil sintaxis pero su deficiencia de
 velocidad. Cada ejecución del problema llevaba horas, por lo que se hacía muy difícil de ejecutar y analizar. El
 \textit{segundo problema} fue la optimización de los parámetros, el algoritmo quedaba estancado en óptimos locales. Estos problemas son 
 los que se quieren abordar en el desarrollo de este trabajo.
 
-Una de las formas de conseguir altas prestaciones es escoger el lenguaje adecuado. Por ello se ha escogido un lenguaje que
-hace poco entró en el \"Petaflop Club\", que incluye aquellos lenguajes que superan 1 petaflop/segundo como rendimiento pico. Se trata
-de Julia \cite{julia}, un lenguaje de programación multiparadigma de tipado dinámico. Orientado a la computación técnica y 
-científica. La rapidez fue uno de los principales objetivos a la de la creación del lenguaje. 
+Como se ha mencionado en la sección anterior, se quiere desarrollar una metaheurística basada en un libro. Pero no solo interesa
+el poder adaptar el proceso descrito en el libro a una metaheurística. También se busca que la metaheurística pueda ser
+usada fácilmente por la comunidad, que sea extensible y mantenible, que además sea fácil de analizar. Para conseguirlo
+se desarrollará una biblioteca que sea adaptable al problema a resolver. Que los parámetros iniciales sean 
+indicados por la persona que use el algoritmo, parámetros como la función de fitness, tamaño de la población inicial,
+dimensión del cromosoma y rango de búsqueda
 
 \section{Naturaleza del algoritmo}
 
-Estamos hablando de un algoritmo basado en la evolución de una población, así que seguirá la estructura de los
-algoritmos evolutivos. Siguiendo la definición dada por Goldberg \cite{goldberg89}, "los Algoritmos Genéticos son algoritmos de búsqueda
-basados en la mecánica de selección natural. Combinan la supervivencia del más apto entre estructuras de secuencias con un intercambio de 
-información estructurado, aunque aleatorizado, para construir así un algoritmo
-de búsqueda que tenga algo de las genialidades de las búsquedas humanas".
+Como se ha mencionado, el algoritmo está basado en el proceso de creación de humanos que describe el libro a un algoritmo evolutivo, 
+por tanto, estamos hablando de un algoritmo basado en la evolución de una población, así que seguirá la estructura de los
+algoritmos evolutivos, más en específico, un \emph{algoritmo genético}. 
 
-Para alcanzar la solución a un problema se parte de un conjunto inicial de individuos, llamado \textit{población},
+Siguiendo la definición dada por Goldberg \cite{goldberg89}, "los Algoritmos Genéticos son algoritmos de búsqueda
+basados en la mecánica de selección natural. Combinan la supervivencia del más apto entre estructuras de secuencias con un intercambio de 
+información estructurado, aunque aleatorizado, para construir así un algoritmo de búsqueda que tenga algo de las genialidades de las 
+búsquedas humanas". En resumen, estos algoritmos reflejan el proceso de la selección natural. Forman parte del grupo de los \emph{algoritmos evolutivos}. 
+El proceso está compuesto de 5 fases:
+
+\begin{itemize}
+    \item Población inicial: el proceso comienza con un conjunto de individuos llamado \emph{Población}. Cada individuo
+    representa una solución del problema a resolver. Cada individuo se caracteriza por una serie de parámetros llamados
+    \emph{genes}. Los genes se unen para formar un \emph{Cromosoma}.
+    \item Función de fitness: determina como de adecuado es un individuo. La probabilidad de que un individuo sea 
+    seleccionado para la reproducción depende de este valor.
+    \item Selección: la idea de la fase de selección es seleccionar los individuos más adecuados para que pasen sus
+    genes a las siguientes generaciones. Los individuos con mejor valor de fitness son los que tienen más posibilidades
+    de ser seleccionados para la reproducción.
+    \item Cruce: produce un nuevo individuo por cada pareja de padres, seleccionando de uno de ellos un segmento
+    continuo de características y copiándolo en la descendencia. Los genes que quedan por asignar en la descendencia
+    combinan de manera uniforme características de los dos padres.
+    \item Mutación: en los hijos, algunos de los genes pueden ser sometidos a mutación, es decir, alguno de sus genes
+    serán cambiados.
+    \item Condición de parada: el algoritmo finaliza si la población converge, es decir, si no produce hijos que sean 
+    diferentes con respecto a las generaciones anteriores. O si alcanza la solución.
+\end{itemize}
+
+Por tanto, para alcanzar la solución a un problema se parte de un conjunto inicial de individuos, llamado \textit{población},
 generado de manera aleatoria. Cada uno de estos individuos representa una posible solución al problema. Estos individuos
 evolucionarán siguiendo el proceso propuesto en el libro de Aldous Huxley, y se adaptarán en mayor o menor medida,
 tras el paso de cada generación, a la solución requerida.
+
+Al usar como guía el proceso de evolución del libro quiere decir que se está desarrollando una metaheurística es un 
+método de alto nivel, independiente del problema, que proporciona una serie de guías o 
+estrategias para desarrollar algoritmos de optimización heurísticos \cite{metaheuristics_def}. Muchas metaheurísticas
+están inspiradas en la naturaleza \cite{Molina2020ComprehensiveTO}. Por ejemplo la optimización basada en colonias de
+hormigas que imita la manera en la que las hormigas se comportan cuando viajan a una fuente de comida, y cómo se 
+comunican unas con otras a través de feromonas. 
+
+Normalmente las metaheurísticas se usan en problemas de optimización por varias razones:
+\begin{itemize}
+    \item Encuentran maneras de ir de una solución a otra mejor sin tener por qué considerar todas las posibles combinaciones. 
+    \item Pueden evitar quedarse estancadas en mínimos locales porque usar aleatoriedad.
+\end{itemize}
+
+En conclusión, se va a desarrollar una metaheurística basada en el proceso de fecundación y la división en castas descrita en el libro de A. Huxley.
+
+\section{Descripción de la metaheurística desarrollada}
+
+El libro describe cómo se alcanza esta raza humana perfecta mediante una ``cadena de montaje``, con varias fases. Esto lo reflejaremos mediante 
+un algoritmo evolutivo generacional con los operadores de selección, cruce, mutación y reemplazamiento. El proceso comienza en la \textbf{\textit{Sala de Fecundación}}, 
+aquí se crean los óvulos y se fecundan. Una vez \textit{fecundados} los óvulos pasan a las incubadoras, donde se decide la \textit{casta} a la que pertenecerá cada individuo. Huxley
+describe como a los Alfas y los Betas se les suministra una gran cantidad de nutrientes y hormonas durante la incubación. Mientras que a las castas bajas, Gamma, Delta y
+Epsilon son privados de estos elementos necesarios para el desarrollo. Para imitar esta ``falta de nutrientes``', en el algoritmo a desarrollar privaremos a las castas bajas de
+operadores, solo mutarán. Las castas se implementarán de la siguiente manera: 
+
+\begin{itemize}
+    \item \textbf{Alfas}:
+        \begin{itemize}
+            \item Libro: son los más inteligentes, a este grupo pertenece la élite. Tienen responsabilidades y son
+            los que tienen la capacidad de tomar decisiones.
+            \item Implementación: se reproducirán solo entre ellos, pasarán por todos los operadores del algoritmo.
+        \end{itemize}
+    \item \textbf{Betas}: 
+        \begin{itemize}
+            \item Libro: son menos inteligentes que los anteriores y su función principal se reduce a tareas
+            administrativas.
+            \item  Implementación: el cruce sólo se realiza con individuos Alpha.
+        \end{itemize}
+    \item \textbf{Gammas}: 
+        \begin{itemize}
+            \item Libro: son los empleados subalternos, cuyas tareas requieren de habilidad. Son expertos en tareas repetitivas
+            \item Implementación: los individuos de esta casta solo tendrán mutación, por búsqueda local.
+        \end{itemize}
+    \item \textbf{Castas Bajas}: sólo tendrán el operador de mutación por segmento fijo, sin búsqueda local. A este sector pertenecen:
+        \begin{itemize}
+            \item \textbf{Deltas}:a este grupo pertenecen los empleados de los anteriores.
+            \item \textbf{Epsilones}: es la casta inferior, a ella pertenecen los empleados para trabajos arduos.
+        \end{itemize}
+\end{itemize}
+
+Con esta estructura en mente la metaheurística se divide en las siguientes fases:
+
+\begin{itemize}
+    \item \textbf{Sala de Fecundación}: los individuos son creados de manera totalmente aleatoria. Tantos individuos
+    como indique un parámetro \textit{I}.
+    \item \textbf{Sala de incubación}: en esta fase realizamos la división en castas. Se hará basándonos en el valor de
+    la función objetivo del individuo. Además cada casta tendrá un porcentaje diferente de la población.
+    \item \textbf{Evolución de las castas}: cada casta seguirá un proceso de evolución diferente como ya se 
+    ha mencionado.
+\end{itemize}
+
+Por último, el libro describe que las castas bajas se reproducen mediante el proceso de \textit{Bokanovsky}, donde un embrión, que normalmente se desarrolla hasta convertirse
+en un adulto, se convierte en 96 gemelos idénticos. Esto en el algoritmo se reflejará en el tamaño de la población, que descenderá cuanto más alta sea la casta.
+
+
+Este proyecto es software libre, y está liberado con la licencia \cite{gplv3}.
+
+\section{Casos de uso}
+
+Los casos de uso son:
+
+\begin{enumerate}
+    \item Definir el sistema de entrada de la biblioteca: cómo se le van a introducir los parámetros al algoritmo. Los parámetros a definir por el usuario son:
+    \item la dimensión del cromosoma, el tamaño de la población, condición de parada basado en el número máximo de generaciones que puede estar el algoritmo
+    sin producir mejores soluciones, el porcentaje de la población que va a cada casta y el ratio de mutación que tendrán los individuos de cada casta.
+    \item Definir la función de fitness
+    \item Definir la sala de fecundación: creación de los individuos de manera aleatoria y agnóstica de la casta a la que pertenecerán. 
+    \item Definir la Sala de incubación: asignar a cada casta el porcentaje de población correspondiente.
+    \item Definir cada uno de los operadores del algoritmo(selección, cruce y mutación), teniendo en cuenta que se aplicarán según la casta a la que pertenezca el individuo.
+    \item Definir los datos que se quieren recoger en cada generación. Estos datos servirán para el posterior análisis del comportamiento del algoritmo.
+    \item Definir el sistema de salida, cómo se quieren ver los datos que ha producido la ejecución.
+\end{enumerate}
