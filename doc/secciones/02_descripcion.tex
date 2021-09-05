@@ -1,44 +1,45 @@
-\chapter{Descripción del problema}
+\chapter{Descripción del problema y caracterización de la solución}
 
-En este capítulo se describe el problema que se quiere abordar en este trabajo. Primero se analiza la naturaleza del algoritmo
-luego se describe la metaheurística desarrollada para acabar con los casos de uso que se han ido implementando hasta conseguir la funcionalidad
-completa.
+En este capítulo se describe el problema cuya solución se quiere abordar en este trabajo. Primero se analiza la naturaleza del algoritmo que
+se quiere implementar, luego se describe la metaheurística desarrollada, para acabar con los casos de uso que se han ido 
+implementando hasta conseguir la funcionalidad completa.
 
 \section{Descripción}
 
-En 2019, para la asignatura de metaheurísticas de la Universidad de Granada \cite{merelo_molina_2021} se propuso inventar una metaheurística. En
-ese momento acababa de leer el libro ``Un Mundo feliz`` de Aldous Huxley, así que decidí adaptar el proceso de creación 
-de humanos que describe el libro a un algoritmo evolutivo. A lo largo del desarrollo se me presentaron varios problemas. El
-\textit{primer problema} fue el lenguaje escogido, lo desarrollé en Python, un lenguaje caracterizado por su fácil sintaxis pero su deficiencia de
+En 2019, para la asignatura de metaheurísticas de la Universidad de Granada \cite{merelo_molina_2021} se propuso inventar una 
+metaheurística. En ese momento acababa de leer el libro ``Un Mundo feliz`` de Aldous Huxley, así que decidí adaptar el proceso de 
+optimización de la población humana que describe el libro a un algoritmo evolutivo. A lo largo del desarrollo se me presentaron varios retos.
+El primero fue el lenguaje escogido, lo desarrollé en Python, un lenguaje caracterizado por su fácil sintaxis pero su deficiencia de
 velocidad. Cada ejecución del problema llevaba horas, por lo que se hacía muy difícil de ejecutar y analizar. El
-\textit{segundo problema} fue la optimización de los parámetros, el algoritmo quedaba estancado en óptimos locales. Estos problemas son 
+segundo fue la optimización de los parámetros, el algoritmo quedaba estancado en óptimos locales. Estos problemas son 
 los que se quieren abordar en el desarrollo de este trabajo.
 
-Como se ha mencionado en la sección anterior, se quiere desarrollar una metaheurística basada en un libro. Pero no solo interesa
+Como se ha mencionado en la sección anterior, se quiere desarrollar una metaheurística inspirada por un libro. Pero no solo interesa
 el poder adaptar el proceso descrito en el libro a una metaheurística. También se busca que la metaheurística pueda ser
-usada fácilmente por la comunidad, que sea extensible y mantenible, que además sea fácil de analizar. Para conseguirlo
+usada fácilmente por la comunidad, que sea su implementación sea extensible y mantenible, que además sea fácil de analizar. Para conseguirlo
 se desarrollará una biblioteca que sea adaptable al problema a resolver. Que los parámetros iniciales sean 
 indicados por la persona que use el algoritmo, parámetros como la función de fitness, tamaño de la población inicial,
 dimensión del cromosoma y rango de búsqueda
 
 \section{Naturaleza del algoritmo}
 
-Como se ha mencionado, el algoritmo está basado en el proceso de creación de humanos que describe el libro a un algoritmo evolutivo, 
-por tanto, estamos hablando de un algoritmo basado en la evolución de una población, así que seguirá la estructura de los
-algoritmos evolutivos, más en específico, un \emph{algoritmo genético}. 
+Como se ha mencionado, el algoritmo está basado en el proceso de optimización de la población humana que describe el libro 
+a un algoritmo evolutivo, por tanto, estamos hablando de un algoritmo basado en la evolución de una población, así que seguirá 
+la estructura de los algoritmos evolutivos, más en concreto, un \emph{algoritmo genético}. Se trata de un algoritmo 
+genético ya se trata de un algoritmo de optimización de búsqueda inspirado en los procesos de Evolución Natural y
+Evolución Genética.
 
 Siguiendo la definición dada por Goldberg \cite{goldberg89}, "los Algoritmos Genéticos son algoritmos de búsqueda
 basados en la mecánica de selección natural. Combinan la supervivencia del más apto entre estructuras de secuencias con un intercambio de 
 información estructurado, aunque aleatorizado, para construir así un algoritmo de búsqueda que tenga algo de las genialidades de las 
-búsquedas humanas". En resumen, estos algoritmos reflejan el proceso de la selección natural. Forman parte del grupo de los \emph{algoritmos evolutivos}. 
-El proceso está compuesto de 5 fases:
+búsquedas humanas". En resumen, estos algoritmos reflejan el proceso de la selección natural. Forman parte del grupo de 
+los \emph{algoritmos evolutivos}. El proceso está compuesto de 4 fases:
 
 \begin{itemize}
-    \item Población inicial: el proceso comienza con un conjunto de individuos llamado \emph{Población}. Cada individuo
+    \item Creación de la población inicial: el proceso comienza con un conjunto de individuos llamado \emph{Población}. Cada individuo
     representa una solución del problema a resolver. Cada individuo se caracteriza por una serie de parámetros llamados
-    \emph{genes}. Los genes se unen para formar un \emph{Cromosoma}.
-    \item Función de fitness: determina como de adecuado es un individuo. La probabilidad de que un individuo sea 
-    seleccionado para la reproducción depende de este valor.
+    \emph{genes}. Los genes se unen para formar un \emph{Cromosoma}. Estos se crean en la primera generación. La población del 
+    resto de generaciones serán evoluciones de esta población inicial.
     \item Selección: la idea de la fase de selección es seleccionar los individuos más adecuados para que pasen sus
     genes a las siguientes generaciones. Los individuos con mejor valor de fitness son los que tienen más posibilidades
     de ser seleccionados para la reproducción.
@@ -47,17 +48,21 @@ El proceso está compuesto de 5 fases:
     combinan de manera uniforme características de los dos padres.
     \item Mutación: en los hijos, algunos de los genes pueden ser sometidos a mutación, es decir, alguno de sus genes
     serán cambiados.
-    \item Condición de parada: el algoritmo finaliza si la población converge, es decir, si no produce hijos que sean 
-    diferentes con respecto a las generaciones anteriores. O si alcanza la solución.
 \end{itemize}
 
-Por tanto, para alcanzar la solución a un problema se parte de un conjunto inicial de individuos, llamado \textit{población},
-generado de manera aleatoria. Cada uno de estos individuos representa una posible solución al problema. Estos individuos
-evolucionarán siguiendo el proceso propuesto en el libro de Aldous Huxley, y se adaptarán en mayor o menor medida,
-tras el paso de cada generación, a la solución requerida.
+Además de las fases también se debe definir una \emph{condición de parada} y una \emph{función de fitness}. La 
+condición de parada sirve para que el algoritmo finalice si la población converge, es decir, si no produce hijos 
+que sean diferentes con respecto a las generaciones anteriores. O si alcanza la solución. La función de fitness
+determina como de adecuado es un individuo, es decir, la probabilidad de que un individuo sea seleccionado para 
+la reproducción depende de este valor. Por tanto, para alcanzar la solución a un problema se parte de un conjunto 
+inicial de individuos, llamado \textit{población inicial}, generado de manera aleatoria. Cada uno de estos 
+individuos representa una posible solución al problema. Estos individuos van pasando por los diferentes operadores y 
+evolucionando en cada generación.
 
-Al usar como guía el proceso de evolución del libro quiere decir que se está desarrollando una metaheurística es un 
-método de alto nivel, independiente del problema, que proporciona una serie de guías o 
+En el caso del algoritmo propuesto en este trabajo (\emph{Algoritmo Feliz}) la población evolucionará siguiendo un proceso 
+inspirado por los distintos procesos descritos en el libro de Aldous Huxley. El proceso propuesto se decribe con mayor detalle
+en la sección \ref{sect: description}. Al usar como guía los procesos descritos en el libro quiere decir que se está desarrollando 
+una metaheurística. Esta se trata método de alto nivel, independiente del problema, que proporciona una serie de guías o 
 estrategias para desarrollar algoritmos de optimización heurísticos \cite{metaheuristics_def}. Muchas metaheurísticas
 están inspiradas en la naturaleza \cite{Molina2020ComprehensiveTO}. Por ejemplo la optimización basada en colonias de
 hormigas que imita la manera en la que las hormigas se comportan cuando viajan a una fuente de comida, y cómo se 
@@ -69,16 +74,20 @@ Normalmente las metaheurísticas se usan en problemas de optimización por varia
     \item Pueden evitar quedarse estancadas en mínimos locales porque usar aleatoriedad.
 \end{itemize}
 
-En conclusión, se va a desarrollar una metaheurística basada en el proceso de fecundación y la división en castas descrita en el libro de A. Huxley.
+En conclusión, se va a desarrollar una metaheurística basada en el proceso de fecundación y la división en castas descrita en el 
+libro de A. Huxley.
 
-\section{Descripción de la metaheurística desarrollada}
+\section{Descripción de la metaheurística desarrollada} \label{sect: description}
 
-El libro describe cómo se alcanza esta raza humana perfecta mediante una ``cadena de montaje``, con varias fases. Esto lo reflejaremos mediante 
-un algoritmo evolutivo generacional con los operadores de selección, cruce, mutación y reemplazamiento. El proceso comienza en la \textbf{\textit{Sala de Fecundación}}, 
-aquí se crean los óvulos y se fecundan. Una vez \textit{fecundados} los óvulos pasan a las incubadoras, donde se decide la \textit{casta} a la que pertenecerá cada individuo. Huxley
-describe como a los Alfas y los Betas se les suministra una gran cantidad de nutrientes y hormonas durante la incubación. Mientras que a las castas bajas, Gamma, Delta y
-Epsilon son privados de estos elementos necesarios para el desarrollo. Para imitar esta ``falta de nutrientes``', en el algoritmo a desarrollar privaremos a las castas bajas de
-operadores, solo mutarán. Las castas se implementarán de la siguiente manera: 
+El libro describe cómo se alcanza esta raza humana perfecta mediante una ``cadena de montaje``, con varias fases. Esto lo 
+reflejaremos mediante un algoritmo evolutivo generacional con los operadores de selección, cruce, mutación y reemplazamiento. 
+El proceso comienza en la \textbf{\textit{Sala de Fecundación}}, aquí se crean los óvulos y se fecundan. Una vez \textit{fecundados}
+los óvulos pasan a las incubadoras, donde se decide la \textit{casta} a la que pertenecerá cada individuo. Huxley describe 
+como a los Alfas y los Betas se les suministra una gran cantidad de nutrientes y hormonas durante la incubación. Mientras que a las 
+castas bajas, Gamma, Delta y Epsilon son privados de estos elementos necesarios para el desarrollo. Para imitar esta
+ ``falta de nutrientes``, en el algoritmo a desarrollar privaremos a las castas bajas de operadores, solo mutarán, con esto
+ pretendo avanzar el objetivo de mantener la diversidad alta durante toda la ejecución del algoritmo. 
+ Las castas se implementarán de la siguiente manera: 
 
 \begin{itemize}
     \item \textbf{Alfas}:
@@ -111,38 +120,55 @@ Con esta estructura en mente la metaheurística se divide en las siguientes fase
     \item \textbf{Sala de Fecundación}: los individuos son creados de manera totalmente aleatoria. Tantos individuos
     como indique un parámetro \textit{I}.
     \item \textbf{Sala de incubación}: en esta fase realizamos la división en castas. Se hará basándonos en el valor de
-    la función objetivo del individuo. Además cada casta tendrá un porcentaje diferente de la población.
+    la función objetivo del individuo. Además cada casta tendrá un porcentaje diferente de la población. Ya que en el libro
+    describe que las castas bajas se reproducen mediante el proceso de \textit{Bokanovsky}, donde un embrión, que normalmente 
+    se desarrolla hasta convertirse en un adulto, se convierte en 96 gemelos idénticos. Esto en el algoritmo se reflejará 
+    en el tamaño de la población, que descenderá cuanto más alta sea la casta.    
     \item \textbf{Evolución de las castas}: cada casta seguirá un proceso de evolución diferente como ya se 
     ha mencionado.
 \end{itemize}
 
-Por último, el libro describe que las castas bajas se reproducen mediante el proceso de \textit{Bokanovsky}, donde un embrión, que normalmente se desarrolla hasta convertirse
-en un adulto, se convierte en 96 gemelos idénticos. Esto en el algoritmo se reflejará en el tamaño de la población, que descenderá cuanto más alta sea la casta.
+No se trata de castas estáticas, se generan al principio de cada generación. Imaginemos que tenemos una población de 10 individuos, cada 
+uno con un valor de fitness. En la primera iteración se dividirá esta población atendiendo a este valor de fitness. Posteriormente,
+cada individuo seguirá el proceso de evolución correspondiente a su casta. Al final de la generación se juntan todos los cromosomas,
+independientemente de su casta, ya que al haber evolucionado su valor de fitness habrá cambiado. La siguiente generación comienza
+dividiendo en castas los cromosomas que han evolucionado en la anterior.
 
 \section{Casos de uso}
 
-Las historias de usuario se han desarrollado usando \emph{Desarrollo basado en el comportamiento} o BDD. Lo que plantea es definir un lenguaje común para todas las
-partes implicadas en un proyecto, y utilizar esto como parte inicial del desarrollo y el testeo. Todas las historias están en el repositorio de Github del proyecto \cite{project_repository}.
+En línea con el tercer objetivo de aplicar desarrollo ágil en la ciencia. El proyecto se ha desarrollado definiendo
+historias de usuario, definidas usando \emph{Desarrollo basado en el comportamiento} o BDD \cite{BDD}. Lo que 
+plantea BDD es definir un lenguaje común para todas las partes implicadas en un proyecto, y utilizar esto como parte inicial 
+del desarrollo y el testeo. Todas las historias están en el repositorio de Github del proyecto \cite{project_repository}.
 Las historias se pueden dividir en 2 grandes grupos o épicas: definir la funcionalidad básica y análisis de los resultados.
 
-En el caso de la funcionalidad básica se encuentran las siguientes historias de usuario, con el enlace al \emph{issue} y su correspondiente \emph{pull request} :
+En el caso de la funcionalidad básica se encuentran las siguientes historias de usuario, con el enlace al
+\emph{issue} y su correspondiente \emph{pull request}:
 
 \begin{enumerate}
-    \item Sistema de entrada de la biblioteca: Como desarrolladora quiero tener una forma de leer ficheros de configuración de forma que pueda
+    \item \textbf{Sistema de entrada de la biblioteca}: Como desarrolladora quiero tener una forma de leer ficheros de configuración de forma que pueda
     establecer los datos leídos como los parámetros iniciales del algoritmo. Los parámetros a definir por el usuario son: la dimensión del cromosoma, el tamaño de la población, 
     condición de parada basado en el número máximo de generaciones que puede estar el algoritmo sin producir mejores soluciones, el porcentaje de la población que va a cada casta y 
     el ratio de mutación que tendrán los individuos de cada casta.
-    \item Función de fitness \cite{project_repository_8}: Como desarrolladora quiero tener distintas funciones fitness disponibles de manera que pueda aplicarlas según 
+    \item \textbf{Función de fitness \cite{project_repository_8}}: Como desarrolladora quiero tener distintas funciones fitness disponibles de manera que pueda aplicarlas según 
     el problema.
-    \item Sala de fecundación \cite{project_repository_17}: como desarrolladora quiero tener una sala de fecundación de manera que la población sea dividida en castas siguiendo los parámetros establecidos
+    \item \textbf{Sala de fecundación \cite{project_repository_17}}: como desarrolladora quiero tener una sala de fecundación de manera que la población sea dividida en castas siguiendo los parámetros establecidos
     en el fichero de configuración.
-    \item Definir las castas como tipos \cite{project_repository_21}: como desarrolladora quiero tener las castas definidas como tipos para poder explotar el \emph{dispatch} múltiple en los operadores de evolución.
-    \item Operador de selección \cite{project_repository_18}: como desarrolladora quiero tener un operador de selección de manera que los mejores individuos sean seleccionados para la reproducción.
-    \item Operador de cruce \cite{project_repository_19}: como desarrolladora quiero tener un operador de cruce de manera que pueda obtener un nuevo individuo dados dos padres.
-    \item Operador de mutación \cite{project_repository_20}: como desarrolladora quiero tener un operador de mutación, de manera que pueda mutar los genes de un cromosoma atendiendo al parámetro
+    \item \textbf{Definir las castas como tipos \cite{project_repository_21}}: como desarrolladora quiero tener las castas definidas como tipos para poder explotar el \emph{dispatch} múltiple en los operadores de evolución.
+    \item \textbf{Operador de selección \cite{project_repository_18}}: como desarrolladora quiero tener un operador de selección de manera que los mejores individuos sean seleccionados para la reproducción.
+    \item \textbf{Operador de cruce \cite{project_repository_19}}: como desarrolladora quiero tener un operador de cruce de manera que pueda obtener un nuevo individuo dados dos padres.
+    \item \textbf{Operador de mutación \cite{project_repository_20}}: como desarrolladora quiero tener un operador de mutación, de manera que pueda mutar los genes de un cromosoma atendiendo al parámetro
     \emph{``ratio de mutación``} dado por el fichero de configuración. 
 \end{enumerate}
 
-Para el análisis de los resultados, una vez definidos los datos que se quieren recoger en cada generación \cite{pull_17}, se guardarán en ficheros que se leerán para imprimir las gráficas.
+Para el análisis de los resultados, una vez definidos los datos que se quieren recoger en cada generación \cite{pull_17}, 
+se guardarán en ficheros que se leerán para imprimir las gráficas.
 
-Este proyecto es software libre, y está liberado con la licencia \cite{gplv3}.
+
+\section{Naturaleza del Sofware}
+
+Este proyecto es software libre, y está liberado con la licencia \cite{gplv3}. El producto final de este proyecto será una
+biblioteca que estará disponible Github \cite{project_repository}. Esto ayuda a la reproducibilidad de la ciencia y 
+también es parte de desarrollo ágil, ya que cualquier persona puede añadir tareas y marcarle la prioridad. Esto va 
+también en línea con la ciencia abierta. El concepto de “ciencia abierta” es la difusión del conocimiento científico 
+lo más amplia posible, libre para todas y todos, accesible en línea y reutilizable
