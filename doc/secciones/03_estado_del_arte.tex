@@ -1,25 +1,78 @@
 \chapter{Estado del arte}
 
-En los últimos años ha sido escrita mucha literatura acerca de algoritmos bio-inspirados. Estos algoritmos imitan procesos biológicos o estructuras presentes
-en la naturaleza, y se aplican para resolver problemas de optimización. Por ejemplo, la \textbf{Optimización por Nube de Partículas} o PSO (\textit{Particle Swarm Optimization})
-que imita el comportamiento de las partículas en la naturaleza, o el \textbf{Algoritmo colonia de abejas} basado en el comportamiento de los enjambres de abejas
-para encontrar la miel. Esta gran cantidad de metaheurísticas basadas en metáforas ha sido criticada por algunos autores como K. Sörensen\cite{https://doi.org/10.1111/itor.12001},
-que considera que esta línea de investigación amenazada con separar el ámbito de las metaheurísticas del rigor científico. Además estos algoritmos suelen usar terminología inspirada por el dominio,
-lo que conduce a nuevos términos que describen conceptos que ya estaban establecidos \cite{mitigating_metaphors}. Lo que hace que sea difícil entender como funcionan estos algoritmos
-y la relación que tienen con otras metaheurísticas. Autores como Swan \cite{metaheuristics} establecen para que la investigación en el campo de las metaheurísticas evite la fragmentación y 
-la falta de reproductibilidad, se necesita una infraestructura científica y computacional fuerte, donde diferentes enfoques puedan ser desarrollados, analizados y comparados. El algoritmo de este 
-evita caer en el uso de metáforas para explicar su comportamiento. Se inspira en ellas para crear una estructura de datos que ayude a mantener la diversidad a lo largo de toda la ejecución.
+En esta sección se analiza el estado de la investigación en los algoritmos de optimización bio-inspirados. Con respecto a librerías o \emph{frameworks} disponibles,
+además de la investigación y el estado actual de las metaheurísticas.
 
-Otro de los problemas presentes en el campo de las metaheurísticas es la falta de reutilización \cite{metaheuristics}. Se trata de una falta a nivel de implementación, ya que hay una
-tendencia a reimplementar los algoritmos desde 0, impidiendo la reproducibilidad. El progreso científico en cualquier disciplina requiere de la habilidad de construir sobre lo que
-otros ya han hecho para poder más lejos. Por ello el algoritmo desarrollado ha sido publicado, además se ha hecho de manera que se pueda usar para cualquier de problema de optimización.
+\section{Algoritmos bio-inspirados}
+
+Hay una evidencia clara en la creciente popularidad ganada por los algoritmos bio-inspirados en las últimas 2 décadas. Según D. Molina \cite{Molina2020ComprehensiveTO} esto se
+debe a la capacidad que tienen este tipo de algoritmos para aprender, adaptarse y dar buenas soluciones a problemas complejos que de otra manera se hubieran quedado sin
+resolver. Estos algoritmos imitan procesos biológicos o estructuras presentes en la naturaleza, y se aplican para resolver problemas de optimización. Por ejemplo, 
+la \textbf{Optimización por Nube de Partículas} o PSO (\textit{Particle Swarm Optimization}) que imita el comportamiento de las partículas en la naturaleza, o 
+el \textbf{Algoritmo colonia de abejas} basado en el comportamiento de los enjambres de abejas para encontrar la miel. Esta gran cantidad de metaheurísticas basadas en 
+metáforas ha sido criticada por algunos autores como K. Sörensen\cite{metaphor_exposed}, que considera que esta línea de investigación amenaza con separar el ámbito de 
+las metaheurísticas del rigor científico. En su paper \emph{Metaheuristics - the metaphor exposed} concluye que las metaheurísticas basadas en nuevas metáforas deberían 
+evitarse si no pueden demostrar una nueva aportación al campo. Además este tipo de algoritmos suelen usar terminología inspirada por el dominio, lo que conduce a nuevos 
+términos que describen conceptos que ya estaban establecidos  \cite{mitigating_metaphors}. Lo que hace que sea difícil entender como funcionan estos algoritmos y la relación 
+que tienen con otras metaheurísticas. Esta falta de universalidad que sobrepasa las metaheurísticas para cualquier tipo de problema de optimización proviene
+del conocido teorema de optimización \emph{``No Free Lunch''}, que demuestra que si un algoritmo se comporta bien en cierto tipo de problemas entonces pagará por eso
+con un peor rendimiento en el resto de problemas \cite{585893}. Autores como Swan \cite{metaheuristics} establecen  para que la investigación en el campo de las metaheurísticas evite la fragmentación y la falta de reproductibilidad, se 
+necesita una infraestructura científica y computacional fuerte, donde diferentes enfoques puedan ser desarrollados, analizados y comparados. 
+
+El algoritmo presentado en este trabajo evita caer en el uso de metáforas para explicar su comportamiento. Se inspira en ellas para crear una estructura de datos que ayude 
+a mantener la diversidad a lo largo de toda la ejecución. Además toda la terminología y conceptos usados a lo largo del proyecto son los acuñados hasta ahora en este campo.
+
+\section{Implementación}
+
+Otro de los problemas presentes en el campo de las metaheurísticas es la falta de reutilización \cite{metaheuristics}. Se trata de una falta en cuanto a implementación, ya que hay una
+tendencia a re-implementar los algoritmos desde 0, impidiendo la reproducibilidad. El progreso científico en cualquier disciplina requiere de la habilidad de construir sobre lo que
+otros ya han hecho para poder llegar más lejos. Por ello el algoritmo desarrollado ha sido publicado en un registro de paquetes, además se ha hecho de manera que se pueda usar para 
+cualquier de problema de optimización. 
+
 Para ayudar a la reutilización es muy importante que el código sea limpio, mantenible y haya sido testeado, por eso se ha decidido seguir los estándares de arquitectura y código marcados 
 por Robert C. Martin \cite{cleanArquitecture2017, cleanCode2008}.
 
-Los lenguajes que se suelen usar para programación genética son: Matlab, C++, Python o Java \cite{languages}. Siendo Python el más utilizado debido a la cantidad de librerías disponibles, 
-con algoritmos genéticos listos para usar, o la facilidad para extraer gráficas de los resultados. En general, a la hora de lanzarte a programar un proyecto relacionado
-con Aprendizaje Automático o Inteligencia Artificial, es el primer lenguaje que se viene a la cabeza. Sin embargo, en la primera
-implementación de este algoritmo se usó Python \cite{merelo_molina_2021} y las prestaciones no fueron muy altas. En el caso de
-Julia, no hay tantos paquetes desarrollados, sin embargo su popularidad está aumentando en el mundo de la programación
-científica. Una de las principales razones es su unión en 2017 al ``Club Petaflop``, que confirma el buen rendimiento
-que puede llegar a ofrecer.  
+\section{Lenguajes de programación en el ámbito científico}
+
+Hay un mito muy extendido en programación científica que afirma que los lenguajes compilados como C++ o Java son siempre más rápidos que los lenguajes interpretados como Python o 
+JavaScript. Atendiendo a este mito, los lenguajes más usados en el desarrollo metaheurísticas son: Matlab, C++, Python o Java \cite{languages}. Siendo Python el más 
+utilizado debido a la cantidad de librerías disponibles, con algoritmos genéticos listos para usar, o la facilidad para extraer gráficas de los resultados. En general, a 
+la hora de lanzarte a programar un proyecto relacionado con \emph{Aprendizaje Automático} o \emph{Inteligencia Artificial}, es el primer lenguaje que se viene a la cabeza. 
+
+Elegir el lenguaje de programación con el que se va a desarrollar el proyecto es una decisión importante. Sin embargo atendiendo al trabajo de J.J. Merelo \cite{fast_lunch}, aunque
+la velocidad parezca un criterio importante a tener en cuenta, el \emph{paper} afirma que, en la misma línea del teorema \emph{There is no free lunch}, se cumple el teorema
+\emph{There is no fast lunch}. Este último teorema establece, que mientras que puede haber algunos lenguajes que podrían ser más rápidos para ciertos tamaños de problemas y 
+funciones de fitness, en general el lenguaje más rápido dependerá de esas dos cosas.
+
+A pesar del teorema mencionado en el párrafo anterior, para el desarrollo se descarta el uso de Python, A pesar de la cantidad de bibliotecas que tiene disponibles con algoritmos 
+genéticos ya desarrollados y la gran comunidad, en la primera implementación de este algoritmo se usó este lenguaje \cite{merelo_molina_2021} y las prestaciones no fueron muy altas. 
+El algoritmo tardaba del orden de horas en terminar, lo que complicaba mucho el análisis del mismo. Gmys \cite{comparative_study} compara varios lenguajes en términos de rendimiento, 
+escalabilidad y productividad. En su trabajo menciona lenguajes como \emph{Julia} o \emph{Chapel}. El objetivo de \emph{Julia} es acoplar la brecha de rendimiento en la programación, 
+ofreciendo a los programadores científicos un lenguaje para el prototipado rápido y la computación de altas prestaciones. Sin embargo, al ser un lenguaje joven, ha habido bastantes
+cambios desde las primeras versiones. Por lo que la mayoría de la información en foros que está disponible, está desactualizada, lo que lo hace un lenguaje difícil para aprender.
+A pesar de esto su popularidad está aumentando, una de las principales razones es su unión en 2017 al ``Club Petaflop``, que confirma el buen rendimiento que puede llegar a ofrecer.  
+
+\section{\textit{Frameworks} para algoritmos genéticos}
+
+Actualmente hay varios \emph{frameworks} disponibles en \emph{Julia} para programación de algoritmos evolutivos. Se va a mencionar brevemente su uso, además de por qué no
+se adaptan a las necesidades del trabajo. Lo que ha hecho necesario que se programe uno desde cero.
+
+\begin{enumerate}
+    \item \emph{Metaheuristics.jl} \cite{metaheuristics_jl}: Este paquete implementa metaheurísticas para la optimización global. Su objetivo es proporcionar metaheurísticas
+    fáciles y rápidas de usar para la optimización global numérica. El comportamiento es muy parecido al que queremos desarrollar, contiene una función \emph{optimize}
+    a la que se le pasa la función fitness, el rango, y opciones como el máximo número de llamadas a la función de fitness. Es una opción muy interesante, el problema es que las
+    metaheurísticas están ya predefinidas.
+    \item \emph{GeneticAlgorithms.jl} \cite{GeneticAlgorithms_jl}: es un \emph{framework} ligero que simplifica el proceso de creación de algoritmos genéticos y su ejecución en
+    paralelo. Podría haber sido fácilmente usado para este trabajo, ya que tu misma puedes definir los operadores y la función que quieres que use el algoritmo. El problema es
+    que los argumentos que se le pueden pasar a estos operadores vienen predefinidos, por lo que no puedes usar \emph{dispatch} múltiple pare diferenciar entre los individuos de 
+    la población.
+    \item \emph{Darwin.jl} \cite{darwin_jl}: está basado en \emph{GeneticAlgorithms.jl}, por lo que presenta el mismo problema que el anterior.
+    \item \emph{Evolutionary.jl} \cite{evolutionary_jl}: el objetivo es proveer una biblioteca para optimización evolutiva. Proporciona mucha flexibilidad a la hora configurar los parámetros
+    de entrada. El problema que presenta es que, a pesar de ofrecer varios tipos de operadores genéticos, no puedes usar unos personalizados.
+    \item \emph{JuMP.jl} \cite{DunningHuchetteLubin2017}: es un lenguaje para el modelado de problemas cuyo dominio sea la optimización matemática. Incluye muchas opciones para la personalización,
+    además de muchos tipos de modelos para diferentes tipos de problemas. A pesar de lo completo que es este \emph{framework}, no incluye soporte para algoritmos genéticos.
+\end{enumerate}
+
+\subsubsection{Comparación con GeneticAlgorithms.jl}
+// meter la comparación con el algoritmo en julia
+// por qué no me sirve lo que hay actualmente
