@@ -73,6 +73,25 @@ se adaptan a las necesidades del trabajo. Lo que ha hecho necesario que se progr
     además de muchos tipos de modelos para diferentes tipos de problemas. A pesar de lo completo que es este \emph{framework}, no incluye soporte para algoritmos genéticos.
 \end{enumerate}
 
-\subsubsection{Comparación con GeneticAlgorithms.jl}
-// meter la comparación con el algoritmo en julia
-// por qué no me sirve lo que hay actualmente
+\subsubsection{Comparación con \emph{GeneticAlgorithms.jl}}
+
+Para comprobar que la metaheurística desarrollada tiene buenas prestaciones se va a usar el \emph{framework} \emph{GeneticAlgorithms.jl}. Aparentemente es el más sencillo de usar, 
+además puedes personalizar los operadores. El repositorio del proyecto lleva desde 2017 sin actualizarse, esto no debería ser un problema, pero como menciona Gmys \cite{comparative_study}
+en su trabajo, Julia es un lenguaje joven que ha tenido cambios grandes. En este repositorio encontramos uno de esos casos. Al intentar compilarlo la primera vez dio error, porque contiene
+palabras propias del lenguaje antiguas. Por ejemplo, antes para definir estructuras de datos se usaba la pabla \emph{type} y ahora se usa \emph{struct}. Como se trata de una de las pocas 
+bibliotecas que hay para comparar la nuestra, y además solo tiene un par de ficheros se ha actualizado como parte de este proyecto. Los operadores que se han definido son los que se
+encuentran en los ejemplos del proyecto. Se va a probar para un tamaño de población 100, y como función de Fitness: Rastrigin, que es la que se usará para los experimentos de nuestro algoritmo.
+
+La librería devuelve la última población del algoritmo antes de parar, los valores de Fitness resultantes en la última generación se pueden ver en la figura \ref{fig:genetic_algorithms_jl},
+y el mejor valor de fitness es 602.1053. En las secciones siguientes se verá como se comporta el algoritmo desarrollado con respecto a este.
+
+\begin{figure}[H]
+	\centering	
+	\includegraphics[scale=0.6]{../data/Plots/comparation.png}
+	\caption{Ejecución para probar la librería \emph{GeneticAlgorithms.jl}, para un tamaño de población de 100 y la función de fitness Rastrigin.}
+    \label{fig:genetic_algorithms_jl}
+\end{figure}
+
+Salvo por el problema de la sintaxis antigua ha sido bastante fácil de usar, además permite mucha flexibilidad. Se pueden personalizar casi por 
+completo todos los operadores. Se echa en falta más información acerca de la ejecución. El algoritmo solo devuelve el estado de la última población
+evaluada. Por lo que no se puede sacar información de cómo ha ido evolucionando el algoritmo.
