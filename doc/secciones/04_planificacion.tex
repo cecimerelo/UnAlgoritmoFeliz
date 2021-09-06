@@ -67,7 +67,7 @@ modificación. Además, Github se integra con Telegram a través de un bot, y po
 a un grupo en el que estamos el tutor del trabajo y yo. Este mensaje contiene un enlace al cambio que se ha hecho. Consecuentemente,
 es sencillo llevar un seguimiento exhaustivo de todo lo que pasa en el repositorio.
 
-\section{Casos de uso}
+\section{Casos de uso} \label{sect:use_cases}
 
 En línea con el tercer objetivo de aplicar desarrollo ágil en la ciencia, el proyecto se ha desarrollado definiendo
 historias de usuario, definidas usando \emph{Desarrollo basado en el comportamiento} o BDD \cite{BDD}. Lo que 
@@ -79,18 +79,18 @@ En el caso de la funcionalidad básica se encuentran las siguientes historias de
 \emph{issue} y su correspondiente \emph{pull request}:
 
 \begin{enumerate}
-    \item \textbf{Sistema de entrada de la biblioteca}: Como desarrolladora quiero tener una forma de leer ficheros de configuración de forma que pueda
+    \item \textbf{Sistema de entrada de la biblioteca} \label{it:sist_entrada}: Como desarrolladora quiero tener una forma de leer ficheros de configuración de forma que pueda
     establecer los datos leídos como los parámetros iniciales del algoritmo. Los parámetros a definir por el usuario son: la dimensión del cromosoma, el tamaño de la población, 
     la condición de parada basado en el número máximo de generaciones que puede estar el algoritmo sin producir mejores soluciones, el porcentaje de la población que va a cada casta y 
     el ratio de mutación que tendrán los individuos de cada casta.
-    \item \textbf{Función de fitness \cite{project_repository_8}}: Como desarrolladora quiero tener distintas funciones fitness disponibles de manera que pueda aplicarlas según 
+    \item \textbf{Función de fitness \cite{project_repository_8}} \label{it:fitness_function}: Como desarrolladora quiero tener distintas funciones fitness disponibles de manera que pueda aplicarlas según 
     el problema.
     \item \textbf{Sala de fecundación \cite{project_repository_17}}: como desarrolladora quiero tener una sala de fecundación de manera que la población sea dividida en castas siguiendo los parámetros establecidos
     en el fichero de configuración.
     \item \textbf{Definir las castas como tipos \cite{project_repository_21}}: como desarrolladora quiero tener las castas definidas como tipos para poder explotar el \emph{dispatch} múltiple en los operadores de evolución.
-    \item \textbf{Operador de selección \cite{project_repository_18}}: como desarrolladora quiero tener un operador de selección de manera que los mejores individuos sean seleccionados para la reproducción.
-    \item \textbf{Operador de cruce \cite{project_repository_19}}: como desarrolladora quiero tener un operador de cruce de manera que pueda obtener un nuevo individuo dados dos padres.
-    \item \textbf{Operador de mutación \cite{project_repository_20}}: como desarrolladora quiero tener un operador de mutación, de manera que pueda mutar los genes de un cromosoma atendiendo al parámetro
+    \item \textbf{Operador de selección \cite{project_repository_18}} \label{it:selection_operator}: como desarrolladora quiero tener un operador de selección de manera que los mejores individuos sean seleccionados para la reproducción.
+    \item \textbf{Operador de cruce \cite{project_repository_19}} \label{it:crossover_operator}: como desarrolladora quiero tener un operador de cruce de manera que pueda obtener un nuevo individuo dados dos padres.
+    \item \textbf{Operador de mutación \cite{project_repository_20}} \label{it:mutation_operator}: como desarrolladora quiero tener un operador de mutación, de manera que pueda mutar los genes de un cromosoma atendiendo al parámetro
     \emph{``ratio de mutación``} dado por el fichero de configuración. 
 \end{enumerate}
 

@@ -1,6 +1,6 @@
 \chapter{Estado del arte}
 
-En esta sección se analiza el estado de la investigación en los algoritmos de optimización bio-inspirados, con respecto a 
+En esta sección se analiza el estado de la investigación en los algoritmos de optimización bio-inspirados, con respecto a
 librerías o \emph{frameworks} disponibles, además de la investigación y el estado actual de las metaheurísticas. Se van a analizar
 estos conceptos, ya que se pretende establecer el punto de partida sobre el que se base este trabajo.
 
@@ -16,8 +16,8 @@ Esta gran cantidad de metaheurísticas basadas en metáforas ha sido criticada p
 que considera que esta línea de investigación amenaza con separar el ámbito de las metaheurísticas del rigor científico. 
 En su paper \emph{Metaheuristics - the metaphor exposed} concluye que las metaheurísticas basadas en nuevas metáforas deberían 
 evitarse si no pueden demostrar una nueva aportación al campo. Además este tipo de algoritmos suelen usar terminología inspirada por el dominio, 
-lo que conduce a nuevos términos que describen conceptos que ya estaban establecidos \cite{mitigating_metaphors}, lo que a su vez hace que sea difícil 
-entender cómo funcionan estos algoritmos y la relación que tienen con otras metaheurísticas. 
+lo que conduce a nuevos términos que describen conceptos que ya estaban establecidos \cite{mitigating_metaphors}, lo que a su vez hace que sea difícil
+entender cómo funcionan estos algoritmos y la relación que tienen con otras metaheurísticas.
 
 La falta de universalidad que sobrepasa las metaheurísticas para cualquier tipo de problema de optimización proviene
 del conocido teorema de optimización \emph{``No Free Lunch''}, que demuestra que si un algoritmo se comporta bien en cierto tipo de 
@@ -50,16 +50,16 @@ la hora de lanzarte a programar un proyecto relacionado con \emph{Aprendizaje Au
 
 Elegir el lenguaje de programación con el que se va a desarrollar el proyecto es una decisión importante. Sin embargo atendiendo al trabajo de J.J. Merelo \cite{fast_lunch}, aunque
 la velocidad parezca un criterio importante a tener en cuenta, el \emph{paper} afirma que, en la misma línea del teorema \emph{There is no free lunch}, se cumple el teorema
-\emph{There is no fast lunch}. Este último teorema establece, que aunque algunos lenguajes podrían ser más rápidos para ciertos tamaños de problemas y 
+\emph{There is no fast lunch}. Este último teorema establece, que aunque algunos lenguajes podrían ser más rápidos para ciertos tamaños de problemas y
 funciones de fitness, en general el lenguaje más rápido dependerá de esas dos cosas.
 
-A pesar del teorema mencionado en el párrafo anterior, para el desarrollo se descarta el uso de Python; si bien tiene una gran cantidad de bibliotecas disponibles con algoritmos 
-genéticos ya desarrollados y una extensa comunidad, en la primera implementación de este algoritmo se usó este lenguaje \cite{merelo_molina_2021} y las prestaciones no fueron muy altas. 
+A pesar del teorema mencionado en el párrafo anterior, para el desarrollo se descarta el uso de Python; si bien tiene una gran cantidad de bibliotecas disponibles con algoritmos
+genéticos ya desarrollados y una extensa comunidad, en la primera implementación de este algoritmo se usó este lenguaje \cite{merelo_molina_2021} y las prestaciones no fueron muy altas.
 El algoritmo tardaba del orden de horas en terminar, lo que complicaba mucho el análisis del mismo. Gmys \cite{comparative_study} compara varios lenguajes en términos de rendimiento, 
 escalabilidad y productividad. En su trabajo menciona lenguajes como \emph{Julia} o \emph{Chapel}. El objetivo de \emph{Julia} es acoplar la brecha de rendimiento en la programación, 
 ofreciendo a los programadores científicos un lenguaje para el prototipado rápido y la computación de altas prestaciones. Sin embargo, al ser un lenguaje joven, ha habido bastantes
 cambios desde las primeras versiones. Así, la mayoría de la información en foros que está disponible, está desactualizada, lo que lo hace un lenguaje difícil para aprender.
-No obstante, su popularidad está aumentando; una de las principales razones es su unión en 2017 al ``Club Petaflop``, que confirma el buen rendimiento que puede llegar a ofrecer.  
+No obstante, su popularidad está aumentando; una de las principales razones es su unión en 2017 al ``Club Petaflop``, que confirma el buen rendimiento que puede llegar a ofrecer.
 
 \section{\textit{Frameworks} para algoritmos genéticos}
 
@@ -102,8 +102,8 @@ irán definidos por el cromosoma y el valor de la función del fitness. Para ell
 
 El repositorio del proyecto lleva desde 2017 sin actualizarse, esto no debería ser un problema, pero como menciona Gmys \cite{comparative_study}
 en su trabajo, Julia es un lenguaje joven que ha tenido cambios grandes. En este repositorio encontramos uno de esos casos. Al intentar compilarlo la primera vez dio error, porque contiene
-palabras propias del lenguaje antiguas. Por ejemplo, antes para definir estructuras de datos se usaba la palabra \emph{type} y ahora se usa \emph{struct}. Como se trata de una de las pocas 
-bibliotecas que hay para comparar la nuestra, y adicionalmente solo tiene un par de ficheros, se ha actualizado como parte de este TFG. Se ha creado un \emph{pull request} al repositorio del proyecto. 
+palabras propias del lenguaje antiguas. Por ejemplo, antes para definir estructuras de datos se usaba la palabra \emph{type} y ahora se usa \emph{struct}. Como se trata de una de las pocas
+bibliotecas que hay para comparar la nuestra, y adicionalmente solo tiene un par de ficheros, se ha actualizado como parte de este TFG. Se ha creado un \emph{pull request} al repositorio del proyecto.
 Los operadores que se han definido son los que se encuentran en los ejemplos del proyecto. Se va a probar para un tamaño de población 100, y como función de Fitness: Rastrigin, 
 que es la que se usará para los experimentos de nuestro algoritmo en secciones futuras. Se trata de una función multimodal, con $10^{D}$ óptimos locales, por lo que el algoritmo 
 tiene muchas posibilidades de converger rápido. Se ha elegido para las exploraciones iniciales porque se encuentra en el punto medio de no ser tan fácil como la función de Esfera 
@@ -113,7 +113,7 @@ no estancarse.
 La librería devuelve la última población del algoritmo antes de parar, los valores de Fitness resultantes en la última generación se pueden ver en la Figura \ref{fig:genetic_algorithms_jl},
 el resumen de la ejecución. "Estos valores nos servirán como línea base de comparación con nuestro algoritmo". No se puede evaluar bien el comportamiento de este \emph{framework} ya que 
 la única información disponible para el análisis es el estado de la población en la última generación. Salvo por el problema de la sintaxis antigua y la falta de datos,
-ha sido bastante fácil de usar, además permite mucha flexibilidad. Como elementos a destacar: Se pueden personalizar casi por completo todos los operadores. Otra
+ha sido bastante fácil de usar, además permite mucha flexibilidad. Como elementos a destacar: Se pueden personalizar casi por completo todos los operadores.
 
 \begin{figure}[H]
 	\centering	
