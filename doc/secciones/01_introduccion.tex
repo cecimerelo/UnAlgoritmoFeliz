@@ -8,23 +8,34 @@ A principios de este año leí el conocido libro de Aldous Huxley: Un mundo feli
 distopía que describe el desarrollo en tecnología reproductiva, cultivos humanos e hipnopedia y el manejo de las
 emociones por medio de drogas. La población se ordena en \textbf{castas}, asignadas desde el nacimiento, donde cada uno
 sabe y acepta su lugar en la sociedad. La guerra y la pobreza han sido erradicadas, y todos son permanentemente
-felices. Se trata de un ``mundo óptimo``', cuya optimización está basada en la población y en el equilibrio que crea
-la división en castas, no en un único individuo. 
+felices. Se trata de un ``mundo óptimo``, cuya optimización está basada en la población y en el equilibrio que crea
+la división en castas, no en un único individuo.
 
 Cuando hablamos de algoritmos evolutivos nuestro objetivo es alcanzar la solución óptima de un problema, y este libro describe el 
 proceso mediante el cual han alcanzado la raza humana perfecta. Por tanto se quiere desarrollar un algoritmo evolutivo basado en 
-el proceso de fecundación del libro y comparar su comportamiento con otros algoritmos. Además, investigar cómo la división en castas afecta 
+el proceso de fecundación del libro y comparar su comportamiento con otros algoritmos. Además, investigar cómo la división en castas afecta
 la diversidad en la población.
 
-\section{Objetivos del trabajo}
+\section{Objetivos del trabajo} \label{sect:goals}
 
+En este apartado se definen los objetivos del trabajo que se va a desarrollar.
 \begin{enumerate}
-    \item Mejorar la diversidad en problemas de optimización mediante la división de la población en castas.
-    \item Desarrollar una herramienta de altas prestaciones para la ejecución de algoritmos evolutivos.
-    \item Aplicar el desarrollo ágil en la ciencia \cite{DBLP}.
+    \item Mejorar la diversidad en problemas de optimización mediante la división de la población en castas. En
+    la primera versión \cite{merelo_molina_2021}, el algoritmo quedaba estancado en óptimos locales. Según
+    algunos autores, el estancamiento temprano de un algoritmo se debe a la falta de diversidad, se quiere comprobar
+    si la división en castas ayuda a evitar este problema.
+    \item Desarrollar una herramienta de altas prestaciones para la ejecución de algoritmos evolutivos. En una 
+    primera versión del trabajo \cite{merelo_molina_2021} se vio que la metaheurística era lenta.
+    \item Aplicar el desarrollo ágil en la ciencia \cite{DBLP} que asegure que la versión final del trabajo tiene calidad y
+    es mantenible a lo largo del tiempo.
 \end{enumerate}
 
+Desarrollar una herramienta con metodología ágil permitirá que el trabajo esté seguro ante cambios. Al tratarse de un
+trabajo de investigación con tantas piezas, asegura que todas funcionan entre sí y que al añadir nueva funcionalidad
+no se rompe nada es muy importante. Lo que dará mucha confianza a la hora de hacer los cambios necesarios para alcanzar
+los otros dos objetivos.
 
-A continuación se establece el problema que se aborda en el trabajo. Luego, se describe el estado del arte en el campo 
-de las metaheurísticas y algoritmos bio-inspirados. Posteriormente cómo se ha implementado el algoritmo, continuando con exploración
-y análisis de resultados para elegir los parámetros que mejor se adapten al algoritmo; finalizando con las conclusiones y siguientes pasos.   
+A continuación se establece el problema que se aborda en el trabajo. Luego, se describe el estado del arte en el campo
+de las metaheurísticas y algoritmos bio-inspirados. Posteriormente se describirá cómo se ha implementado el algoritmo,
+continuando con exploración y análisis de resultados para elegir los parámetros que mejor se adapten al algoritmo; 
+finalizando con las conclusiones y siguientes pasos.

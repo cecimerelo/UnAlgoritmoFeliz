@@ -1,30 +1,30 @@
 \chapter{Descripción del problema y caracterización de la solución}
 
 En este capítulo se describe el problema cuya solución se quiere abordar en este trabajo. Primero se analiza la naturaleza del algoritmo que
-se quiere implementar, luego se describe la metaheurística desarrollada, para acabar con los casos de uso que se han ido 
+se quiere implementar, luego se describe la metaheurística que se va a desarrollar, para acabar con los casos de uso que se han ido
 implementando hasta conseguir la funcionalidad completa.
 
 \section{Descripción}
 
 En 2019, para la asignatura de metaheurísticas de la Universidad de Granada \cite{merelo_molina_2021} se propuso inventar una 
-metaheurística. En ese momento acababa de leer el libro ``Un Mundo feliz`` de Aldous Huxley, así que decidí adaptar el proceso de 
-optimización de la población humana que describe el libro a un algoritmo evolutivo. A lo largo del desarrollo se me presentaron varios retos.
-El primero fue el lenguaje escogido; lo desarrollé en Python, un lenguaje caracterizado por su fácil sintaxis pero su deficiencia de
-velocidad. Cada ejecución del problema llevaba horas, por lo que se hacía muy difícil de ejecutar y analizar. El
-segundo fue la optimización de los parámetros; el algoritmo quedaba estancado en óptimos locales. Estos problemas son 
-los que se quieren abordar en el desarrollo de este trabajo.
+metaheurística. En ese momento acababa de leer el libro ``Un Mundo feliz`` de Aldous Huxley \cite{un_mundo_feliz_libro}, así que
+decidí adaptar el proceso de optimización de la población humana que describe el libro a un algoritmo evolutivo. A lo largo del
+desarrollo se me presentaron varios retos. El primero fue el lenguaje escogido; lo desarrollé en Python, un lenguaje caracterizado
+por su fácil sintaxis pero su deficiencia de velocidad. Cada ejecución del problema llevaba horas, por lo que se hacía muy difícil
+de ejecutar y analizar. El segundo fue la optimización de los parámetros; el algoritmo quedaba estancado en óptimos locales.
+Estos problemas son los que se quieren abordar en el desarrollo de este trabajo.
 
-Como se ha mencionado en la sección anterior, se quiere desarrollar una metaheurística inspirada por un libro. Pero no solo interesa
+Como se ha mencionado en la sección anterior, y relacionado con los objetivos de desarrollar una herramienta de altas prestaciones,
+se quiere desarrollar una metaheurística inspirada por un libro. Pero no solo interesa
 el poder adaptar el proceso descrito en el libro a una metaheurística. También se busca que la metaheurística pueda ser
-usada fácilmente por la comunidad, que su implementación sea extensible y mantenible, y además fácil de analizar. Para conseguirlo
-se desarrollará una biblioteca que sea adaptable al problema a resolver, donde los parámetros iniciales sean 
-indicados por la persona que use el algoritmo; parámetros como la función de fitness, tamaño de la población inicial,
-dimensión del cromosoma y rango de búsqueda
+usada fácilmente por la comunidad, que su implementación sea extensible y mantenible, y además fácil de analizar, para completar el objetivo
+desarrollo mediante metodología ágil. Para conseguirlo se desarrollará una biblioteca que sea adaptable al problema a resolver, donde los parámetros iniciales sean indicados por la persona que use el algoritmo; parámetros como la función de fitness,
+tamaño de la población inicial, dimensión del cromosoma y rango de búsqueda
 
 \section{Naturaleza del algoritmo}
 
-Como se ha mencionado, el algoritmo está basado en el proceso de optimización de la población humana que describe el libro 
-a un algoritmo evolutivo, por tanto, estamos hablando de un algoritmo basado en la evolución de una población, así que seguirá 
+Como se ha mencionado, el algoritmo está basado en el proceso de optimización de la población humana que describe el libro, por tanto,
+estamos hablando de un algoritmo basado en la evolución de una población, así que seguirá
 la estructura de los algoritmos evolutivos, más en concreto, un \emph{algoritmo genético}. Se trata de un algoritmo 
 genético ya que es un algoritmo de optimización de búsqueda inspirado en los procesos de Evolución Natural y
 Evolución Genética.
@@ -33,7 +33,7 @@ Siguiendo la definición dada por Goldberg \cite{goldberg89}, "los Algoritmos Ge
 basados en la mecánica de selección natural. Combinan la supervivencia del más apto entre estructuras de secuencias con un intercambio de 
 información estructurado, aunque aleatorizado, para construir así un algoritmo de búsqueda que tenga algo de las genialidades de las 
 búsquedas humanas". En resumen, estos algoritmos reflejan el proceso de la selección natural. Forman parte del grupo de 
-los \emph{algoritmos evolutivos}. El proceso está compuesto de 4 fases:
+los \emph{algoritmos evolutivos}. El proceso está compuesto de 4 componentes principales:
 
 \begin{itemize}
     \item Creación de la población inicial: el proceso comienza con un conjunto de individuos llamado \emph{Población}. Cada individuo
@@ -50,19 +50,19 @@ los \emph{algoritmos evolutivos}. El proceso está compuesto de 4 fases:
     serán cambiados.
 \end{itemize}
 
-Además de las fases también se debe definir una \emph{condición de parada} y una \emph{función de fitness}. La 
+Además de las fases, también se debe definir una \emph{condición de parada} y una \emph{función de fitness}. La
 condición de parada sirve para que el algoritmo finalice si la población converge, es decir, si no produce hijos 
 que sean diferentes con respecto a las generaciones anteriores, o si alcanza la solución. La función de fitness
-determina cómo de adecuado es un individuo, esto es, la probabilidad de que un individuo sea seleccionado para 
+determina cómo de adecuado es un individuo, esto es, la probabilidad de que un individuo sea seleccionado para
 la reproducción depende de este valor. Por tanto, para alcanzar la solución a un problema se parte de un conjunto 
 inicial de individuos, llamado \textit{población inicial}, generado de manera aleatoria. Cada uno de estos 
 individuos representa una posible solución al problema. Estos individuos van pasando por los diferentes operadores y 
 evolucionando en cada generación.
 
 En el caso del algoritmo propuesto en este trabajo (\emph{Algoritmo Feliz}) la población evolucionará siguiendo un proceso 
-inspirado por los distintos procesos descritos en el libro de Aldous Huxley. El proceso propuesto se describe con mayor detalle
+inspirado por los distintos mecanismos descritos en el libro de Aldous Huxley. El proceso propuesto se describe con mayor detalle
 en la sección \ref{sect: description}. Al usar como guía los procesos descritos en el libro quiere decir que se está desarrollando 
-una metaheurística. Esta se trata de un método de alto nivel, independiente del problema, que proporciona una serie de guías o 
+una \textit{metaheurística}. Las  metaheurísticas son métodos de alto nivel, independientes del problema, que proporcionan una serie de guías o
 estrategias para desarrollar algoritmos de optimización heurísticos \cite{metaheuristics_def}. Muchas metaheurísticas
 están inspiradas en la naturaleza \cite{Molina2020ComprehensiveTO}. Por ejemplo, la optimización basada en colonias de
 hormigas que imita la manera en la que las hormigas se comportan cuando viajan a una fuente de comida, y cómo se 
@@ -75,7 +75,7 @@ Normalmente las metaheurísticas se usan en problemas de optimización por varia
 \end{itemize}
 
 En conclusión, se va a desarrollar una metaheurística basada en el proceso de fecundación y la división en castas descrita en el 
-libro de A. Huxley.
+libro de A. Huxley, llamada ``Algoritmo Feliz`` o \emph{AF}.
 
 \section{Descripción de la metaheurística desarrollada} \label{sect: description}
 
@@ -83,7 +83,7 @@ El libro describe cómo se alcanza esta raza humana perfecta mediante una ``cade
 reflejaremos mediante un algoritmo evolutivo generacional con los operadores de selección, cruce, mutación y reemplazamiento. 
 El proceso comienza en la \textbf{\textit{Sala de Fecundación}}; aquí se crean los óvulos y se fecundan. Una vez \textit{fecundados}
 los óvulos pasan a las incubadoras, donde se decide la \textit{casta} a la que pertenecerá cada individuo. Huxley describe 
-como a los Alfas y los Betas se les suministra una gran cantidad de nutrientes y hormonas durante la incubación. Mientras que las 
+como a los Alfas y los Betas se les suministra una gran cantidad de nutrientes y hormonas durante la incubación. Mientras que las
 castas bajas, Gamma, Delta y Epsilon son privadas de estos elementos necesarios para el desarrollo. Para imitar esta
  ``falta de nutrientes``, en el algoritmo a desarrollar privaremos a las castas bajas de operadores, solo mutarán. Con esto
  pretendo avanzar el objetivo de mantener la diversidad alta durante toda la ejecución del algoritmo. 
@@ -131,13 +131,25 @@ Con esta estructura en mente la metaheurística se divide en las siguientes fase
 No se trata de castas estáticas, se generan al principio de cada generación. Imaginemos que tenemos una población de 10 individuos, cada 
 uno con un valor de fitness. En la primera iteración se dividirá esta población atendiendo a este valor de fitness. Posteriormente,
 cada individuo seguirá el proceso de evolución correspondiente a su casta. Al final de la generación se juntan todos los cromosomas,
-independientemente de su casta, ya que al haber evolucionado su valor de fitness habrá cambiado. La siguiente generación comienza
-dividiendo en castas los cromosomas que han evolucionado en la anterior.
+independientemente de su casta, ya habrá evolucionado su valor con respecto al resto de los individuos de la
+población. La siguiente generación comienza dividiendo en castas los cromosomas que han evolucionado en la anterior.
 
-\section{Naturaleza del Sofware}
+\section{Naturaleza del Software} \label{sect:no-funcionales}
+
+Alineados con los objetivos del TFG \ref{sect:goals}, los requisitos no funcionales de este proyecto son:
+
+\begin{itemize}
+    \item Desarrollo \emph{future-proof}: toda la funcionalidad debe ser testeada, de esta manera, en el futuro,
+    cuando se hagan cambios se sabrá si la nueva funcionalidad rompe lo escrito hasta el momento o no. Esto
+    también favorece que gente ajena al proyecto se vea más segura a participar en él. Además esto incrementa
+    la mantenibilidad del código, ya que los tests ayudan a que siempre esté claro lo que hace cada método
+    del código.
+    \item Evitar la repetición de código, esto favorece a que el código sea más fácil de mantener.
+    \item Desarrollo ágil: desarrollar la mínima cantidad de código que cubra la funcionalidad.
+\end{itemize}
 
 Este proyecto es software libre, y está liberado con la licencia \cite{gplv3}. El producto final de este proyecto será una
 biblioteca que estará disponible Github \cite{project_repository}. Esto ayuda a la reproducibilidad de la ciencia y 
-adicionalmente es parte de desarrollo ágil, ya que cualquier persona puede añadir tareas y marcarle la prioridad. Esto va 
+adicionalmente es parte de desarrollo ágil, ya que cualquier persona puede añadir tareas y marcarle la prioridad. Esto va
 también en línea con la ciencia abierta. El concepto de “ciencia abierta” es la difusión del conocimiento científico 
 lo más amplia posible, libre para todas y todos, accesible en línea y reutilizable

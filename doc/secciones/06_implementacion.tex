@@ -1,10 +1,29 @@
 \chapter{Implementación}
 
-La implementación del software se ha dividido en tareas. Estas han sido definidas en Github. Cada tarea corresponde con un 
-incremento en la funcionalidad del algoritmo.
+- en base a los requisitos que se va a usar de forma concreta
+- Calcula la diversidad - Con qué he calculado la diversidad
 
-Un requisito fundamental es desarrollar un algoritmo que sea mantenible. Por tanto, a la hora del desarrollo se priorizarán conceptos 
+¿qué he utilizado, estructuras de datos, mutables inmutables, precision del float, que bibliotecas he usado?
+
+\section{Metodología del desarrollo}
+
+Un requisito fundamental a la hora de implementar es usar una metodología que garantice la evolución del código. Por eso la implementación 
+del software se ha dividido en tareas siguiendo la metodología ágil Kanban. Se divide el proyecto en tareas pequeñas que aporten valor al producto 
+final. De esta forma puedes probar cada tarea a medida que la vas acabando. Al final del desarrollo estás segura de que todas las piezas funcionan
+correctamente.
+
+Otro requisito es desarrollar un algoritmo que sea mantenible. Por tanto, a la hora del desarrollo se priorizarán conceptos 
 como arquitectura limpia \cite{cleanArquitecture2017} y la limpieza del código \cite{cleanCode2008}, así como el desarrollo basado en tests. Para asegurar 
 que el algoritmo está asentado sobre una base firme. Además gracia al desarrollo basado en tests para cada cambio que se haga 
 se sabrá si se ha roto lo que estaba escrito hasta el momento. 
 
+- qué he usado para conseguir los hitos
+\section{Estructura del algoritmo}
+
+Una de las formas de conseguir altas prestaciones es escoger el lenguaje adecuado. Por ello se ha escogido un lenguaje que
+hace poco entró en el \"Petaflop Club\", que incluye aquellos lenguajes que superan 1 petaflop/segundo como rendimiento pico. Se trata
+de Julia \cite{julia}, un lenguaje de programación multiparadigma de tipado dinámico. Orientado a la computación técnica y 
+científica. La rapidez fue uno de los principales objetivos a la de la creación del lenguaje. 
+
+Para ayudar a la reutilización es muy importante que el código sea limpio, mantenible y haya sido testeado, por eso se ha decidido seguir los estándares de arquitectura y código marcados 
+por Robert C. Martin \cite{cleanArquitecture2017, cleanCode2008}. Usar estándares va alineado con el objetivo de aplicar el desarrollo ágil a la ciencia.
