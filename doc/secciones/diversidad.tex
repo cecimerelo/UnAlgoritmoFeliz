@@ -2,11 +2,11 @@
 
 Mantener la diversidad es crucial para evitar una convergencia prematura hacía un óptimo local. Rosca \cite{Rosca} concluyó que las poblaciones parecían quedar estancadas
 en un óptimo local cuando la entropía no cambiaba o decrecía monótonamente en las generaciones sucesivas. En programación genética, la diversidad se refiere a diferencias estructurales, 
-como por ejemplo la cantidad de genotipos distintos en la población o la singularidad de valores del fitness \cite{genetic}. Uno de los objetivos de este trabajo es investigar como la 
+como por ejemplo la cantidad de genotipos distintos en la población o la singularidad de valores del fitness \cite{genetic}. Uno de los objetivos de este trabajo es investigar cómo la 
 división en castas afecta a la diversidad, así que en esta sección se analizará.  Hay diferentes medidas para calcularla, entre ellas: diversidad genotípica, 
-diversidad fenotípica, entropía, pseudo isomorfismo, distancias de edición, etc. De entre ellas calcularemos la \textbf{entropía}, que describe como se distribuye la
+diversidad fenotípica, entropía, pseudo-isomorfismo, distancias de edición, etc. De entre ellas calcularemos la \textbf{entropía}, que describe cómo se distribuye la
 población en torno a los diferentes valores del fitness, y la \textbf{distancia de edición}, en la que cada individuo se mide contra el mejor individuo encontrado hasta el 
-momento. Se han elegido porque según Burke \cite{diversity} la entropía y la distancia de edición muestran una gran correlación con el aumento y decremento del valor 
+momento. Se han elegido dado que según Burke \cite{diversity} la entropía y la distancia de edición muestran una gran correlación con el aumento y decremento del valor 
 del fitness. Una vez calculadas, se investigará la relación entre el fitness y la diversidad \cite{diversity}. 
 
 \subsection{Experimentos}
@@ -18,7 +18,7 @@ Para realizar estas pruebas usaremos la configuración de la Tabla \ref{tab:dive
     \begin{tabular}{||c|c||}
         \hline
         \multicolumn{2}{|l|}{\textbf{Fichero Configuración: config\_file\_5.json}} \\ \hline
-        Tamaño cromosoma                                & 20               \\ \hline
+        Tamaño del cromosoma                            & 20              \\ \hline
         Tamaño de la población                          & 100             \\ \hline
         Máximo de generaciones                          & 15              \\ \hline
         Porcentaje Alfa de la población                 & 10              \\ \hline
@@ -40,14 +40,14 @@ Para realizar estas pruebas usaremos la configuración de la Tabla \ref{tab:dive
 \end{figure}
 
 En la Figura \ref{fig:primera_ejecucion} se ve el resultado de ejecutar el algoritmo 15 veces con la configuración anterior.
-Se puede ver como los mejores resultados se obtienen en las primeras generaciones. La mayoría de las ejecuciones muestran como la mejora
+Se puede observar cómo los mejores resultados se obtienen en las primeras generaciones. La mayoría de las ejecuciones muestran cómo la mejora
 del fitness disminuye alrededor de la generación 15-20. Esto puede indicar que cuanto mayor es la generación menor es la diversidad. 
 Para apoyar esta idea tenemos las Figuras \ref{fig:best_f_value} y \ref{fig:worst_f_value}. 
 
 La Figura \ref{fig:best_f_value} muestra la diversidad de la ejecución que resulta en un mejor fitness. De la generación 0 a la 30 se produce un decremento de la entropía,
-pero se vuelve a recuperar en el resto de generaciones. La entroía empezando y acabando casi con el mismo valor nos dice que el algoritmo mantiene una diversidad similar a 
+pero se vuelve a recuperar en el resto de generaciones. La entropía empezando y acabando casi con el mismo valor nos dice que el algoritmo mantiene una diversidad similar a 
 lo largo de toda la ejecución, lo que puede dar lugar a mejores resultados. En la Figura \ref{fig:worst_f_value}, que muestra la peor ejecución, podemos 
-ver un comportamiento similar, el descenso también se produce en las generaciones 0-25. 
+ver un comportamiento similar; el descenso también se produce en las generaciones 0-25. 
 
 \begin{table}[]
     \begin{tabular}{||c|c|c|c|c|c||}
