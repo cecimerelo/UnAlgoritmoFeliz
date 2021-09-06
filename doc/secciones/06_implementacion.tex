@@ -3,22 +3,22 @@ En esta sección se va a describir la implementación, basada en los requisitos 
 
 \section{Lenguaje de programación}
 
-Una de las formas de conseguir altas prestaciones, para alcanzar el objetivo 2, es escoger el lenguaje adecuado. Por ello se ha escogido
-un lenguaje que hace poco entró en el \"Petaflop Club\", que incluye aquellos lenguajes que superan 1 petaflop/segundo como rendimiento pico. Se trata
+Una de las formas de conseguir altas prestaciones, para alcanzar el objetivo 2, es escoger el lenguaje adecuado. Por ello se ha elegido
+un lenguaje que hace poco entró en el \"Petaflop Club\", el cual incluye aquellos lenguajes que superan 1 petaflop/segundo como rendimiento pico. Se trata
 de Julia \cite{julia}, un lenguaje de programación multiparadigma de tipado dinámico. Orientado a la computación técnica y
-científica. El objetivo de sus creadores fue el de combinar lo mejor de otros lenguajes, es decir, conseguir un “todo en uno”, lo que se traduce en:
+científica, el objetivo de sus creadores fue el de combinar lo mejor de otros lenguajes, es decir, conseguir un “todo en uno”, lo que se traduce en:
 la velocidad de C, la usabilidad de Python, el dinamismo de Ruby, la destreza matemática de MatLab, y las estadísticas de R \cite{julia_goals}.
 
 \section{Metodología del desarrollo}
 
 Un requisito fundamental a la hora de implementar es usar una metodología que garantice la evolución del código. Por eso la implementación 
-del software se ha dividido en tareas siguiendo la metodología ágil Kanban. Se divide el proyecto en tareas pequeñas que aporten valor al producto 
-final. De esta forma puedes probar cada tarea a medida que la vas acabando. Al final del desarrollo estás segura de que todas las piezas funcionan
+del software se ha dividido en tareas, siguiendo la metodología ágil Kanban. Se divide pues el proyecto en tareas pequeñas que aporten valor al producto 
+final, de esta forma que puedes probar cada tarea a medida que la vas acabando. Al final del desarrollo estás segura de que todas las piezas funcionan
 correctamente.
 
 Otro requisito es desarrollar un algoritmo que sea mantenible. Por tanto, a la hora del desarrollo se priorizarán conceptos 
 como arquitectura limpia \cite{cleanArquitecture2017} y la limpieza del código \cite{cleanCode2008}, así como el desarrollo basado en tests. De esta manera, se asegura
-que el algoritmo está asentado sobre una base firme. Asimismo, gracias al desarrollo basado en tests para cada cambio que se haga
+que el algoritmo está asentado sobre una base firme. Asimismo, gracias al desarrollo basado en tests, para cada cambio que se haga
 se sabrá si se ha roto lo que estaba escrito hasta el momento.  Usar estándares va en línea con el objetivo de aplicar el desarrollo ágil a la ciencia.
 
 \section{Estructuras de datos}
@@ -26,16 +26,16 @@ se sabrá si se ha roto lo que estaba escrito hasta el momento.  Usar estándare
 Las entidades que se han utilizado para estructura la información son:
 \begin{itemize}
     \item Para tener bien definidos los datos de entrada se ha creado una entidad que contiene todos los parámetros de
-    configuración del algoritmo. Se trata de una estructura inmutable, estos parámetros no cambiarán a lo largo de todo el
+    configuración del algoritmo. Se trata de una estructura inmutable, luego estos parámetros no cambiarán a lo largo de todo el
     algoritmo.
     \item Para unificar todos los datos que necesita el algoritmo, se ha definido una estructura inmutable. Una vez
     rellenada esta entidad, el algoritmo tiene todos los datos necesarios para comenzar la ejecución.
     \item Definir la casta como una entidad abstracta. Julia usa el \emph{dispatch} múltiple como paradigma, 
-    esto va a ser muy útil a la hora de definir los operadores como se verá más adelante. Teniendo la casta 
+    lo que va a ser muy útil a la hora de definir los operadores, como se verá más adelante. Teniendo la casta 
     como tipo abstracto podremos definir métodos que acepten cualquier tipo de casta.
 
-    \item Julia es un lenguaje de tipado dinámico, pero tiene alguna de las ventajas que del tipado estático haciendo posible indicar
-    los tipos de algunos valores. Además, Para poder hacer buen uso de este paradigma se han definido las castas como tipos distintos, por ejemplo, para
+    \item Julia es un lenguaje de tipado dinámico, pero tiene alguna de las ventajas del tipado estático, haciendo posible indicar
+    los tipos de algunos valores. Además, para poder hacer buen uso de este paradigma se han definido las castas como tipos distintos, por ejemplo, para
     la casta alfa:
 
     \begin{lstlisting}[
@@ -81,10 +81,10 @@ En esta sección se va a describir las decisiones técnicas que se han tomado pa
         }
     \end{lstlisting}
 
-    Cualquiera de estos parámetros es se puede cambiar. Esto se convertirá en una entidad inmutable que servirá como 
+    Cualquiera de estos parámetros se puede cambiar. Esto se convertirá en una entidad inmutable que servirá como 
     entrada al algoritmo.
 
-    \item \textbf{Función de fitness \cite{project_repository_8}}: se ha usado las funciones que pertenecen al \emph{benchmark}
+    \item \textbf{Función de fitness \cite{project_repository_8}}: se han usado las funciones que pertenecen al \emph{benchmark}
     \emph{ Black-box Optimization Benchmarking (BBOB)} \cite{bbob_definition}. Este \emph{benchmark} define funciones que se suelen 
     usar como referencia en el campo de las metaheurísticas. En Julia están implementadas en la biblioteca 
     \emph{BlackBoxOptimizationBenchmarking.jl} \cite{bbob_jl}.
@@ -112,13 +112,13 @@ En esta sección se va a describir las decisiones técnicas que se han tomado pa
     \end{lstlisting}
     
     Para muestrear la población se ha usado la biblioteca \emph{StatsBase.jl}. Se ha elegido esta librería porque
-    tiene un gran número de contribuidores y está en continua actualización
+    tiene un gran número de contribuidores y se actualiza continuamente.
 \end{itemize}
 
 \section{Implementación del cálculo de la diversidad}
 
-Uno de los objetivos del TFG es Mejorar la diversidad en problemas de optimización mediante la división de la población en castas.
-Para calcularla se han usado como métricas la entropía y la distancia de edición, la decisión de usar estas medidas
+Uno de los objetivos del TFG es mejorar la diversidad en problemas de optimización mediante la división de la población en castas.
+Para calcularla se han usado como métricas la entropía y la distancia de edición; la decisión de usar estas medidas
 está definida en secciones posteriores. Para calcular la entropía en Julia hay varias librerías disponibles:
 
 \begin{itemize}
@@ -132,7 +132,7 @@ está definida en secciones posteriores. Para calcular la entropía en Julia hay
 \end{itemize}
 
 Al final para calcular la entropía se ha usado el paquete \emph{InformationMeasures.jl} \cite{informationMeasures_jl}, ya 
-que tiene una función que te calcula la entropía para cualquier tipo de datos. Además ha sido muy fácil de usarla porque 
+que tiene una función que te calcula la entropía para cualquier tipo de datos. Aparte, ha sido muy fácil usarla porque 
 tiene buena documentación. La distancia de edición a partir de la distancia euclídea ofrecida por el paquete
 \emph{Distances.jl} \cite{distances_jl}, paquete que ofrece gran cantidad de opciones para calcular distancias entre vectores.
 Para calcular distancias era una de las pocas opciones disponibles, pero tiene muchos contribuidores, ya que forma 
@@ -144,4 +144,4 @@ Para el análisis de los resultados se ha usado la estructura de datos \emph{Dat
 ha usado esta estructura de datos porque facilita mucho la visualización en tablas. Además tiene una fuerte
 integración con distintos formatos de salida de archivos. 
 
-Para las gráficas se usará \emph{Gafly.jl} \cite{gadfly_jl},ya que se integra estrechamente con los DataFrames
+Para las gráficas se usará \emph{Gafly.jl} \cite{gadfly_jl},ya que se integra estrechamente con los DataFrames.
