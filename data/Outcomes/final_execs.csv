@@ -1,0 +1,76 @@
+TIME,F_EVALUATIONS,FUNCTION,CONFIG_FILE_PATH,OUTCOME_FILE,GENERATION,BEST_ELEMENT,F_OPT
+25.967796471,871669,Rastrigin,config_file_19,./data/Outcomes/config_file_19_Rastrigin_11:39:51.csv,115,170.45328964240974,-49.2
+19.800106008,602718,Rastrigin,config_file_19,./data/Outcomes/config_file_19_Rastrigin_11:41:19.csv,79,204.85176824536796,-49.2
+17.424306956,527823,Rastrigin,config_file_19,./data/Outcomes/config_file_19_Rastrigin_11:42:45.csv,69,221.64756836148848,-49.2
+19.370333982,572765,Rastrigin,config_file_19,./data/Outcomes/config_file_19_Rastrigin_11:44:12.csv,75,187.86789962903373,-49.2
+18.618547535,543102,Rastrigin,config_file_19,./data/Outcomes/config_file_19_Rastrigin_11:45:42.csv,71,189.7389408368436,-49.2
+18.227404446,535427,Rastrigin,config_file_19,./data/Outcomes/config_file_19_Rastrigin_11:47:11.csv,70,204.53443003780916,-49.2
+20.009866689,595128,Rastrigin,config_file_19,./data/Outcomes/config_file_19_Rastrigin_11:48:47.csv,78,169.49186812689618,-49.2
+25.158133413,804377,Rastrigin,config_file_19,./data/Outcomes/config_file_19_Rastrigin_11:50:28.csv,106,206.92928701708172,-49.2
+22.306480487,685186,Rastrigin,config_file_19,./data/Outcomes/config_file_19_Rastrigin_11:52:07.csv,90,164.7615400938974,-49.2
+30.330105655,983460,Rastrigin,config_file_19,./data/Outcomes/config_file_19_Rastrigin_11:53:54.csv,130,181.09180534644878,-49.2
+16.597717115,497716,Rastrigin,config_file_19,./data/Outcomes/config_file_19_Rastrigin_11:55:25.csv,65,219.44653778739848,-49.2
+20.990064284,669412,Rastrigin,config_file_19,./data/Outcomes/config_file_19_Rastrigin_11:56:54.csv,88,185.18726580502835,-49.2
+20.261518007,654795,Rastrigin,config_file_19,./data/Outcomes/config_file_19_Rastrigin_11:58:21.csv,86,191.08541177791193,-49.2
+25.812729326,864139,Rastrigin,config_file_19,./data/Outcomes/config_file_19_Rastrigin_11:59:54.csv,114,163.2746500798379,-49.2
+17.714553474,528168,Rastrigin,config_file_19,./data/Outcomes/config_file_19_Rastrigin_12:01:19.csv,69,199.81710932952478,-49.2
+17.348286611,734895,Buche-Rastrigin,config_file_19,./data/Outcomes/config_file_19_Buche-Rastrigin_12:29:05.csv,97,1084.8175122862474,27.36
+19.949730013,847566,Buche-Rastrigin,config_file_19,./data/Outcomes/config_file_19_Buche-Rastrigin_12:30:40.csv,112,1305.919571976369,27.36
+14.221616066,570678,Buche-Rastrigin,config_file_19,./data/Outcomes/config_file_19_Buche-Rastrigin_12:32:14.csv,75,1453.0921813822072,27.36
+22.573859532,1019035,Buche-Rastrigin,config_file_19,./data/Outcomes/config_file_19_Buche-Rastrigin_12:33:54.csv,135,1535.5650825181526,27.36
+21.308214924,839914,Buche-Rastrigin,config_file_19,./data/Outcomes/config_file_19_Buche-Rastrigin_12:35:39.csv,111,1491.34867442175,27.36
+18.233065923,772523,Buche-Rastrigin,config_file_19,./data/Outcomes/config_file_19_Buche-Rastrigin_12:37:16.csv,102,1371.7093457727958,27.36
+19.865478409,712800,Buche-Rastrigin,config_file_19,./data/Outcomes/config_file_19_Buche-Rastrigin_12:38:56.csv,94,1518.879812929868,27.36
+11.819442552,458718,Buche-Rastrigin,config_file_19,./data/Outcomes/config_file_19_Buche-Rastrigin_12:40:26.csv,60,1469.8835375462365,27.36
+18.493539193,832888,Buche-Rastrigin,config_file_19,./data/Outcomes/config_file_19_Buche-Rastrigin_12:41:55.csv,110,1262.5958074227506,27.36
+20.042281095,951805,Buche-Rastrigin,config_file_19,./data/Outcomes/config_file_19_Buche-Rastrigin_12:43:34.csv,126,1265.73002727209,27.36
+13.757858937,600619,Buche-Rastrigin,config_file_19,./data/Outcomes/config_file_19_Buche-Rastrigin_12:44:58.csv,79,1205.024918278387,27.36
+22.273166139,914916,Buche-Rastrigin,config_file_19,./data/Outcomes/config_file_19_Buche-Rastrigin_12:46:32.csv,121,1031.1879221871225,27.36
+15.119133971,652773,Buche-Rastrigin,config_file_19,./data/Outcomes/config_file_19_Buche-Rastrigin_12:48:04.csv,86,1506.5644340296762,27.36
+14.865136089,496101,Buche-Rastrigin,config_file_19,./data/Outcomes/config_file_19_Buche-Rastrigin_12:49:35.csv,65,1326.7251758689022,27.36
+18.268559064,705236,Buche-Rastrigin,config_file_19,./data/Outcomes/config_file_19_Buche-Rastrigin_12:51:19.csv,93,1367.384474586901,27.36
+14.286576553,830737,Ellipsoidal,config_file_19,./data/Outcomes/config_file_19_Ellipsoidal_12:52:54.csv,109,52550.37278270076,-0.53
+16.05124056,778282,Ellipsoidal,config_file_19,./data/Outcomes/config_file_19_Ellipsoidal_12:54:33.csv,102,92543.66395365041,-0.53
+18.607134092,966345,Ellipsoidal,config_file_19,./data/Outcomes/config_file_19_Ellipsoidal_12:56:09.csv,127,90304.71599843932,-0.53
+17.012835742,943945,Ellipsoidal,config_file_19,./data/Outcomes/config_file_19_Ellipsoidal_12:57:48.csv,124,96233.38383934215,-0.53
+16.470930824,989548,Ellipsoidal,config_file_19,./data/Outcomes/config_file_19_Ellipsoidal_12:59:17.csv,130,58135.47628941241,-0.53
+16.546191868,921109,Ellipsoidal,config_file_19,./data/Outcomes/config_file_19_Ellipsoidal_13:00:45.csv,121,112641.24054953392,-0.53
+11.797021626,650312,Ellipsoidal,config_file_19,./data/Outcomes/config_file_19_Ellipsoidal_13:02:09.csv,85,78366.83661029165,-0.53
+17.403821763,1072263,Ellipsoidal,config_file_19,./data/Outcomes/config_file_19_Ellipsoidal_13:03:37.csv,141,106566.19649238538,-0.53
+13.128448381,740170,Ellipsoidal,config_file_19,./data/Outcomes/config_file_19_Ellipsoidal_13:05:02.csv,97,65594.53922710291,-0.53
+14.658482966,785608,Ellipsoidal,config_file_19,./data/Outcomes/config_file_19_Ellipsoidal_13:06:28.csv,103,77017.22135759931,-0.53
+19.425878358,763110,Ellipsoidal,config_file_19,./data/Outcomes/config_file_19_Ellipsoidal_13:08:12.csv,100,62725.188980385945,-0.53
+12.785791951,566911,Ellipsoidal,config_file_19,./data/Outcomes/config_file_19_Ellipsoidal_13:09:50.csv,74,51663.251115632804,-0.53
+17.963908266,1049400,Ellipsoidal,config_file_19,./data/Outcomes/config_file_19_Ellipsoidal_13:11:30.csv,138,62055.700402781855,-0.53
+14.21934376,694910,Ellipsoidal,config_file_19,./data/Outcomes/config_file_19_Ellipsoidal_13:13:02.csv,91,190355.60594615946,-0.53
+17.897153163,936808,Ellipsoidal,config_file_19,./data/Outcomes/config_file_19_Ellipsoidal_13:14:38.csv,123,79338.6157243345,-0.53
+12.506017857,773333,Linear Slope,config_file_19,./data/Outcomes/config_file_19_Linear Slope_13:16:16.csv,103,121.14793202102506,-1.7
+9.478872969,549332,Linear Slope,config_file_19,./data/Outcomes/config_file_19_Linear Slope_13:17:55.csv,73,144.9723741783715,-1.7
+8.955279458,445202,Linear Slope,config_file_19,./data/Outcomes/config_file_19_Linear Slope_13:19:26.csv,59,143.6458702575216,-1.7
+10.260864824,616989,Linear Slope,config_file_19,./data/Outcomes/config_file_19_Linear Slope_13:21:00.csv,82,136.704093222749,-1.7
+13.459538923,989414,Linear Slope,config_file_19,./data/Outcomes/config_file_19_Linear Slope_13:22:43.csv,132,127.85712670132786,-1.7
+9.177392852,497636,Linear Slope,config_file_19,./data/Outcomes/config_file_19_Linear Slope_13:24:17.csv,66,147.58124512487802,-1.7
+11.337947351,773184,Linear Slope,config_file_19,./data/Outcomes/config_file_19_Linear Slope_13:25:51.csv,103,121.54538199680398,-1.7
+14.025999763,609757,Linear Slope,config_file_19,./data/Outcomes/config_file_19_Linear Slope_13:27:30.csv,81,120.99667476781399,-1.7
+12.453561519,579498,Linear Slope,config_file_19,./data/Outcomes/config_file_19_Linear Slope_13:29:24.csv,77,135.20357499166005,-1.7
+12.05382041,653544,Linear Slope,config_file_19,./data/Outcomes/config_file_19_Linear Slope_13:31:15.csv,87,132.37738722550088,-1.7
+9.977534941,586795,Linear Slope,config_file_19,./data/Outcomes/config_file_19_Linear Slope_13:32:58.csv,78,155.11312674629716,-1.7
+10.24423141,549776,Linear Slope,config_file_19,./data/Outcomes/config_file_19_Linear Slope_13:34:41.csv,73,141.85786086566213,-1.7
+12.664471214,594599,Linear Slope,config_file_19,./data/Outcomes/config_file_19_Linear Slope_13:36:23.csv,79,128.39183132079182,-1.7
+9.908018597,579170,Linear Slope,config_file_19,./data/Outcomes/config_file_19_Linear Slope_13:38:07.csv,77,145.08799717085796,-1.7
+12.093441331,848001,Linear Slope,config_file_19,./data/Outcomes/config_file_19_Linear Slope_13:39:41.csv,113,122.65826266146776,-1.7
+9.012931958,551269,Sphere,config_file_19,./data/Outcomes/config_file_19_Sphere_13:41:15.csv,72,-577.01399134207,-595.22
+9.169292169,625529,Sphere,config_file_19,./data/Outcomes/config_file_19_Sphere_13:42:46.csv,82,-580.5320963438595,-595.22
+9.585062306,700062,Sphere,config_file_19,./data/Outcomes/config_file_19_Sphere_13:44:17.csv,92,-576.1847891138419,-595.22
+9.874843777,842298,Sphere,config_file_19,./data/Outcomes/config_file_19_Sphere_13:45:46.csv,111,-578.4397137348191,-595.22
+8.464568004,573518,Sphere,config_file_19,./data/Outcomes/config_file_19_Sphere_13:47:12.csv,75,-577.3453655380307,-595.22
+7.244180336,432092,Sphere,config_file_19,./data/Outcomes/config_file_19_Sphere_13:48:39.csv,56,-575.3622154570164,-595.22
+7.395765869,551231,Sphere,config_file_19,./data/Outcomes/config_file_19_Sphere_13:49:58.csv,72,-576.3175296670022,-595.22
+9.787611704,715538,Sphere,config_file_19,./data/Outcomes/config_file_19_Sphere_13:51:26.csv,94,-572.9966751654327,-595.22
+9.134774094,647933,Sphere,config_file_19,./data/Outcomes/config_file_19_Sphere_13:52:55.csv,85,-575.1380145098028,-595.22
+8.972249997,618566,Sphere,config_file_19,./data/Outcomes/config_file_19_Sphere_13:54:22.csv,81,-574.3265630537135,-595.22
+7.377215242,543578,Sphere,config_file_19,./data/Outcomes/config_file_19_Sphere_13:55:45.csv,71,-577.0920143520425,-595.22
+8.939864678,648120,Sphere,config_file_19,./data/Outcomes/config_file_19_Sphere_13:57:10.csv,85,-577.9687992991545,-595.22
+9.348279923,655654,Sphere,config_file_19,./data/Outcomes/config_file_19_Sphere_13:58:39.csv,86,-577.8126757622972,-595.22
+9.373406676,707621,Sphere,config_file_19,./data/Outcomes/config_file_19_Sphere_14:00:08.csv,93,-579.2650645689215,-595.22
+8.948422391,625672,Sphere,config_file_19,./data/Outcomes/config_file_19_Sphere_14:01:34.csv,82,-576.0161274577237,-595.22

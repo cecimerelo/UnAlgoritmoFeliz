@@ -1,0 +1,19 @@
+{
+    "CHROMOSOME_SIZE": 50,
+    "POPULATION_SIZE": 5000,
+    "MAX_GENERATIONS": 15,
+    "POPULATION_PERCENTAGE": {
+        "ALPHA": 10,
+        "BETA": 20,
+        "GAMMA": 20,
+        "DELTA": 20,
+        "EPSILON": 30
+    },
+    "MUTATION_RATE": {
+        "ALPHA": 5,
+        "BETA": 10,
+        "GAMMA": 30,
+        "DELTA": 40,
+        "EPSILON": 50
+    }
+}
