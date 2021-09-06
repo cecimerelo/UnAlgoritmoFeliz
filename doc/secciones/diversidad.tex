@@ -1,5 +1,6 @@
 \section{Diversidad}
 
+Recordemos que el objetivo 1 de este trabajo era mejorar la diversidad en problemas de optimización mediante la división de la población en castas.
 Mantener la diversidad es crucial para evitar una convergencia prematura hacía un óptimo local. Rosca \cite{Rosca} concluyó que las poblaciones parecían quedar estancadas
 en un óptimo local cuando la entropía no cambiaba o decrecía monótonamente en las generaciones sucesivas. En programación genética, la diversidad se refiere a diferencias estructurales, 
 como por ejemplo la cantidad de genotipos distintos en la población o la singularidad de valores del fitness \cite{genetic}. Uno de los objetivos de este trabajo es investigar cómo la 
@@ -17,7 +18,7 @@ Para realizar estas pruebas usaremos la configuración de la Tabla \ref{tab:dive
     \centering
     \begin{tabular}{||c|c||}
         \hline
-        \multicolumn{2}{|l|}{\textbf{Fichero Configuración: config\_file\_5.json}} \\ \hline
+        \multicolumn{2}{|l|}{\textbf{Fichero Configuración: config\_file\_5.json} \ref{subsect:config_file_5}} \\ \hline
         Tamaño del cromosoma                            & 20              \\ \hline
         Tamaño de la población                          & 100             \\ \hline
         Máximo de generaciones                          & 15              \\ \hline
@@ -26,7 +27,7 @@ Para realizar estas pruebas usaremos la configuración de la Tabla \ref{tab:dive
         Porcentaje Gamma de la población                & 20              \\ \hline
         Porcentaje Delta de la población                & 20              \\ \hline
         Porcentaje Epsilon de la población              & 30              \\ \hline
-        Ratio de mutación                               & 10              \\ \hline
+        Tasa de mutación                               & 10              \\ \hline
     \end{tabular}
     \caption{Parámetros de configuración para exploración de la diversidad}
     \label{tab:diversity_config}
@@ -34,7 +35,7 @@ Para realizar estas pruebas usaremos la configuración de la Tabla \ref{tab:dive
 
 \begin{figure}[H]
 	\centering	
-	\includegraphics[scale=0.6]{figuras/config_file_5_Rastrigin.png}
+	\includegraphics[scale=0.6]{../data/Plots/config_file_5_Rastrigin.png}
 	\caption{Primera ejecución}
     \label{fig:primera_ejecucion}
 \end{figure}
@@ -52,11 +53,11 @@ ver un comportamiento similar; el descenso también se produce en las generacion
 \begin{table}[]
     \begin{tabular}{||c|c|c|c|c|c||}
     \hline
-                             & \textbf{Evals. de f} & \textbf{Entropía} & \textbf{Distancia de edición} & \textbf{Mejor f} & \textbf{Generaciones} \\ \hline
-    \textbf{Mejor ejecución} & 11873                      & 2.69              & 6.20                          & 40.27                     & 77                    \\ \hline
-    \textbf{Peor ejecución}  & 4900                       & 2.11              & 5.95                          & 126.14                    & 31                    \\ \hline
+                                                                            & \textbf{\begin{tabular}[c]{@{}c@{}}Evals. de \\ f\end{tabular}} & \textbf{Entropía} & \textbf{\begin{tabular}[c]{@{}c@{}}Distancia de \\ edición\end{tabular}} & \textbf{Mejor f} & \textbf{Generaciones} \\ \hline
+    \textbf{\begin{tabular}[c]{@{}c@{}}Mejor \\ ejecución\end{tabular}}     & 11873                & 2.69              & 6.20                          & 40.27                     & 77                    \\ \hline
+    \textbf{\begin{tabular}[c]{@{}c@{}}Peor \\ ejecución\end{tabular}}      & 4900                 & 2.11              & 5.95                          & 126.14                    & 31                    \\ \hline
     \end{tabular}
-    \caption{Comparación de la mejor y la peor ejecución}
+    \caption{Comparación de la ejecución con mejor valor de fitness y la peor, usando el fichero de configuración 5 [\ref{subsect:config_file_5}]}
     \label{fig:Comparación}
 \end{table}
 
@@ -65,14 +66,14 @@ mencionadas no se puede concluir una diferencia clave que marque el por qué una
 
 \begin{figure}[]
 	\centering	
-	\includegraphics[scale=0.5]{figuras/config_file_5_Rastrigin_best_f_value.png}
+	\includegraphics[scale=0.5]{../data/Plots/config_file_5_Rastrigin_best_f_value.png}
 	\caption{ Diversidad en la ejecución con mejor resultado de fitness }
     \label{fig:best_f_value}
 \end{figure}
 
 \begin{figure}[]
 	\centering	
-	\includegraphics[scale=0.5]{figuras/config_file_5_Rastrigin_worst_f_value.png}
+	\includegraphics[scale=0.5]{../data/Plots/config_file_5_Rastrigin_worst_f_value.png}
 	\caption{ Diversidad en la ejecución con peor resultado de fitness }
     \label{fig:worst_f_value}
 \end{figure}

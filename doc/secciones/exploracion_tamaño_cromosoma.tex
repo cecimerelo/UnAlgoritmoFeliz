@@ -2,16 +2,16 @@
 
 \begin{table}[]
     \centering
-    \begin{tabular}{||c|c|c|c|c|c||}
+    \begin{tabular}{|c|c|c|c|c|c|}
         \hline
-        \textbf{Fichero Configuración} & \textbf{Generaciones} & \textbf{DIM} & \textbf{Tmñ. poblacion} & \textbf{Mejor fitness} & \textbf{Evals. de f}\\ \hline
-        Config 10  & 45   & 10    & 1000   & -38.48    &  69537    \\ \hline
-        Config 11  & 92   & 15    & 1500   & -38.88    &  211163   \\ \hline
-        Config 12  & 62   & 30    & 3000   & 79.74     &  288787   \\ \hline
-        Config 13  & 78   & 50    & 5000   & 346.941   &  602536   \\ \hline
-        Config 14  & 94   & 100   & 10000  & 1266.01   &  1459146  \\ \hline
+        \textbf{Config.} & \textbf{DIM} & \textbf{\begin{tabular}[c]{@{}c@{}}Mediana \\ mejor valor \\ de fitness\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Mediana \\ \# ejecuciones \\ de f\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}$\sigma$\\ mejor valor\\ de fitness\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}$\sigma$\\ \# ejecuciones \\ de f\end{tabular}} \\ \hline
+        10  [\ref{subsect:config_file_10}]               & 10           & -33.39                                                                                & 70902                                                                              & 4.23                                                                          & 15622.99                                                                    \\ \hline
+        11  [\ref{subsect:config_file_11}]               & 15           & -24.28                                                                                & 138794.0                                                                           & 7.82                                                                          & 35438.36                                                                    \\ \hline
+        12  [\ref{subsect:config_file_12}]               & 30           & 109.42                                                                                & 284149.0                                                                           & 14.18                                                                         & 65911.82                                                                    \\ \hline
+        13  [\ref{subsect:config_file_13}]               & 50           & 367.07                                                                                & 512473.0                                                                           & 23.38                                                                         & 124996.18                                                                   \\ \hline
+        14  [\ref{subsect:config_file_14}]               & 100          & 1327.54                                                                               & 1233227                                                                            & 50.60                                                                         & 217386.15                                                                   \\ \hline
     \end{tabular}
-    \caption{Resultados exploración inicial}
+    \caption{Resultados exploración del tamaño del cromosoma, variando proporcionalmente el tamaño de población}
     \label{tab:exploracion_dim_cromosoma}
 \end{table}
 
@@ -21,18 +21,18 @@ Tabla \ref{tab:exploracion_dim_cromosoma}.
 
 \begin{figure}[]
 	\centering	
-	\includegraphics[scale=0.5]{figuras/ps_cd_variation.png}
-	\caption{ Variación del fitness a lo largo de las generaciones }
+	\includegraphics[scale=0.5]{../data/Plots/ps_cd_variation.png}
+	\caption{ Variación del valor del fitness de cada fichero de configuración para la función Rastrigin a lo largo de las generaciones }
     \label{fig:exec_summary}
 \end{figure}
 
 \begin{figure}[]
 	\centering	
-	\includegraphics[scale=0.5]{figuras/ps_cd_point.png}
+	\includegraphics[scale=0.5]{../data/Plots/ps_cd_point.png}
 	\caption{ Variación de los resultados, variando la dimensión del cromosoma }
     \label{fig:box_plots_crom_dim}
 \end{figure}
 
-Viendo la Figura \ref{fig:exec_summary}, todas las ejecuciones tienen un comportamiento parecido: gran descenso del valor del fitness al principio y estancamiento al final. 
-En la decisión final se descartan las 2 primeras configuraciones, debido a que la exploración que hacen es pequeña y pese a ello consiguen un buen valor de fitness. Por tanto
-no nos interesa a la hora de escoger la dimensión del cromosoma, ya que queremos elegir uno que explore bien el espacio de búsqueda y así mantenga la diversidad. Se elige, por tanto la configuración 13; tiene un espacio de búsqueda mayor que las anteriores y no se aleja mucho de la solución.
+Viendo la Figura \ref{fig:exec_summary}, todas las ejecuciones tienen un comportamiento parecido: gran descenso del valor del fitness al principio y estancamiento al final.
+De esta exploración podemos concluir que aumentar el tamaño de la población proporcionalmente con la dimensión del cromosoma no consigue mejores resultados. Para la 
+siguiente exploración se usará la configuración 13 [\ref{subsect:config_file_13}], por ver si cambiando la tasa de mutación se puede mejorar.

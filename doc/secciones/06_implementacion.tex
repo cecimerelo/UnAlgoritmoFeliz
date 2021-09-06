@@ -9,7 +9,7 @@ de Julia \cite{julia}, un lenguaje de programación multiparadigma de tipado din
 científica, el objetivo de sus creadores fue el de combinar lo mejor de otros lenguajes, es decir, conseguir un “todo en uno”, lo que se traduce en:
 la velocidad de C, la usabilidad de Python, el dinamismo de Ruby, la destreza matemática de MatLab, y las estadísticas de R \cite{julia_goals}.
 
-\section{Metodología del desarrollo}
+\section{Metodología de desarrollo}
 
 Un requisito fundamental a la hora de implementar es usar una metodología que garantice la evolución del código. Por eso la implementación 
 del software se ha dividido en tareas, siguiendo la metodología ágil Kanban. Se divide pues el proyecto en tareas pequeñas que aporten valor al producto 
@@ -119,6 +119,7 @@ En esta sección se va a describir las decisiones técnicas que se han tomado pa
 
 Uno de los objetivos del TFG es mejorar la diversidad en problemas de optimización mediante la división de la población en castas.
 Para calcularla se han usado como métricas la entropía y la distancia de edición; la decisión de usar estas medidas
+
 está definida en secciones posteriores. Para calcular la entropía en Julia hay varias librerías disponibles:
 
 \begin{itemize}
@@ -134,6 +135,7 @@ está definida en secciones posteriores. Para calcular la entropía en Julia hay
 Al final para calcular la entropía se ha usado el paquete \emph{InformationMeasures.jl} \cite{informationMeasures_jl}, ya 
 que tiene una función que te calcula la entropía para cualquier tipo de datos. Aparte, ha sido muy fácil usarla porque 
 tiene buena documentación. La distancia de edición a partir de la distancia euclídea ofrecida por el paquete
+
 \emph{Distances.jl} \cite{distances_jl}, paquete que ofrece gran cantidad de opciones para calcular distancias entre vectores.
 Para calcular distancias era una de las pocas opciones disponibles, pero tiene muchos contribuidores, ya que forma 
 parte de paquetes Julia Statistics \cite{stats_jl}.
