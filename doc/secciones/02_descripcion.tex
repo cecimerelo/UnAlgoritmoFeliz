@@ -9,16 +9,16 @@ implementando hasta conseguir la funcionalidad completa.
 En 2019, para la asignatura de metaheurísticas de la Universidad de Granada \cite{merelo_molina_2021} se propuso inventar una 
 metaheurística. En ese momento acababa de leer el libro ``Un Mundo feliz`` de Aldous Huxley, así que decidí adaptar el proceso de 
 optimización de la población humana que describe el libro a un algoritmo evolutivo. A lo largo del desarrollo se me presentaron varios retos.
-El primero fue el lenguaje escogido, lo desarrollé en Python, un lenguaje caracterizado por su fácil sintaxis pero su deficiencia de
+El primero fue el lenguaje escogido; lo desarrollé en Python, un lenguaje caracterizado por su fácil sintaxis pero su deficiencia de
 velocidad. Cada ejecución del problema llevaba horas, por lo que se hacía muy difícil de ejecutar y analizar. El
-segundo fue la optimización de los parámetros, el algoritmo quedaba estancado en óptimos locales. Estos problemas son 
+segundo fue la optimización de los parámetros; el algoritmo quedaba estancado en óptimos locales. Estos problemas son 
 los que se quieren abordar en el desarrollo de este trabajo.
 
 Como se ha mencionado en la sección anterior, se quiere desarrollar una metaheurística inspirada por un libro. Pero no solo interesa
 el poder adaptar el proceso descrito en el libro a una metaheurística. También se busca que la metaheurística pueda ser
-usada fácilmente por la comunidad, que sea su implementación sea extensible y mantenible, que además sea fácil de analizar. Para conseguirlo
-se desarrollará una biblioteca que sea adaptable al problema a resolver. Que los parámetros iniciales sean 
-indicados por la persona que use el algoritmo, parámetros como la función de fitness, tamaño de la población inicial,
+usada fácilmente por la comunidad, que su implementación sea extensible y mantenible, y además fácil de analizar. Para conseguirlo
+se desarrollará una biblioteca que sea adaptable al problema a resolver, donde los parámetros iniciales sean 
+indicados por la persona que use el algoritmo; parámetros como la función de fitness, tamaño de la población inicial,
 dimensión del cromosoma y rango de búsqueda
 
 \section{Naturaleza del algoritmo}
@@ -26,7 +26,7 @@ dimensión del cromosoma y rango de búsqueda
 Como se ha mencionado, el algoritmo está basado en el proceso de optimización de la población humana que describe el libro 
 a un algoritmo evolutivo, por tanto, estamos hablando de un algoritmo basado en la evolución de una población, así que seguirá 
 la estructura de los algoritmos evolutivos, más en concreto, un \emph{algoritmo genético}. Se trata de un algoritmo 
-genético ya se trata de un algoritmo de optimización de búsqueda inspirado en los procesos de Evolución Natural y
+genético ya que es un algoritmo de optimización de búsqueda inspirado en los procesos de Evolución Natural y
 Evolución Genética.
 
 Siguiendo la definición dada por Goldberg \cite{goldberg89}, "los Algoritmos Genéticos son algoritmos de búsqueda
@@ -52,26 +52,26 @@ los \emph{algoritmos evolutivos}. El proceso está compuesto de 4 fases:
 
 Además de las fases también se debe definir una \emph{condición de parada} y una \emph{función de fitness}. La 
 condición de parada sirve para que el algoritmo finalice si la población converge, es decir, si no produce hijos 
-que sean diferentes con respecto a las generaciones anteriores. O si alcanza la solución. La función de fitness
-determina como de adecuado es un individuo, es decir, la probabilidad de que un individuo sea seleccionado para 
+que sean diferentes con respecto a las generaciones anteriores, o si alcanza la solución. La función de fitness
+determina cómo de adecuado es un individuo, esto es, la probabilidad de que un individuo sea seleccionado para 
 la reproducción depende de este valor. Por tanto, para alcanzar la solución a un problema se parte de un conjunto 
 inicial de individuos, llamado \textit{población inicial}, generado de manera aleatoria. Cada uno de estos 
 individuos representa una posible solución al problema. Estos individuos van pasando por los diferentes operadores y 
 evolucionando en cada generación.
 
 En el caso del algoritmo propuesto en este trabajo (\emph{Algoritmo Feliz}) la población evolucionará siguiendo un proceso 
-inspirado por los distintos procesos descritos en el libro de Aldous Huxley. El proceso propuesto se decribe con mayor detalle
+inspirado por los distintos procesos descritos en el libro de Aldous Huxley. El proceso propuesto se describe con mayor detalle
 en la sección \ref{sect: description}. Al usar como guía los procesos descritos en el libro quiere decir que se está desarrollando 
-una metaheurística. Esta se trata método de alto nivel, independiente del problema, que proporciona una serie de guías o 
+una metaheurística. Esta se trata de un método de alto nivel, independiente del problema, que proporciona una serie de guías o 
 estrategias para desarrollar algoritmos de optimización heurísticos \cite{metaheuristics_def}. Muchas metaheurísticas
-están inspiradas en la naturaleza \cite{Molina2020ComprehensiveTO}. Por ejemplo la optimización basada en colonias de
+están inspiradas en la naturaleza \cite{Molina2020ComprehensiveTO}. Por ejemplo, la optimización basada en colonias de
 hormigas que imita la manera en la que las hormigas se comportan cuando viajan a una fuente de comida, y cómo se 
 comunican unas con otras a través de feromonas. 
 
 Normalmente las metaheurísticas se usan en problemas de optimización por varias razones:
 \begin{itemize}
     \item Encuentran maneras de ir de una solución a otra mejor sin tener por qué considerar todas las posibles combinaciones. 
-    \item Pueden evitar quedarse estancadas en mínimos locales porque usar aleatoriedad.
+    \item Pueden evitar quedarse estancadas en mínimos locales porque usan aleatoriedad.
 \end{itemize}
 
 En conclusión, se va a desarrollar una metaheurística basada en el proceso de fecundación y la división en castas descrita en el 
@@ -81,11 +81,11 @@ libro de A. Huxley.
 
 El libro describe cómo se alcanza esta raza humana perfecta mediante una ``cadena de montaje``, con varias fases. Esto lo 
 reflejaremos mediante un algoritmo evolutivo generacional con los operadores de selección, cruce, mutación y reemplazamiento. 
-El proceso comienza en la \textbf{\textit{Sala de Fecundación}}, aquí se crean los óvulos y se fecundan. Una vez \textit{fecundados}
+El proceso comienza en la \textbf{\textit{Sala de Fecundación}}; aquí se crean los óvulos y se fecundan. Una vez \textit{fecundados}
 los óvulos pasan a las incubadoras, donde se decide la \textit{casta} a la que pertenecerá cada individuo. Huxley describe 
-como a los Alfas y los Betas se les suministra una gran cantidad de nutrientes y hormonas durante la incubación. Mientras que a las 
-castas bajas, Gamma, Delta y Epsilon son privados de estos elementos necesarios para el desarrollo. Para imitar esta
- ``falta de nutrientes``, en el algoritmo a desarrollar privaremos a las castas bajas de operadores, solo mutarán, con esto
+como a los Alfas y los Betas se les suministra una gran cantidad de nutrientes y hormonas durante la incubación. Mientras que las 
+castas bajas, Gamma, Delta y Epsilon son privadas de estos elementos necesarios para el desarrollo. Para imitar esta
+ ``falta de nutrientes``, en el algoritmo a desarrollar privaremos a las castas bajas de operadores, solo mutarán. Con esto
  pretendo avanzar el objetivo de mantener la diversidad alta durante toda la ejecución del algoritmo. 
  Las castas se implementarán de la siguiente manera: 
 
@@ -105,7 +105,7 @@ castas bajas, Gamma, Delta y Epsilon son privados de estos elementos necesarios 
     \item \textbf{Gammas}: 
         \begin{itemize}
             \item Libro: son los empleados subalternos, cuyas tareas requieren de habilidad. Son expertos en tareas repetitivas
-            \item Implementación: los individuos de esta casta solo tendrán mutación, por búsqueda local.
+            \item Implementación: los individuos de esta casta solo tendrán mutación por búsqueda local.
         \end{itemize}
     \item \textbf{Castas Bajas}: sólo tendrán el operador de mutación por segmento fijo, sin búsqueda local. A este sector pertenecen:
         \begin{itemize}
@@ -138,6 +138,6 @@ dividiendo en castas los cromosomas que han evolucionado en la anterior.
 
 Este proyecto es software libre, y está liberado con la licencia \cite{gplv3}. El producto final de este proyecto será una
 biblioteca que estará disponible Github \cite{project_repository}. Esto ayuda a la reproducibilidad de la ciencia y 
-también es parte de desarrollo ágil, ya que cualquier persona puede añadir tareas y marcarle la prioridad. Esto va 
+adicionalmente es parte de desarrollo ágil, ya que cualquier persona puede añadir tareas y marcarle la prioridad. Esto va 
 también en línea con la ciencia abierta. El concepto de “ciencia abierta” es la difusión del conocimiento científico 
 lo más amplia posible, libre para todas y todos, accesible en línea y reutilizable
