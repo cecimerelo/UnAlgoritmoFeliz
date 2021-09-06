@@ -1,9 +1,13 @@
 \chapter{Implementación}
+En esta sección se va a describir la implementación, basada en los requisitos mencionados.
 
-- en base a los requisitos que se va a usar de forma concreta
-- Calcula la diversidad - Con qué he calculado la diversidad
+\section{Lenguaje de programación}
 
-¿qué he utilizado, estructuras de datos, mutables inmutables, precision del float, que bibliotecas he usado?
+Una de las formas de conseguir altas prestaciones, para alcanzar el objetivo 2, es escoger el lenguaje adecuado. Por ello se ha escogido
+un lenguaje que hace poco entró en el \"Petaflop Club\", que incluye aquellos lenguajes que superan 1 petaflop/segundo como rendimiento pico. Se trata
+de Julia \cite{julia}, un lenguaje de programación multiparadigma de tipado dinámico. Orientado a la computación técnica y
+científica. El objetivo de sus creadores fue el de combinar lo mejor de otros lenguajes, es decir, conseguir un “todo en uno”, lo que se traduce en:
+la velocidad de C, la usabilidad de Python, el dinamismo de Ruby, la destreza matemática de MatLab, y las estadísticas de R \cite{julia_goals}.
 
 \section{Metodología del desarrollo}
 
@@ -13,17 +17,131 @@ final. De esta forma puedes probar cada tarea a medida que la vas acabando. Al f
 correctamente.
 
 Otro requisito es desarrollar un algoritmo que sea mantenible. Por tanto, a la hora del desarrollo se priorizarán conceptos 
-como arquitectura limpia \cite{cleanArquitecture2017} y la limpieza del código \cite{cleanCode2008}, así como el desarrollo basado en tests. De esta manera, se asegura 
-que el algoritmo está asentado sobre una base firme. Asimismo, gracias al desarrollo basado en tests para cada cambio que se haga 
-se sabrá si se ha roto lo que estaba escrito hasta el momento. 
+como arquitectura limpia \cite{cleanArquitecture2017} y la limpieza del código \cite{cleanCode2008}, así como el desarrollo basado en tests. De esta manera, se asegura
+que el algoritmo está asentado sobre una base firme. Asimismo, gracias al desarrollo basado en tests para cada cambio que se haga
+se sabrá si se ha roto lo que estaba escrito hasta el momento.  Usar estándares va en línea con el objetivo de aplicar el desarrollo ágil a la ciencia.
 
-- qué he usado para conseguir los hitos
-\section{Estructura del algoritmo}
+\section{Estructuras de datos}
 
-Una de las formas de conseguir altas prestaciones es escoger el lenguaje adecuado. Por ello se ha escogido un lenguaje que
-hace poco entró en el \"Petaflop Club\", que incluye aquellos lenguajes que superan 1 petaflop/segundo como rendimiento pico. Se trata
-de Julia \cite{julia}, un lenguaje de programación multiparadigma de tipado dinámico. Orientado a la computación técnica y 
-científica. La rapidez fue uno de los principales objetivos a la hora de crear el lenguaje. 
+Las entidades que se han utilizado para estructura la información son:
+\begin{itemize}
+    \item Para tener bien definidos los datos de entrada se ha creado una entidad que contiene todos los parámetros de
+    configuración del algoritmo. Se trata de una estructura inmutable, estos parámetros no cambiarán a lo largo de todo el
+    algoritmo.
+    \item Para unificar todos los datos que necesita el algoritmo, se ha definido una estructura inmutable. Una vez
+    rellenada esta entidad, el algoritmo tiene todos los datos necesarios para comenzar la ejecución.
+    \item Definir la casta como una entidad abstracta. Julia usa el \emph{dispatch} múltiple como paradigma, 
+    esto va a ser muy útil a la hora de definir los operadores como se verá más adelante. Teniendo la casta 
+    como tipo abstracto podremos definir métodos que acepten cualquier tipo de casta.
 
-Para ayudar a la reutilización es muy importante que el código sea limpio, mantenible y haya sido testeado, por eso se ha decidido seguir los estándares de arquitectura y código marcados 
-por Robert C. Martin \cite{cleanArquitecture2017, cleanCode2008}. Usar estándares va alineado con el objetivo de aplicar el desarrollo ágil a la ciencia.
+    \item Julia es un lenguaje de tipado dinámico, pero tiene alguna de las ventajas que del tipado estático haciendo posible indicar
+    los tipos de algunos valores. Además, Para poder hacer buen uso de este paradigma se han definido las castas como tipos distintos, por ejemplo, para
+    la casta alfa:
+
+    \begin{lstlisting}[
+        basicstyle=\small
+    ]
+        @with_kw struct ALPHA <: Caste
+            name::String = "ALPHA"
+        end
+    \end{lstlisting}
+
+    El decorador \lstinline{with_kw} de la biblioteca \emph{Parameters.jl}, para poder añadir parámetros por defecto a una entidad. Las castas se han definido 
+    como tipos inmutables, ya que en ningún momento se va a cambiar el nombre propio de la casta.
+\end{itemize}
+
+\section{Implementación de los casos de uso}
+
+En esta sección se va a describir las decisiones técnicas que se han tomado para desarrollar los casos de uso \ref{sect:use_cases}
+
+\begin{itemize}
+    \item \textbf{Sistema de entrada de la biblioteca} \ref{it:sist_entrada}: usar el formato JSON para definir los parámetros
+    del algoritmo. Un ejemplo de fichero sería el siguiente:
+    \begin{lstlisting}[
+        basicstyle=\small
+    ]
+        {
+            "CHROMOSOME_SIZE": 2,
+            "POPULATION_SIZE": 100,
+            "MAX_GENERATIONS": 15,
+            "POPULATION_PERCENTAGE": {
+                "ALPHA": 10,
+                "BETA": 20,
+                "GAMMA": 20,
+                "DELTA": 20,
+                "EPSILON": 30
+            },
+            "MUTATION_RATE": {
+                "ALPHA": 10,
+                "BETA": 10,
+                "GAMMA": 10,
+                "DELTA": 10,
+                "EPSILON": 10
+            }
+        }
+    \end{lstlisting}
+
+    Cualquiera de estos parámetros es se puede cambiar. Esto se convertirá en una entidad inmutable que servirá como 
+    entrada al algoritmo.
+
+    \item \textbf{Función de fitness \cite{project_repository_8}}: se ha usado las funciones que pertenecen al \emph{benchmark}
+    \emph{ Black-box Optimization Benchmarking (BBOB)} \cite{bbob_definition}. Este \emph{benchmark} define funciones que se suelen 
+    usar como referencia en el campo de las metaheurísticas. En Julia están implementadas en la biblioteca 
+    \emph{BlackBoxOptimizationBenchmarking.jl} \cite{bbob_jl}.
+
+    \item \textbf{Operadores de selección, cruce y mutación} [\ref{it:selection_operator}, \ref{it:crossover_operator}, \ref{it:mutation_operator}]:
+    Se ha usado el \emph{dispatch} múltiple para definir operadores que se adecúen en cada casta. Por ejemplo, para el caso del
+    operador de selección se han definido 3 tipos de parámetros de entrada:
+
+    \begin{lstlisting}[
+        basicstyle=\small
+    ]
+        selector_operator(
+            caste::ALPHA, 
+            caste_population
+        )
+        selector_operator(
+            caste::BETA, 
+            caste_population, 
+            alpha_reproduction_pool
+        )
+        selector_operator(
+            caste, 
+            caste_population
+        )
+    \end{lstlisting}
+    
+    Para muestrear la población se ha usado la biblioteca \emph{StatsBase.jl}. Se ha elegido esta librería porque
+    tiene un gran número de contribuidores y está en continua actualización
+\end{itemize}
+
+\section{Implementación del cálculo de la diversidad}
+
+Uno de los objetivos del TFG es Mejorar la diversidad en problemas de optimización mediante la división de la población en castas.
+Para calcularla se han usado como métricas la entropía y la distancia de edición, la decisión de usar estas medidas
+está definida en secciones posteriores. Para calcular la entropía en Julia hay varias librerías disponibles:
+
+\begin{itemize}
+    \item \emph{Entropy.jl} \cite{entropy_jl}: este paquete contiene funcionalidad para ejecutar estimaciones de la entropía. No se ha usado porque,
+    aparte de no tener nada de documentación, la última vez que se actualizó fue hace 8 años, por tanto contiene
+    sintaxis antigua que no compilará con las nuevas versiones del lenguaje.
+    \item \emph{Diversity.jl} \cite{diversity_jl}: este paquete provee de funcionalidad para calcular diferentes
+    tipos de diversidad. Es una biblioteca muy completa, pero tiene una curva de aprendizaje muy grande, ya que los
+    operadores definidos para el cálculo son muy teóricos. Además no tiene para calcular la entropía y la distancia
+    de edición.
+\end{itemize}
+
+Al final para calcular la entropía se ha usado el paquete \emph{InformationMeasures.jl} \cite{informationMeasures_jl}, ya 
+que tiene una función que te calcula la entropía para cualquier tipo de datos. Además ha sido muy fácil de usarla porque 
+tiene buena documentación. La distancia de edición a partir de la distancia euclídea ofrecida por el paquete
+\emph{Distances.jl} \cite{distances_jl}, paquete que ofrece gran cantidad de opciones para calcular distancias entre vectores.
+Para calcular distancias era una de las pocas opciones disponibles, pero tiene muchos contribuidores, ya que forma 
+parte de paquetes Julia Statistics \cite{stats_jl}.
+
+\section{Implementación necesaria para el análisis de los resultados}
+
+Para el análisis de los resultados se ha usado la estructura de datos \emph{DataFrames}, del paquete \emph{Dataframes.jl}. Se
+ha usado esta estructura de datos porque facilita mucho la visualización en tablas. Además tiene una fuerte
+integración con distintos formatos de salida de archivos. 
+
+Para las gráficas se usará \emph{Gafly.jl} \cite{gadfly_jl},ya que se integra estrechamente con los DataFrames
