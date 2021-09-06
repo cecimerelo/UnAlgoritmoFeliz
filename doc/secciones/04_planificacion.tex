@@ -1,38 +1,37 @@
 \chapter{Planificación y metodología utilizada}
 
 En este capítulo se comentará la planificación del proyecto y la metodología usada. La metodología
-es muy importante para este TFG, ya uno de los objetivos es desarrollar siguiendo una metodología
+es muy importante para este TFG, ya que uno de los objetivos es desarrollar siguiendo una metodología
 ágil.
 
 \section{Metodología utilizada}
 
 Un requisito fundamental a la hora de la implementación es usar una metodología que garantice la evolución del código,
-ya que está definido como uno de los objetivos del TFG. Por eso se ha elegido usar el desarrollo ágil, específicamente 
+dado que está definido como uno de los objetivos del TFG. Por eso se ha elegido usar el desarrollo ágil, específicamente 
 la metodología Kanban. Este método tiene 4 principios básicos \cite{kanban}:
 
 \begin{itemize}
-    \item Empezar con lo que se hace ahora: no es necesario realizar cambios drásticos para empezar a utilizarlo
+    \item Empezar con lo que se hace ahora: no es necesario realizar cambios drásticos para empezar a utilizarlo.
     \item Comprometerse a buscar e implementar cambios incrementales y evolutivos: se trata de definir las tareas
-    pensando en cuál sería el mínimo esfuerzo que se puede realizar en la tarea, pero que aun así aporte valor al producto final.
-    Por lo que trata de pequeños y continuos cambios incrementales y evolutivos del proceso actual.
+    pensando en cuál sería el mínimo esfuerzo que se puede realizar en la tarea, pero que aún así aporte valor al producto final.
+    Consiste pues en pequeños y continuos cambios incrementales y evolutivos del proceso actual.
     \item Lo siguiente a realizar se decide del backlog (tareas pendientes acumuladas), pudiéndose priorizar aquellas 
     tareas entrantes según las necesidades del momento.
     \item  En el Kanban no se premia la rapidez, sino la calidad del producto final.
 \end{itemize}
 
-Se ha decidido usar esta metodología, ya que es muy flexible a los cambios que se puedan producir a lo largo del proyecto. Esto va en
+Se ha decidido usar esta metodología, debido a que es muy flexible a los cambios que se puedan producir a lo largo del proyecto. Esto va en
 línea con el objetivo de usar metodología ágil durante el desarrollo del proyecto, además es parte de los requisitos no funcionales del proyecto \ref{sect:no-funcionales}
 
 En cuanto al desarrollo del código se ha elegido la metodología de desarrollo guiado por pruebas o \emph{TDD}. Este método
-de desarrollo encaja muy bien con Kanban, porque para cada tarea que se finalice tienes una funcionalidad completa y testeada. Por
-lo que la mantenibilidad del código aumenta, y al final del desarrollo te aseguras de que todas las piezas funcionan. Otra cualidad de
+de desarrollo encaja muy bien con Kanban, porque para cada tarea que se finalice tienes una funcionalidad completa y testeada. De esta manera, la mantenibilidad del código aumenta, y al final del desarrollo te aseguras de que todas las piezas funcionan. Otra cualidad de
 este tipo de desarrollo es que los tests ayudan mucho a las personas que usen la librería por primera vez, ya que se puede 
-ir probando la funcionalidad fácilmente. Además estas pruebas pueden servir como documentación, ya que en los tests se ve claramente 
-los parámetros de entrada y de salida de la función. El TDD tiene consiste en:
+ir probando la funcionalidad fácilmente. Además, estas pruebas pueden servir como documentación, ya que en los tests se ve claramente 
+los parámetros de entrada y de salida de la función. El TDD consiste en:
 
 \begin{itemize}
-    \item \textit{Escritura del test} - escribir el test que cubra la funcionalidad que se va a desarrollar
-    \item \textit{Fallo del test} - dado que aún no hemos codificado esa funcionalidad, el test debe de fallar.
+    \item \textit{Escritura del test} - escribir el test que cubra la funcionalidad que se va a desarrollar.
+    \item \textit{Fallo del test} - dado que aún no hemos codificado esa funcionalidad, el test debe fallar.
     \item \textit{Escribir código para pasar el test} - escribir el mínimo código posible para que el test pase.
     \item \textit{Refactorizar el código} - añadir lo necesario para seguir completando la funcionalidad.
     \item \textit{Repetir} - los pasos anteriores hasta completar la funcionalidad.
@@ -42,35 +41,35 @@ Los tests que se vayan realizando se usarán para la integración continua del p
 La integración continua se refiere en su mayoría a la fase de creación o integración del proceso de publicación de
 software y conlleva un componente de automatización \cite{CI}. Tener integración continua en el proyecto hace que sea
 mantenible, ya que se protege ante cambios. Siempre que hagas cambios, si los tests pasan te da seguridad de que tu cambio se 
-acopla bien lo la funcionalidad antigua. 
+acopla bien a la funcionalidad antigua. 
 
 
 \section{Herramientas de comunicación}
 
 Para llevar el desarrollo del proyecto se ha utilizado la plataforma GitHub, donde se encuentra todo lo 
 relacionado con el trabajo \cite{project_repository}. Esta plataforma posibilita un desarrollo cómodo gracias a la cantidad
-de herramientas que provee. Para las historias de usuario se han usado los \textit{issues}. Para tener una
+de herramientas que provee. Para las historias de usuario se han usado los \textit{issues}; para tener una
 visión general del estado del proyecto se ha usado \textit{Projects}, que permite añadir columnas. Siguiendo el método Kanban, el
-tablero tiene 3 columnas, las tarea más prioritaria sería la que está más arriba a la derecha:
+tablero tiene 3 columnas, la tarea más prioritaria sería la que está más arriba a la derecha:
 
 \begin{itemize}
     \item \emph{Product Backlog}: contiene todas las tareas que se quieren desarrollar, priorizadas de manera que la más urgente
     se encuentre la primera en la columna.
     \item \emph{In progress}: contiene todas las tareas que están abiertas en el momento. Siguiendo Kanban esta columna
     debe tener siempre el mínimo de tareas posibles. La prioridad es siempre cerrar tareas antes de empezar una nueva.
-    \item \emph{Done}: contienen las tareas que ya se han finalizado
+    \item \emph{Done}: contienen las tareas que ya se han finalizado.
 \end{itemize}
 
 Cada tarea del \emph{backlog} tiene un \emph{pull request} enlazado, ya que cada tarea es un requisito del producto final. Todo
 esto se encuentra en un repositorio público. Cualquiera puede añadir nuevas tareas al proyecto y puede ver el progreso realizado en ellas.
 Facilita mucho la corrección al tutor, ya que puede comentar cualquier línea de código y crear una tarea pidiendo alguna
-modificación. Además Github se integra con Telegram a través de un bot, y por cada cambio que hace al proyecto se envía un mensaje
-a un grupo en el que estamos el tutor del trabajo y yo. Este mensaje contiene un enlace al cambio que se ha hecho. Así
-que es sencillo llevar un seguimiento exhaustivo de todo lo que pasa en el repositorio.
+modificación. Además, Github se integra con Telegram a través de un bot, y por cada cambio que hace al proyecto se envía un mensaje
+a un grupo en el que estamos el tutor del trabajo y yo. Este mensaje contiene un enlace al cambio que se ha hecho. Consecuentemente,
+es sencillo llevar un seguimiento exhaustivo de todo lo que pasa en el repositorio.
 
 \section{Casos de uso}
 
-En línea con el tercer objetivo de aplicar desarrollo ágil en la ciencia. El proyecto se ha desarrollado definiendo
+En línea con el tercer objetivo de aplicar desarrollo ágil en la ciencia, el proyecto se ha desarrollado definiendo
 historias de usuario, definidas usando \emph{Desarrollo basado en el comportamiento} o BDD \cite{BDD}. Lo que 
 plantea BDD es definir un lenguaje común para todas las partes implicadas en un proyecto, y utilizar esto como parte inicial 
 del desarrollo y el testeo. Todas las historias están en el repositorio de Github del proyecto \cite{project_repository}.
@@ -82,7 +81,7 @@ En el caso de la funcionalidad básica se encuentran las siguientes historias de
 \begin{enumerate}
     \item \textbf{Sistema de entrada de la biblioteca}: Como desarrolladora quiero tener una forma de leer ficheros de configuración de forma que pueda
     establecer los datos leídos como los parámetros iniciales del algoritmo. Los parámetros a definir por el usuario son: la dimensión del cromosoma, el tamaño de la población, 
-    condición de parada basado en el número máximo de generaciones que puede estar el algoritmo sin producir mejores solupciones, el porcentaje de la población que va a cada casta y 
+    la condición de parada basado en el número máximo de generaciones que puede estar el algoritmo sin producir mejores soluciones, el porcentaje de la población que va a cada casta y 
     el ratio de mutación que tendrán los individuos de cada casta.
     \item \textbf{Función de fitness \cite{project_repository_8}}: Como desarrolladora quiero tener distintas funciones fitness disponibles de manera que pueda aplicarlas según 
     el problema.
@@ -101,4 +100,4 @@ se guardarán en ficheros que se leerán para imprimir las gráficas.
 Todos estos componentes conforman lo que sería el producto mínimamente viable o \emph{MVP} del TFG. El MVP es un producto
 con suficientes características para satisfacer a los clientes iniciales, y proporcionar retroalimentación para el desarrollo futuro \cite{mvp}. 
 Este concepto se alinea con la metodología ágil, ya que se trata de presentar lo mínimo que pueda usarse. A partir de ahí se puede mejorar 
-añadiéndole, por ejemplo, paralelismo. De estos se hablará en secciones posteriores.
+añadiéndole, por ejemplo, paralelismo. De esto se hablará en secciones posteriores.
