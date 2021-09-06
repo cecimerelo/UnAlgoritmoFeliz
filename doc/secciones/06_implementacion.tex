@@ -9,7 +9,7 @@ de Julia \cite{julia}, un lenguaje de programación multiparadigma de tipado din
 científica. El objetivo de sus creadores fue el de combinar lo mejor de otros lenguajes, es decir, conseguir un “todo en uno”, lo que se traduce en:
 la velocidad de C, la usabilidad de Python, el dinamismo de Ruby, la destreza matemática de MatLab, y las estadísticas de R \cite{julia_goals}.
 
-\section{Metodología del desarrollo}
+\section{Metodología de desarrollo}
 
 Un requisito fundamental a la hora de implementar es usar una metodología que garantice la evolución del código. Por eso la implementación 
 del software se ha dividido en tareas siguiendo la metodología ágil Kanban. Se divide el proyecto en tareas pequeñas que aporten valor al producto 
@@ -117,7 +117,7 @@ En esta sección se va a describir las decisiones técnicas que se han tomado pa
 
 \section{Implementación del cálculo de la diversidad}
 
-Uno de los objetivos del TFG es Mejorar la diversidad en problemas de optimización mediante la división de la población en castas.
+Uno de los objetivos del TFG es mejorar la diversidad en métodos que solucionan problemas de optimización mediante la división de la población en castas.
 Para calcularla se han usado como métricas la entropía y la distancia de edición, la decisión de usar estas medidas
 está definida en secciones posteriores. Para calcular la entropía en Julia hay varias librerías disponibles:
 
@@ -144,4 +144,4 @@ Para el análisis de los resultados se ha usado la estructura de datos \emph{Dat
 ha usado esta estructura de datos porque facilita mucho la visualización en tablas. Además tiene una fuerte
 integración con distintos formatos de salida de archivos. 
 
-Para las gráficas se usará \emph{Gafly.jl} \cite{gadfly_jl},ya que se integra estrechamente con los DataFrames
+Para las gráficas se usará \emph{Gadfly.jl} \cite{gadfly_jl},ya que se integra estrechamente con los DataFrames
