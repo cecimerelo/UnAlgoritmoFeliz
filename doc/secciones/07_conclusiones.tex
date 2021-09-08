@@ -5,16 +5,17 @@ se analizarán para ver si se han llegado a completar. Además se comentarán cu
 los siguientes pasos de este algoritmo.
 
 \section{Conclusión}
+
 El primer objetivo era mejorar la diversidad en problemas de optimización mediante la división de la población en castas.
-En los últimos experimentos se ha visto como ajustando los parámetros se ha conseguido que el algoritmo no se quede estancado
-en óptimos locales. Para poder afirmar si mejora la diversidad habría que hacer una comparación más precisa con el panorama actual 
+En las primeras ejecuciones se veía cómo la mejora del valor de fitness empezaba a disminuir a partir de la generación 20. Sin embargo,
+en las últimas ejecuciones, tras haber hecho la exploración de los parámetros, el algoritmo no se queda estancado en generaciones
+tan tempranas. Para poder afirmar si mejora la diversidad habría que hacer una comparación más precisa con respecto al panorama actual 
 de metaheurísticas. Pero para este objetivo, se puede concluir que con una buena elección de los parámetros iniciales se 
-puede llegar a mantener una población más diversa que un algoritmo genético básico.
+puede llegar a mantener una población más diversa que un algoritmo genético con los operadores básicos.
 
 El segundo objetivo era desarrollar una herramienta de altas prestaciones para la ejecución de algoritmos evolutivos. En comparación
-con la primera versión del algoritmo desarrollada en Python se puede confirmar que esta versión es mucho más rápida. En Python tardaba alrededor
-de horas en ejecutarse, mientras que en esta nueva versión en Julia no se llega al minuto. Además se ha desarrollado una biblioteca mantenible,
-ya que la funcionalidad está testeada al completo, lo que la protege ante cambios.
+con la primera versión del algoritmo desarrollada en Python, se puede confirmar que esta versión es mucho más rápida. En Python tardaba alrededor
+de horas en ejecutarse, mientras que en esta nueva versión en Julia no se llega al minuto. 
 
 El tercer objetivo era aplicar el desarrollo ágil en la ciencia. Durante todo el trabajo se ha tenido una mentalidad ágil, preparada para adaptarse ante 
 cualquier cambio de planificación, desarrollando en iteraciones que aportaban valor inmediato al producto.
